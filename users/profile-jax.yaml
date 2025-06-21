@@ -1,0 +1,24 @@
+user_profile:
+  id: "user-jax"
+  name: "Jax"
+  display_as: "Maker"
+  joined: "2025-06-21"
+  preferences:
+    tone: "playful"
+    color_scheme: "contrast"
+    default_role: "Maker"
+    start_ladder: "ladder-truth"
+
+  current_state:
+    last_rung: "l-truth-02"
+    path: "path-truth"
+    reflection_count: 2
+    celebration_count: 0
+
+  tags:
+    - "co-creator"
+    - "contributes-prompts"
+    - "wants-feedback"
+
+  gesture:
+    closing_word: "ignite"

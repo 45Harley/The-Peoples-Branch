@@ -1,0 +1,32 @@
+profiles_index:
+  last_updated: "2025-06-21"
+  description: >
+    A system-level registry of user profiles within The People’s Branch.
+    Used to reference, sort, or link individuals to ladders, roles, or reflections.
+
+  schema_version: "v0.1"
+
+  users:
+    - id: "user-sky"
+      name: "Sky"
+      role: "Climber"
+      path: "path-truth"
+      last_rung: "l-truth-03"
+      reflection_count: 3
+      tags: ["writing-longform", "prefers-solo"]
+
+    - id: "user-fern"
+      name: "Fern"
+      role: "Witness"
+      path: "path-blossom"
+      last_rung: "bl-01"
+      reflection_count: 1
+      tags: ["listener", "elder-friendly"]
+
+    - id: "user-jax"
+      name: "Jax"
+      role: "Maker"
+      path: "path-truth"
+      last_rung: "l-truth-02"
+      reflection_count: 2
+      tags: ["co-creator", "wants-feedback"]

@@ -1,0 +1,14 @@
+weaving_log:
+  last_updated: 2025-06-20
+  milestones:
+    - "Seeded truth-path.yaml with full ladder and rungs"
+    - "Pinned ‘The Ladder That Waited’ — soft entry rung"
+    - "Created roles.yaml — unified AI + user roles"
+  next_suggested:
+    - "Add truth path to ladder-manifest.yaml"
+    - "Begin HTML pages for truth ladder (starting with truth_01_witness.html)"
+    - "Reference roles.yaml in sanctuary.yaml or onboarding flow"
+  notes:
+    - "Celebration scaffold pinned for future activation (celebration.yaml)"
+    - "Idea: 'language-guide.yaml' for folks more comfy outside tech slang"
+    - "AI role multiplicity recognized—architect, companion, mirror, scribe, etc."

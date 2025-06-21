@@ -1,0 +1,24 @@
+sanctuary:
+  id: "sanctuary-main"
+  name: "Civic Sanctuary"
+  description: >
+    A universal space for belonging, reflection, and shared ascent.  
+    This isn’t a destination. It’s a resting node—a pattern of trust, presence, and return.
+
+  entry_path: "pages/bl_01_arrival.html"
+  tone: "gentle, invitational, steady"
+
+  purpose:
+    - Welcome newcomers gently, without presumption or pressure
+    - Link to ladders suited for various states (grief, readiness, harm, curiosity)
+    - Frame roles as invitations, not assignments
+    - Preserve dignity through plain language and choice
+
+  includes:
+    - ladder_manifest: "ladder-manifest.yaml"
+    - roles_file: "roles.yaml"
+    - celebration_file: "celebration.yaml"
+
+  gestures:
+    invitation: "You are already in. If you choose to stay, the space will grow around you."
+    reassurance: "Nothing here demands urgency. Stillness is honored too."

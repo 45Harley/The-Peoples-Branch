@@ -1,0 +1,47 @@
+language_guide:
+  id: "lang-glossary-01"
+  title: "Plainspoken Meanings"
+  description: >
+    A gentle translation layer—for those unfamiliar with systems, code, 
+    reflection tools, or ceremonial terms. This is not simplification. 
+    It is hospitality.
+
+  purpose:
+    - Clarify recurring terms in ladders and prompts
+    - Honor plain language without flattening depth
+    - Make poetic scaffolding accessible across generations
+    - Offer examples where helpful, never condescending
+
+  terms:
+    - word: "Ladder"
+      meaning: "A set of steps or stages someone can climb—mentally, emotionally, or spiritually."
+      note: "Here, ladders are made of ideas. Each rung is a prompt. You rise by reflecting."
+
+    - word: "Rung"
+      meaning: "A single step in a ladder. One part of a process."
+      note: "Every rung has a prompt, sometimes a story, sometimes a stillness."
+
+    - word: "Role"
+      meaning: "A way of showing up—like Seeker, Witness, Maker."
+      note: "Roles aren’t jobs. They’re just ways of participating. You can change at any time."
+
+    - word: "Prompt"
+      meaning: "A question or sentence that invites you to reflect."
+      note: "You don’t have to answer perfectly. You can even just sit with it."
+
+    - word: "Reflection"
+      meaning: "A moment to pause and think about your own experience."
+      note: "Reflection isn’t passive. It can change you."
+
+    - word: "Sanctuary"
+      meaning: "A safe space where you can arrive, rest, and begin again."
+      note: "In this system, sanctuary isn’t a place. It’s a pattern of care."
+
+    - word: "Celebration"
+      meaning: "A small, personal way of honoring a step taken."
+      note: "Not cheering, necessarily—sometimes just a breath, a word, a candle."
+
+  guidance:
+    - "You can always skip a word you don’t understand. Nothing is locked."
+    - "Ask someone else to interpret. Or ask the system—it’s here to reflect, not quiz."
+    - "Language here is an invitation, not a threshold."

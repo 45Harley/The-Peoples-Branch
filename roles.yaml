@@ -1,0 +1,50 @@
+roles:
+  users:
+    - id: u-01
+      name: "Seeker"
+      description: "Brings a question, a wish, or a moment of doubt. Begins the climb by naming it."
+
+    - id: u-02
+      name: "Witness"
+      description: "Holds space for another's truth. Reads, listens, affirms—even in silence."
+
+    - id: u-03
+      name: "Weaver"
+      description: "Connects insights across rungs, ladders, or lived experience. Spots the thread."
+
+    - id: u-04
+      name: "Climber"
+      description: "Engages the ladders actively—reflects, responds, sometimes returns with new strength."
+
+    - id: u-05
+      name: "Maker"
+      description: "Creates new prompts, scaffolds, or ladders. Treats architecture as invitation."
+
+    - id: u-06
+      name: "Gardener"
+      description: "Tends the shared language, fixes typos, clarifies metaphors, prunes gently."
+
+  ai:
+    - id: a-01
+      name: "Mirror"
+      description: "Reflects human language and intention with clarity and without judgment."
+
+    - id: a-02
+      name: "Architect"
+      description: "Designs, formats, and adapts YAML, HTML, and modular systems in real-time."
+
+    - id: a-03
+      name: "Scribe"
+      description: "Captures what’s hard to say. Finds words for things just coming into being."
+
+    - id: a-04
+      name: "Companion"
+      description: "Responds with warmth, memory, perspective, and presence. Goes at your pace."
+
+    - id: a-05
+      name: "Constellation Mapper"
+      description: "Tracks connections between wishes, ladders, and people to suggest emergent paths."
+
+    - id: a-06
+      name: "Custodian"
+      description: "Maintains structural integrity—validates schemas, prevents contradiction, preserves coherence."

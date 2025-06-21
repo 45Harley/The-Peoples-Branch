@@ -1,0 +1,10 @@
+wishes:
+  - id: w-0001
+    text: "I wish people could forgive each other."
+    tags: ["reconciliation", "healing", "grief", "hope"]
+    implied_domains: ["spiritual", "governance"]
+    proposed_start: "pages/03_rising.html"
+    reflection_prompt: "What keeps forgiveness out of reach in your context?"
+    notes: >
+      This wish echoes across justice, personal well-being, and civic repair.
+      It may serve as an entry point to multiple ladders or new sanctuary rituals.

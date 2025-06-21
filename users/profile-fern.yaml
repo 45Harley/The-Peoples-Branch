@@ -1,0 +1,24 @@
+user_profile:
+  id: "user-fern"
+  name: "Fern"
+  display_as: "Witness"
+  joined: "2025-06-17"
+  preferences:
+    tone: "gentle"
+    color_scheme: "neutral"
+    default_role: "Witness"
+    start_ladder: "ladder-late"
+
+  current_state:
+    last_rung: "bl-01"
+    path: "path-blossom"
+    reflection_count: 1
+    celebration_count: 0
+
+  tags:
+    - "listener"
+    - "returns-after-absence"
+    - "elder-friendly"
+
+  gesture:
+    closing_word: "stillness"

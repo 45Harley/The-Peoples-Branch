@@ -1,0 +1,27 @@
+ladders:
+  - id: l-01
+    url: "pages/01_listening.html"
+    title: "Listening as a First Step"
+    depth: 1
+    domain: "all"
+    parent: null
+    tags: ["presence", "stillness", "entry"]
+    reflection_prompt: "When did you last feel truly heard?"
+  
+  - id: l-02
+    url: "pages/02_longing.html"
+    title: "Honoring the Wish"
+    depth: 2
+    domain: "spiritual"
+    parent: "l-01"
+    tags: ["hope", "grief", "desire"]
+    reflection_prompt: "What do you secretly wish the world could be like?"
+
+  - id: l-03
+    url: "pages/03_rising.html"
+    title: "Forgiveness as Ascent"
+    depth: 3
+    domain: "governance"
+    parent: "l-02"
+    tags: ["reconciliation", "restoration", "courage"]
+    reflection_prompt: "Where does forgiveness seem impossible—and why might it matter?"

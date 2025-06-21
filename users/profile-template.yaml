@@ -1,0 +1,33 @@
+user_profile:
+  id: "user-001"
+  name: "Your Name Here"
+  display_as: "Seeker"
+  joined: "2025-06-21"
+  preferences:
+    tone: "gentle"
+    color_scheme: "dark"
+    default_role: "Witness"
+    start_ladder: "ladder-late"
+
+  current_state:
+    last_rung: "l-truth-02"
+    path: "path-truth"
+    reflection_count: 5
+    celebration_count: 1
+
+  resonance:
+    core_themes:
+      - "accountability"
+      - "healing through clarity"
+      - "belonging beyond timelines"
+    favored_prompts:
+      - "What needs to be released?"
+      - "Where does the ache live now?"
+
+  tags:
+    - "first-time"
+    - "returning"
+    - "private-reflector"
+
+  gesture:
+    closing_word: "light"

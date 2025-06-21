@@ -1,0 +1,16 @@
+celebration:
+  id: "gesture-light-held-still"
+  name: "The Light Held Still"
+  context: "Offered after completing the ‘Through the Fire’ truth ladder"
+  description: >
+    Not applause. Not reward. A stillness. A wordless moment
+    where the truth remains visible—and you remain whole.
+
+    This gesture isn’t shared by others. It’s felt within:
+    A breath. A word. A slight nod to no one in particular.
+
+  prompt: "Pause. Breathe. Whisper one word you want to carry forward."
+  optional:
+    - action: "Hold a candle or flashlight steady for 30 seconds"
+    - action: "Write that one word in a corner of your journal or page"
+    - action: "Mark the end silently. Let no one else know—it’s still real"

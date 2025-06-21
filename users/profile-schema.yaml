@@ -1,0 +1,90 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "User Profile Schema"
+description: >
+  Defines the structure of a user_profile.yaml file in The People’s Branch.
+  Ensures consistency, readability, and future compatibility with tools.
+
+type: object
+required:
+  - id
+  - name
+  - display_as
+  - joined
+  - preferences
+  - current_state
+
+properties:
+  id:
+    type: string
+    description: "Unique user ID (e.g., user-sky, user-fern)"
+
+  name:
+    type: string
+    description: "The name the user wants to be known by"
+
+  display_as:
+    type: string
+    description: "Displayed persona or role title (e.g., Seeker, Maker, Witness)"
+
+  joined:
+    type: string
+    format: date
+    description: "Date the user was added (YYYY-MM-DD)"
+
+  preferences:
+    type: object
+    properties:
+      tone:
+        type: string
+        description: "Preferred tone for prompts and interactions"
+      color_scheme:
+        type: string
+        enum: ["dark", "neutral", "contrast"]
+        description: "UI color mode or styling cue"
+      default_role:
+        type: string
+        description: "The role this user most often embodies"
+      start_ladder:
+        type: string
+        description: "Initial ladder ID to begin with"
+
+  current_state:
+    type: object
+    properties:
+      last_rung:
+        type: string
+        description: "ID of most recently visited or completed rung"
+      path:
+        type: string
+        description: "Path or ladder the user is currently engaging"
+      reflection_count:
+        type: integer
+        description: "Number of reflective prompts the user has engaged"
+      celebration_count:
+        type: integer
+        description: "Total celebration gestures marked"
+
+  resonance:
+    type: object
+    required: []
+    properties:
+      core_themes:
+        type: array
+        items: { type: string }
+        description: "Themes that particularly move or matter to this user"
+      favored_prompts:
+        type: array
+        items: { type: string }
+        description: "Reflection phrases that have landed deeply"
+
+  tags:
+    type: array
+    items: { type: string }
+    description: "Flexible, human-readable labels (e.g., 'returning', 'writing-longform')"
+
+  gesture:
+    type: object
+    properties:
+      closing_word:
+        type: string
+        description: "A word chosen by the user as a symbolic gesture or milestone marker"

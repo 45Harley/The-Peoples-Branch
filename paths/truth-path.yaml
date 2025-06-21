@@ -1,0 +1,50 @@
+path:
+  id: "path-truth"
+  name: "Through the Fire: A Truth-Witness Ladder"
+  tone: "direct, sober, unflinching"
+  description: >
+    For moments when healing requires confrontation. When error must be named, 
+    not excused. When the first kindness is clarity. This ladder holds space 
+    for offense—not to offend, but to awaken.
+
+  prompts:
+    entry: "Are you willing to face what has been hidden—by yourself or others?"
+    caution: "This path may stir discomfort. That’s not failure. That’s movement."
+    readiness_check: 
+      - "Do you feel safe enough to name the harm?"
+      - "Are you speaking as the harmed, the one who harmed, or a witness?"
+
+  rungs:
+    - id: l-truth-01
+      title: "Harm Witnessed"
+      url: "pages/truth_01_witness.html"
+      reflection: "Describe the harm—not abstractly, but in its impact."
+      notes: "This is not a space to defend or deflect. Just name."
+
+    - id: l-truth-02
+      title: "Error as Error"
+      url: "pages/truth_02_exposure.html"
+      reflection: "Where was the lie? The denial? The rewrite of reality?"
+      notes: "You may feel resistance. Note it. That’s the edge of the old self."
+
+    - id: l-truth-03
+      title: "Repentance"
+      url: "pages/truth_03_turning.html"
+      reflection: "What needs to be released? Admitted? Faced inwardly?"
+      notes: "Repentance is not penance—it’s return to truth, and willingness to change."
+
+    - id: l-truth-04
+      title: "Reform Imagined"
+      url: "pages/truth_04_reform.html"
+      reflection: "What might restoration look like—not only for the harmed, but for the whole?"
+      notes: "This is the architectural phase—designing structures that refuse to repeat the harm."
+
+    - id: l-truth-05
+      title: "Healing Begins"
+      url: "pages/truth_05_healing.html"
+      reflection: "What does healing mean—if not forgetting?"
+      notes: "This ladder ends, not with closure, but with continuity."
+
+  celebratory_gesture:
+    name: "The Light Held Still"
+    prompt: "Pause. Breathe. Whisper one word you want to carry forward."
