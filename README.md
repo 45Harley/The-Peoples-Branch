@@ -2,7 +2,7 @@
 
 A participatory framework for healing, truth-telling, learning, and shared ascent.  
 This is not a product. It's a space. An invitation. A ladder placed gently at your feet.
-
+x
 ---
 
 ## ✨ What is this?
