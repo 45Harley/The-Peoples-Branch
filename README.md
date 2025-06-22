@@ -1,4 +1,3 @@
-<div style="background-color:#000000; color:#fdf169; padding: 2em; border-radius: 10px; font-family: sans-serif;">
 
 # 🌿 The People’s Branch
 
@@ -49,4 +48,4 @@ You can:
 
 💛 *This project is a living structure—modular, inclusive, and ever-iterative.*
 
-</div>
+
