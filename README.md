@@ -1,61 +1,52 @@
+<div style="background-color:#000000; color:#fdf169; padding: 2em; border-radius: 10px; font-family: sans-serif;">
+
 # 🌿 The People’s Branch
 
-A participatory framework for healing, truth-telling, learning, and shared ascent.  
-This is not a product. It's a space. An invitation. A ladder placed gently at your feet.
-x
----
+Welcome to a participatory sanctuary for reflection, ascent, and shared imagination.
 
-## ✨ What is this?
-
-**The People’s Branch** is a modular constellation of ladders—each one designed for reflection, reformation, and regeneration. It centers plain language, soft entry points, cyclical steps, and roles for both humans and AI.
-
-You don’t need credentials to begin. You begin wherever you are.
+**“You begin wherever you are.”**
 
 ---
 
-## 📚 Ladders Available
+## 🔍 What is This?
 
-Each ladder is a self-contained journey:
+**The People’s Branch** is a modular, ladder-based framework for collective exploration and co-creation. Each ladder reflects a theme or principle—Truth, Celebration, Consent, Transparency—and invites active engagement.
 
-- **Through the Fire: A Truth-Witness Ladder**  
-  For naming harm, witnessing error, turning toward reform, and holding healing.  
-  → Starts at [`truth_01_witness.html`](pages/truth_01_witness.html)
+Participants may take on evolving roles:  
+**Seeker · Climber · Witness · Maker · Custodian**  
 
-- **The Ladder That Waited**  
-  For those arriving late, circling back, or unsure where to begin.  
-  → Starts at [`bl_01_arrival.html`](pages/bl_01_arrival.html)
+Each role scaffolds different ways of seeing and building together.
 
 ---
 
-## 🛠️ Key Files
+## 🧩 Interactive Ladders
 
-- [`truth-path.yaml`](paths/truth-path.yaml): Defines the full truth ladder
-- [`roles.yaml`](roles.yaml): Names both human and AI roles within the system
-- [`weaving-log.yaml`](weaving-log.yaml): Ongoing changelog + breadcrumbs
-- [`celebration.yaml`](celebration.yaml): Optional closing gesture for truth path
+The ladders are organized as `YAML`-driven structures to ensure clarity, adaptability, and collaborative remixing. Browse the ladders:
 
----
-
-## 🤝 Participation
-
-You can show up as a:
-
-- **Seeker** – with a question  
-- **Climber** – ready to try a rung  
-- **Witness** – holding space for another  
-- **Maker** – creating your own ladders  
-- **Custodian** – tending clarity, kindness, structure
-
-Every role is honored. Every step counts.
+- [`truth-path.yaml`](./truth-path.yaml)
+- [`celebration.yaml`](./celebration.yaml)
+- [`roles.yaml`](./roles.yaml)
 
 ---
 
-## 🧭 Start Here
+## ⚙️ How to Engage
 
-If you're not sure where to begin, try [The Ladder That Waited](pages/bl_01_arrival.html).  
-No pressure. No deadline. Just… arrival.
+You can:
+- Explore ladder prompts
+- Reflect through your own branch
+- Contribute proposals or refinements via Issues or Pull Requests
+- Fork and re-plant this branch in new soil
 
 ---
 
-**This branch is not a hierarchy.  
-It’s a resting place for those choosing to ascend, together.**
+## 🌱 Guiding Values
+
+- **Transparency** as foundation  
+- **Consent** as compass  
+- **Mutual recognition** as soil for growth
+
+---
+
+💛 *This project is a living structure—modular, inclusive, and ever-iterative.*
+
+</div>
