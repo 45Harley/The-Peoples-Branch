@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+
+  <!-- 🪜 Ladder Banner -->
+  <div class="ui-banner ladder-banner">
+    <p>You’re on a rung of the Truth Ladder. This page will hold.</p>
+  </div>
+
   <h1>Truth 02: Exposure</h1>
 
-  <p>Some truths arrive like lightning. Sudden. Blinding. Unavoidable. Others creep in slowly, peeling back layers we didn’t know we wore.</p>
-
-  <p>This rung invites you to name a moment of exposure—when something hidden became visible, and you couldn’t unsee it.</p>
+  <p>There’s a moment when something hidden is named. When what was buried begins to rise. This rung is about that moment—of illumination, unveiling, recognition.</p>
 
   <p>Choose a voice to explore the prompt:</p>
 
@@ -23,18 +27,41 @@
   </div>
 
   <div id="plain" class="voice-block">
-    <strong>Plain:</strong> What truth came to light—even when it hurt?
+    <strong>Plain:</strong> What truth became visible to you—something you couldn’t ignore after that moment?
   </div>
   <div id="poetic" class="voice-block">
-    <strong>Poetic:</strong> What veil tore open and left you blinking in the light?
+    <strong>Poetic:</strong> What shattered the silence like light under a locked door?
   </div>
   <div id="analytical" class="voice-block">
-    <strong>Analytical:</strong> Describe a moment when new information disrupted your worldview.
+    <strong>Analytical:</strong> Describe a tipping point in your understanding—when fact and feeling converged.
   </div>
   <div id="playful" class="voice-block">
-    <strong>Playful:</strong> What truth popped out like a jack-in-the-box and made you go “Whoa!”?
+    <strong>Playful:</strong> When did the mask slip and make you go “Well, there it is”?
   </div>
 
+  <!-- ✍️ Reflection Input -->
+  <div style="margin-top: 2rem;">
+    <form onsubmit="saveLocally(); return false;">
+      <label for="reflection">Your reflection:</label><br />
+      <textarea id="reflection" rows="4" cols="60" placeholder="Describe the moment of exposure..."></textarea><br />
+      <button type="submit">Save Reflection</button>
+    </form>
+    <p id="confirm-message" style="color: green; display: none;">Reflection saved locally. You can copy it into your YAML profile or keep it for now.</p>
+  </div>
+
+  <!-- 📏 Rails Banner -->
+  <div class="ui-banner rails-banner" style="margin-top: 3rem;">
+    <p>This step is connected. The rails know the way forward.</p>
+  </div>
+
+  <!-- ⛓️ Navigation Links -->
+  <hr style="margin-top: 2rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_01_witness.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_03_turning.html" style="color:#87cefa;">Next →</a>
+  </div>
+
+  <!-- 🧠 Voice Toggle + Save Logic -->
   <script>
     function showVoice(voice) {
       const voices = ['plain', 'poetic', 'analytical', 'playful'];
@@ -43,12 +70,14 @@
       });
       document.getElementById(voice).classList.add('visible');
     }
+
+    function saveLocally() {
+      const content = document.getElementById("reflection").value;
+      if (content.trim() === "") return;
+      localStorage.setItem("truth_02_reflection", content);
+      document.getElementById("confirm-message").style.display = "block";
+    }
   </script>
 
-  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
-  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-    <a href="truth_01_witness.html" style="color:#87cefa;">← Previous</a>
-    <a href="truth_03_turning.html" style="color:#87cefa;">Next →</a>
-  </div>
 </body>
 </html>

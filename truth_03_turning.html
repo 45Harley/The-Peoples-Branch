@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+
+  <!-- 🪜 Ladder Banner -->
+  <div class="ui-banner ladder-banner">
+    <p>You’re on a rung of the Truth Ladder. This page will hold.</p>
+  </div>
+
   <h1>Truth 03: Turning</h1>
 
-  <p>There’s a moment—sometimes quiet, sometimes explosive—when we begin to turn. Away from something. Toward something else. A shift in direction, even if we don’t yet know where it leads.</p>
-
-  <p>This rung invites you to name a turning point. A moment when you began to change your mind, your path, or your sense of what matters.</p>
+  <p>Turning comes when the truth lands not just in your thoughts, but in your body. A knowing becomes unbearable to ignore. This rung is about the shift—the moment you began to walk a different path.</p>
 
   <p>Choose a voice to explore the prompt:</p>
 
@@ -23,18 +27,42 @@
   </div>
 
   <div id="plain" class="voice-block">
-    <strong>Plain:</strong> When did you begin to change direction?
+    <strong>Plain:</strong> What realization changed your course?
   </div>
   <div id="poetic" class="voice-block">
-    <strong>Poetic:</strong> What wind caught your sails and turned you toward a new horizon?
+    <strong>Poetic:</strong> What turn did your feet take before your mind caught up?
   </div>
   <div id="analytical" class="voice-block">
-    <strong>Analytical:</strong> Identify a pivotal moment that altered your trajectory or worldview.
+    <strong>Analytical:</strong> What internal or external data tipped your direction?
   </div>
   <div id="playful" class="voice-block">
-    <strong>Playful:</strong> What made you say, “Nope! Time to pivot!”?
+    <strong>Playful:</strong> What “nope” moment sent you spinning toward something more true?
+
   </div>
 
+  <!-- ✍️ Reflection Input -->
+  <div style="margin-top: 2rem;">
+    <form onsubmit="saveLocally(); return false;">
+      <label for="reflection">Your reflection:</label><br />
+      <textarea id="reflection" rows="4" cols="60" placeholder="Describe your turning moment..."></textarea><br />
+      <button type="submit">Save Reflection</button>
+    </form>
+    <p id="confirm-message" style="color: green; display: none;">Reflection saved locally. You can copy it into your YAML profile or keep it for now.</p>
+  </div>
+
+  <!-- 📏 Rails Banner -->
+  <div class="ui-banner rails-banner" style="margin-top: 3rem;">
+    <p>This step is connected. The rails know the way forward.</p>
+  </div>
+
+  <!-- ⛓️ Navigation Links -->
+  <hr style="margin-top: 2rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_02_exposure.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_04_reform.html" style="color:#87cefa;">Next →</a>
+  </div>
+
+  <!-- 🧠 Voice Toggle + Save Logic -->
   <script>
     function showVoice(voice) {
       const voices = ['plain', 'poetic', 'analytical', 'playful'];
@@ -43,12 +71,14 @@
       });
       document.getElementById(voice).classList.add('visible');
     }
+
+    function saveLocally() {
+      const content = document.getElementById("reflection").value;
+      if (content.trim() === "") return;
+      localStorage.setItem("truth_03_reflection", content);
+      document.getElementById("confirm-message").style.display = "block";
+    }
   </script>
 
-  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
-  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-    <a href="truth_02_exposure.html" style="color:#87cefa;">← Previous</a>
-    <a href="truth_04_reform.html" style="color:#87cefa;">Next →</a>
-  </div>
 </body>
 </html>

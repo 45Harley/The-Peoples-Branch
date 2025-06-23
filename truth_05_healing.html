@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+
+  <!-- 🪜 Ladder Banner -->
+  <div class="ui-banner ladder-banner">
+    <p>You’re on a rung of the Truth Ladder. This page will hold.</p>
+  </div>
+
   <h1>Truth 05: Healing</h1>
 
-  <p>Healing isn’t always a finish line. Sometimes it’s a breath. A pause. A moment of noticing that something hurts less than it used to.</p>
-
-  <p>This rung invites you to name what has begun to mend—and what still needs tending. Healing is not linear, but it is real.</p>
+  <p>Healing doesn’t mean forgetting or fixing. It means something shifts. The wound may still be visible—but it breathes differently. This rung is about the moments when wholeness starts to return, even if slowly.</p>
 
   <p>Choose a voice to explore the prompt:</p>
 
@@ -23,18 +27,42 @@
   </div>
 
   <div id="plain" class="voice-block">
-    <strong>Plain:</strong> What has begun to heal? What still needs care?
+    <strong>Plain:</strong> What changed when the pain started to soften?
   </div>
   <div id="poetic" class="voice-block">
-    <strong>Poetic:</strong> What scar sings now instead of stinging?
+    <strong>Poetic:</strong> When did the scar become part of the story, not the whole of it?
   </div>
   <div id="analytical" class="voice-block">
-    <strong>Analytical:</strong> Identify areas of personal or communal restoration, and those still in process.
+    <strong>Analytical:</strong> What internal process or external support helped you begin restoration?
   </div>
   <div id="playful" class="voice-block">
-    <strong>Playful:</strong> What part of you got a bandage and a hug—and what’s still waiting?
+    <strong>Playful:</strong> When did you catch yourself laughing again and think, “Hey—that’s new”?
+
   </div>
 
+  <!-- ✍️ Reflection Input -->
+  <div style="margin-top: 2rem;">
+    <form onsubmit="saveLocally(); return false;">
+      <label for="reflection">Your reflection:</label><br />
+      <textarea id="reflection" rows="4" cols="60" placeholder="Name what has begun to heal..."></textarea><br />
+      <button type="submit">Save Reflection</button>
+    </form>
+    <p id="confirm-message" style="color: green; display: none;">Reflection saved locally. You can copy it into your YAML profile or keep it for now.</p>
+  </div>
+
+  <!-- 📏 Rails Banner -->
+  <div class="ui-banner rails-banner" style="margin-top: 3rem;">
+    <p>This step is connected. The rails know the way forward.</p>
+  </div>
+
+  <!-- ⛓️ Navigation Links -->
+  <hr style="margin-top: 2rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_04_reform.html" style="color:#87cefa;">← Previous</a>
+    <a href="celebration.html" style="color:#87cefa;">Next →</a>
+  </div>
+
+  <!-- 🧠 Voice Toggle + Save Logic -->
   <script>
     function showVoice(voice) {
       const voices = ['plain', 'poetic', 'analytical', 'playful'];
@@ -43,12 +71,14 @@
       });
       document.getElementById(voice).classList.add('visible');
     }
+
+    function saveLocally() {
+      const content = document.getElementById("reflection").value;
+      if (content.trim() === "") return;
+      localStorage.setItem("truth_05_reflection", content);
+      document.getElementById("confirm-message").style.display = "block";
+    }
   </script>
 
-  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
-  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-    <a href="truth_04_reform.html" style="color:#87cefa;">← Previous</a>
-    <a href="celebration.yaml" style="color:#87cefa;">🎉 Celebrate</a>
-  </div>
 </body>
 </html>

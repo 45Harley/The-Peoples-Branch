@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+
+  <!-- 🪜 Ladder Banner -->
+  <div class="ui-banner ladder-banner">
+    <p>You’re on a rung of the Truth Ladder. This page will hold.</p>
+  </div>
+
   <h1>Truth 04: Reform</h1>
 
-  <p>After the turning comes the reshaping. The slow, deliberate work of reforming what no longer fits—inside us, around us, between us.</p>
-
-  <p>This rung invites you to name something you’ve reformed: a belief, a behavior, a system, a story. What did you change, and why?</p>
+  <p>Once you’ve turned, you start to shape. Reform is the step where the truth begins to move through your hands. What you believe starts to affect how you build, resist, relate. This rung is about action grounded in knowing.</p>
 
   <p>Choose a voice to explore the prompt:</p>
 
@@ -23,18 +27,42 @@
   </div>
 
   <div id="plain" class="voice-block">
-    <strong>Plain:</strong> What have you reshaped or reformed in your life or community?
+    <strong>Plain:</strong> What did you start doing differently because of what you now know?
   </div>
   <div id="poetic" class="voice-block">
-    <strong>Poetic:</strong> What old scaffolding did you tear down to build something truer?
+    <strong>Poetic:</strong> What did your hands begin to unbuild, or your voice begin to speak into form?
   </div>
   <div id="analytical" class="voice-block">
-    <strong>Analytical:</strong> Describe a structural or conceptual change you initiated or embraced.
+    <strong>Analytical:</strong> How has truth informed the systems, relationships, or choices you’re part of?
   </div>
   <div id="playful" class="voice-block">
-    <strong>Playful:</strong> What did you fix, remix, or totally flip upside down?
+    <strong>Playful:</strong> What new rule did you make up—or break—in response to reality?
+
   </div>
 
+  <!-- ✍️ Reflection Input -->
+  <div style="margin-top: 2rem;">
+    <form onsubmit="saveLocally(); return false;">
+      <label for="reflection">Your reflection:</label><br />
+      <textarea id="reflection" rows="4" cols="60" placeholder="Describe how your actions shifted..."></textarea><br />
+      <button type="submit">Save Reflection</button>
+    </form>
+    <p id="confirm-message" style="color: green; display: none;">Reflection saved locally. You can copy it into your YAML profile or keep it for now.</p>
+  </div>
+
+  <!-- 📏 Rails Banner -->
+  <div class="ui-banner rails-banner" style="margin-top: 3rem;">
+    <p>This step is connected. The rails know the way forward.</p>
+  </div>
+
+  <!-- ⛓️ Navigation Links -->
+  <hr style="margin-top: 2rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_03_turning.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_05_healing.html" style="color:#87cefa;">Next →</a>
+  </div>
+
+  <!-- 🧠 Voice Toggle + Save Logic -->
   <script>
     function showVoice(voice) {
       const voices = ['plain', 'poetic', 'analytical', 'playful'];
@@ -43,12 +71,14 @@
       });
       document.getElementById(voice).classList.add('visible');
     }
+
+    function saveLocally() {
+      const content = document.getElementById("reflection").value;
+      if (content.trim() === "") return;
+      localStorage.setItem("truth_04_reflection", content);
+      document.getElementById("confirm-message").style.display = "block";
+    }
   </script>
 
-  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
-  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-    <a href="truth_03_turning.html" style="color:#87cefa;">← Previous</a>
-    <a href="truth_05_healing.html" style="color:#87cefa;">Next →</a>
-  </div>
 </body>
 </html>

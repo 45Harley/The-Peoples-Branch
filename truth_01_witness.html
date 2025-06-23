@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+
+  <!-- 🪜 Ladder Banner: Appears at top of every ladder page -->
+  <div class="ui-banner ladder-banner">
+    <p>You’re on a rung of the Truth Ladder. This page will hold.</p>
+  </div>
+
   <h1>Truth 01: Witness</h1>
 
   <p>Some truths are quiet. Some scream. Some wait for years before someone finally says, “I saw that too.”</p>
@@ -35,6 +41,29 @@
     <strong>Playful:</strong> What did you notice that made you go, “Wait a second…”?
   </div>
 
+  <!-- ✍️ Reflection Input: Local save simulation -->
+  <div style="margin-top: 2rem;">
+    <form onsubmit="saveLocally(); return false;">
+      <label for="reflection">Your reflection:</label><br />
+      <textarea id="reflection" rows="4" cols="60" placeholder="Type your witness memory here..."></textarea><br />
+      <button type="submit">Save Reflection</button>
+    </form>
+    <p id="confirm-message" style="color: green; display: none;">Reflection saved locally. You can copy it into your YAML profile or keep it for now.</p>
+  </div>
+
+  <!-- 📏 Rails Banner: Appears above navigation -->
+  <div class="ui-banner rails-banner" style="margin-top: 3rem;">
+    <p>This step is connected. The rails know the way forward.</p>
+  </div>
+
+  <!-- ⛓️ Navigation Links -->
+  <hr style="margin-top: 2rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="_01_arrival.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_02_exposure.html" style="color:#87cefa;">Next →</a>
+  </div>
+
+  <!-- 🧠 Voice Toggle Script -->
   <script>
     function showVoice(voice) {
       const voices = ['plain', 'poetic', 'analytical', 'playful'];
@@ -43,12 +72,14 @@
       });
       document.getElementById(voice).classList.add('visible');
     }
+
+    function saveLocally() {
+      const content = document.getElementById("reflection").value;
+      if (content.trim() === "") return;
+      localStorage.setItem("truth_01_reflection", content);
+      document.getElementById("confirm-message").style.display = "block";
+    }
   </script>
 
-  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
-  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-    <a href="_01_arrival.html" style="color:#87cefa;">← Previous</a>
-    <a href="truth_02_exposure.html" style="color:#87cefa;">Next →</a>
-  </div>
 </body>
 </html>
