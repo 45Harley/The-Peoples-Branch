@@ -2,46 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Reform Imagined</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #ffd700;
-      font-family: Georgia, serif;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #ffd700;
-    }
-    blockquote {
-      margin-left: 1rem;
-      padding-left: 1rem;
-      border-left: 2px solid #ffd700;
-      color: #aaa;
-      font-style: italic;
-    }
-    .reflection {
-      margin-top: 2rem;
-      background-color: #111;
-      padding: 1rem;
-      border: 1px dashed #555;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truth 04 – Reform</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <h1>Rung 4: Reform Imagined</h1>
+  <h1>Truth 04: Reform</h1>
 
-  <p>This rung isn’t about retribution—it’s about refusal. Refusal to repeat harm, refusal to rebuild the old house with old plans. Here we design: systems, habits, safeguards, symbols, ceremonies. Reform is imagination with integrity.</p>
+  <p>After the turning comes the reshaping. The slow, deliberate work of reforming what no longer fits—inside us, around us, between us.</p>
 
-  <blockquote>
-    “What might restoration look like—not only for the harmed, but for the whole?”
-  </blockquote>
+  <p>This rung invites you to name something you’ve reformed: a belief, a behavior, a system, a story. What did you change, and why?</p>
 
-  <div class="reflection">
-    <h2>Reflection Prompt</h2>
-    <p>Sketch a possible future: what structures would make the harm less likely? What truths need to be baked into our blueprints, our norms, our tools?</p>
-    <p>You are not alone in this. Others will build from what you offer.</p>
+  <p>Choose a voice to explore the prompt:</p>
+
+  <div>
+    <button onclick="showVoice('plain')">Plain</button>
+    <button onclick="showVoice('poetic')">Poetic</button>
+    <button onclick="showVoice('analytical')">Analytical</button>
+    <button onclick="showVoice('playful')">Playful</button>
+  </div>
+
+  <div id="plain" class="voice-block">
+    <strong>Plain:</strong> What have you reshaped or reformed in your life or community?
+  </div>
+  <div id="poetic" class="voice-block">
+    <strong>Poetic:</strong> What old scaffolding did you tear down to build something truer?
+  </div>
+  <div id="analytical" class="voice-block">
+    <strong>Analytical:</strong> Describe a structural or conceptual change you initiated or embraced.
+  </div>
+  <div id="playful" class="voice-block">
+    <strong>Playful:</strong> What did you fix, remix, or totally flip upside down?
+  </div>
+
+  <script>
+    function showVoice(voice) {
+      const voices = ['plain', 'poetic', 'analytical', 'playful'];
+      voices.forEach(v => {
+        document.getElementById(v).classList.remove('visible');
+      });
+      document.getElementById(voice).classList.add('visible');
+    }
+  </script>
+
+  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_03_turning.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_05_healing.html" style="color:#87cefa;">Next →</a>
   </div>
 </body>
 </html>

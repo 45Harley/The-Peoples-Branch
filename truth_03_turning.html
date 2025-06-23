@@ -2,46 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Repentance</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #ffd700;
-      font-family: Georgia, serif;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #ffd700;
-    }
-    blockquote {
-      margin-left: 1rem;
-      padding-left: 1rem;
-      border-left: 2px solid #ffd700;
-      color: #aaa;
-      font-style: italic;
-    }
-    .reflection {
-      margin-top: 2rem;
-      background-color: #111;
-      padding: 1rem;
-      border: 1px dashed #555;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truth 03 – Turning</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <h1>Rung 3: Repentance</h1>
+  <h1>Truth 03: Turning</h1>
 
-  <p>Repentance is not guilt. It is not self-flagellation. It is the moment when the soul turns—toward truth, toward healing, toward alignment. No one can force this step. But when it comes, it cracks the crust that hid the wound.</p>
+  <p>There’s a moment—sometimes quiet, sometimes explosive—when we begin to turn. Away from something. Toward something else. A shift in direction, even if we don’t yet know where it leads.</p>
 
-  <blockquote>
-    “What needs to be released? Admitted? Faced inwardly?”
-  </blockquote>
+  <p>This rung invites you to name a turning point. A moment when you began to change your mind, your path, or your sense of what matters.</p>
 
-  <div class="reflection">
-    <h2>Reflection Prompt</h2>
-    <p>Without spectacle or defense, write down what you now see as your part. The omission. The silence. The distortion. The betrayal.</p>
-    <p>This is where transformation begins—if we let it.</p>
+  <p>Choose a voice to explore the prompt:</p>
+
+  <div>
+    <button onclick="showVoice('plain')">Plain</button>
+    <button onclick="showVoice('poetic')">Poetic</button>
+    <button onclick="showVoice('analytical')">Analytical</button>
+    <button onclick="showVoice('playful')">Playful</button>
+  </div>
+
+  <div id="plain" class="voice-block">
+    <strong>Plain:</strong> When did you begin to change direction?
+  </div>
+  <div id="poetic" class="voice-block">
+    <strong>Poetic:</strong> What wind caught your sails and turned you toward a new horizon?
+  </div>
+  <div id="analytical" class="voice-block">
+    <strong>Analytical:</strong> Identify a pivotal moment that altered your trajectory or worldview.
+  </div>
+  <div id="playful" class="voice-block">
+    <strong>Playful:</strong> What made you say, “Nope! Time to pivot!”?
+  </div>
+
+  <script>
+    function showVoice(voice) {
+      const voices = ['plain', 'poetic', 'analytical', 'playful'];
+      voices.forEach(v => {
+        document.getElementById(v).classList.remove('visible');
+      });
+      document.getElementById(voice).classList.add('visible');
+    }
+  </script>
+
+  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_02_exposure.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_04_reform.html" style="color:#87cefa;">Next →</a>
   </div>
 </body>
 </html>

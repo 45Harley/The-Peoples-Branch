@@ -2,46 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Healing Begins</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #ffd700;
-      font-family: Georgia, serif;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #ffd700;
-    }
-    blockquote {
-      margin-left: 1rem;
-      padding-left: 1rem;
-      border-left: 2px solid #ffd700;
-      color: #aaa;
-      font-style: italic;
-    }
-    .reflection {
-      margin-top: 2rem;
-      background-color: #111;
-      padding: 1rem;
-      border: 1px dashed #555;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truth 05 – Healing</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <h1>Rung 5: Healing Begins</h1>
+  <h1>Truth 05: Healing</h1>
 
-  <p>Healing doesn’t mean forgetting. It doesn’t mean excusing. It means living forward—with the wound integrated, the truth intact, and the future unshackled. Healing is not a reward. It’s a right. And sometimes, a revolt.</p>
+  <p>Healing isn’t always a finish line. Sometimes it’s a breath. A pause. A moment of noticing that something hurts less than it used to.</p>
 
-  <blockquote>
-    “What does healing mean—if not forgetting?”
-  </blockquote>
+  <p>This rung invites you to name what has begun to mend—and what still needs tending. Healing is not linear, but it is real.</p>
 
-  <div class="reflection">
-    <h2>Reflection Prompt</h2>
-    <p>What does healing look like *for you*, right now? What rhythms, relationships, or rituals help you hold the memory without being held *by* it?</p>
-    <p>Name one next kindness you could offer yourself—or someone else still carrying the burn.</p>
+  <p>Choose a voice to explore the prompt:</p>
+
+  <div>
+    <button onclick="showVoice('plain')">Plain</button>
+    <button onclick="showVoice('poetic')">Poetic</button>
+    <button onclick="showVoice('analytical')">Analytical</button>
+    <button onclick="showVoice('playful')">Playful</button>
+  </div>
+
+  <div id="plain" class="voice-block">
+    <strong>Plain:</strong> What has begun to heal? What still needs care?
+  </div>
+  <div id="poetic" class="voice-block">
+    <strong>Poetic:</strong> What scar sings now instead of stinging?
+  </div>
+  <div id="analytical" class="voice-block">
+    <strong>Analytical:</strong> Identify areas of personal or communal restoration, and those still in process.
+  </div>
+  <div id="playful" class="voice-block">
+    <strong>Playful:</strong> What part of you got a bandage and a hug—and what’s still waiting?
+  </div>
+
+  <script>
+    function showVoice(voice) {
+      const voices = ['plain', 'poetic', 'analytical', 'playful'];
+      voices.forEach(v => {
+        document.getElementById(v).classList.remove('visible');
+      });
+      document.getElementById(voice).classList.add('visible');
+    }
+  </script>
+
+  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_04_reform.html" style="color:#87cefa;">← Previous</a>
+    <a href="celebration.yaml" style="color:#87cefa;">🎉 Celebrate</a>
   </div>
 </body>
 </html>

@@ -2,46 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Error as Error</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #ffd700;
-      font-family: Georgia, serif;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #ffd700;
-    }
-    blockquote {
-      margin-left: 1rem;
-      padding-left: 1rem;
-      border-left: 2px solid #ffd700;
-      color: #aaa;
-      font-style: italic;
-    }
-    .reflection {
-      margin-top: 2rem;
-      background-color: #111;
-      padding: 1rem;
-      border: 1px dashed #555;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truth 02 – Exposure</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <h1>Rung 2: Error as Error</h1>
+  <h1>Truth 02: Exposure</h1>
 
-  <p>Somewhere along the way, harm was recast—diluted, denied, renamed as something else. But truth doesn’t forget. This rung is about stripping the varnish. What was the lie? What was minimized, spun, spiritualized, or sealed away?</p>
+  <p>Some truths arrive like lightning. Sudden. Blinding. Unavoidable. Others creep in slowly, peeling back layers we didn’t know we wore.</p>
 
-  <blockquote>
-    “Where was the lie? The denial? The rewrite of reality?”
-  </blockquote>
+  <p>This rung invites you to name a moment of exposure—when something hidden became visible, and you couldn’t unsee it.</p>
 
-  <div class="reflection">
-    <h2>Reflection Prompt</h2>
-    <p>Name the distortion. Even if it protected you once. Even if it was spoken by someone you trusted.</p>
-    <p>This isn’t about blame—it’s about bringing reality back into focus, one shard at a time.</p>
+  <p>Choose a voice to explore the prompt:</p>
+
+  <div>
+    <button onclick="showVoice('plain')">Plain</button>
+    <button onclick="showVoice('poetic')">Poetic</button>
+    <button onclick="showVoice('analytical')">Analytical</button>
+    <button onclick="showVoice('playful')">Playful</button>
+  </div>
+
+  <div id="plain" class="voice-block">
+    <strong>Plain:</strong> What truth came to light—even when it hurt?
+  </div>
+  <div id="poetic" class="voice-block">
+    <strong>Poetic:</strong> What veil tore open and left you blinking in the light?
+  </div>
+  <div id="analytical" class="voice-block">
+    <strong>Analytical:</strong> Describe a moment when new information disrupted your worldview.
+  </div>
+  <div id="playful" class="voice-block">
+    <strong>Playful:</strong> What truth popped out like a jack-in-the-box and made you go “Whoa!”?
+  </div>
+
+  <script>
+    function showVoice(voice) {
+      const voices = ['plain', 'poetic', 'analytical', 'playful'];
+      voices.forEach(v => {
+        document.getElementById(v).classList.remove('visible');
+      });
+      document.getElementById(voice).classList.add('visible');
+    }
+  </script>
+
+  <hr style="margin-top: 3rem; border: none; border-top: 1px solid #444;" />
+  <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+    <a href="truth_01_witness.html" style="color:#87cefa;">← Previous</a>
+    <a href="truth_03_turning.html" style="color:#87cefa;">Next →</a>
   </div>
 </body>
 </html>
