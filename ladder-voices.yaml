@@ -1,6 +1,34 @@
-- rung: Turning Point
+ladder-voices.yaml- rung: Turning Point
   voices:
     plain: "Think of a moment that changed you. What happened?"
     poetic: "When the river curved, so did you. Tell the turning."
     analytical: "Describe a shift event and its effect on your trajectory."
     playful: "Did you ever feel like a caterpillar turning into soup? Tell us!"
+
+- rung: Shared Silence
+  voices:
+    plain: "Can you recall a moment when nothing was said, but everything was felt?"
+    poetic: "In the hush, truth arrived barefoot. What did it bring?"
+    analytical: "Name a nonverbal moment that shifted collective awareness."
+    playful: "Ever had a stare-down with meaning and nobody blinked?"
+
+- rung: First Spark
+  voices:
+    plain: "What first made you care about something bigger than yourself?"
+    poetic: "What lit the match that still glows under your ribs?"
+    analytical: "Identify the origin point of your enduring motivation."
+    playful: "What set your brain on fire (in the fun way)?"
+
+- rung: Circle Broken
+  voices:
+    plain: "Share a time something whole came apart. What changed after?"
+    poetic: "When the drumbeat stopped, what did you hear instead?"
+    analytical: "Describe a rupture—what failed, and what emerged?"
+    playful: "Oops. Something cracked. What did you learn in the mess?"
+
+- rung: Return With Eyes Open
+  voices:
+    plain: "Think of a time you came back to something familiar—and saw it differently."
+    poetic: "The same path, now humming. What’s changed in you?"
+    analytical: "Compare your current perspective to a past assumption."
+    playful: "Ever gone home and realized your bed’s too small now?"
