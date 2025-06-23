@@ -1,14 +1,28 @@
 weaving_log:
-  last_updated: 2025-06-20
-  milestones:
-    - "Seeded truth-path.yaml with full ladder and rungs"
-    - "Pinned ‘The Ladder That Waited’ — soft entry rung"
-    - "Created roles.yaml — unified AI + user roles"
-  next_suggested:
-    - "Add truth path to ladder-manifest.yaml"
-    - "Begin HTML pages for truth ladder (starting with truth_01_witness.html)"
-    - "Reference roles.yaml in sanctuary.yaml or onboarding flow"
-  notes:
-    - "Celebration scaffold pinned for future activation (celebration.yaml)"
-    - "Idea: 'language-guide.yaml' for folks more comfy outside tech slang"
-    - "AI role multiplicity recognized—architect, companion, mirror, scribe, etc."
+  - date: 2025-06-23
+    change: "Added ladder-voices.yaml with five rungs and four voice styles each."
+    steward: Harley
+
+  - date: 2025-06-23
+    change: "Updated ladder-manifest.yaml to reference voice_layers: ladder-voices.yaml."
+    steward: Harley
+
+  - date: 2025-06-23
+    change: "Refined roles.yaml to include Observer, Participant, Facilitator, and Steward with choose_voice permission."
+    steward: Harley
+
+  - date: 2025-06-23
+    change: "Rewrote README.md to reflect plainspoken onboarding, voice layers, and participatory structure."
+    steward: Harley
+
+  - date: 2025-06-23
+    change: "Updated wish-map.yaml with new dreams and in-progress features like Voice Matching and Consent Ledger."
+    steward: Harley
+
+  - date: 2025-06-23
+    change: "Refreshed celebration.yaml with five closing gestures for ladder completion."
+    steward: Harley
+
+  - date: 2025-06-23
+    change: "Rewrote sanctuary.yaml to clearly name values like Consent, Gentleness, and Shared Imagination."
+    steward: Harley

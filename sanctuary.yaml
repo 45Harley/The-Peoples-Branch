@@ -1,24 +1,25 @@
 sanctuary:
-  id: "sanctuary-main"
-  name: "Civic Sanctuary"
-  description: >
-    A universal space for belonging, reflection, and shared ascent.  
-    This isn’t a destination. It’s a resting node—a pattern of trust, presence, and return.
+  values:
+    - name: Consent
+      description: "Nothing shared without permission. Every voice chooses its own pace."
 
-  entry_path: "pages/bl_01_arrival.html"
-  tone: "gentle, invitational, steady"
+    - name: Gentleness
+      description: "We move slowly, speak plainly, and honor silence as much as speech."
 
-  purpose:
-    - Welcome newcomers gently, without presumption or pressure
-    - Link to ladders suited for various states (grief, readiness, harm, curiosity)
-    - Frame roles as invitations, not assignments
-    - Preserve dignity through plain language and choice
+    - name: Mutual Recognition
+      description: "We see each other as whole, even when we’re in pieces."
 
-  includes:
-    - ladder_manifest: "ladder-manifest.yaml"
-    - roles_file: "roles.yaml"
-    - celebration_file: "celebration.yaml"
+    - name: Accessibility
+      description: "Language, layout, and rhythm are shaped to welcome all ages and minds."
 
-  gestures:
-    invitation: "You are already in. If you choose to stay, the space will grow around you."
-    reassurance: "Nothing here demands urgency. Stillness is honored too."
+    - name: Non-Extraction
+      description: "No one is mined for insight. We grow what’s offered, not what’s taken."
+
+    - name: Shared Imagination
+      description: "We build futures by dreaming together—then testing those dreams gently."
+
+    - name: Repair
+      description: "When harm happens, we name it, tend to it, and learn forward."
+
+    - name: Stewardship
+      description: "This space is held, not owned. We care for it like a garden, not a gate."

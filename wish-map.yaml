@@ -1,10 +1,35 @@
 wishes:
-  - id: w-0001
-    text: "I wish people could forgive each other."
-    tags: ["reconciliation", "healing", "grief", "hope"]
-    implied_domains: ["spiritual", "governance"]
-    proposed_start: "pages/03_rising.html"
-    reflection_prompt: "What keeps forgiveness out of reach in your context?"
-    notes: >
-      This wish echoes across justice, personal well-being, and civic repair.
-      It may serve as an entry point to multiple ladders or new sanctuary rituals.
+  - name: More Ladders
+    description: "Invite others to create ladders for different themes—grief, joy, justice, healing."
+    status: dreaming
+    steward: open
+
+  - name: Voice Matching
+    description: "Let users choose their preferred voice style—or switch as they go."
+    status: in-progress
+    steward: Harley
+
+  - name: Elder Circles
+    description: "Host gentle gatherings where elders reflect aloud and shape new rungs together."
+    status: dreaming
+    steward: open
+
+  - name: Youth Echoes
+    description: "Create playful, expressive ladders for younger voices—with art, sound, and story."
+    status: dreaming
+    steward: open
+
+  - name: Consent Ledger
+    description: "Track what’s shared, what’s private, and what’s sacred—with clarity and care."
+    status: in-design
+    steward: Harley
+
+  - name: Branch Translations
+    description: "Translate ladders into other languages and cultural metaphors—without losing soul."
+    status: dreaming
+    steward: open
+
+  - name: Civic Weaving
+    description: "Use ladders in town halls, classrooms, and community spaces to build shared understanding."
+    status: dreaming
+    steward: open

@@ -1,16 +1,20 @@
-celebration:
-  id: "gesture-light-held-still"
-  name: "The Light Held Still"
-  context: "Offered after completing the ‘Through the Fire’ truth ladder"
-  description: >
-    Not applause. Not reward. A stillness. A wordless moment
-    where the truth remains visible—and you remain whole.
+celebrations:
+  - name: Story Offering
+    description: "Invite someone to share a story sparked by the ladder—no pressure, just presence."
+    gesture: "spoken word, written note, or quiet nod"
 
-    This gesture isn’t shared by others. It’s felt within:
-    A breath. A word. A slight nod to no one in particular.
+  - name: Gratitude Echo
+    description: "Reflect someone’s words back to them with care—what did you hear that moved you?"
+    gesture: "echo or paraphrase"
 
-  prompt: "Pause. Breathe. Whisper one word you want to carry forward."
-  optional:
-    - action: "Hold a candle or flashlight steady for 30 seconds"
-    - action: "Write that one word in a corner of your journal or page"
-    - action: "Mark the end silently. Let no one else know—it’s still real"
+  - name: Circle Close
+    description: "Mark the end of a shared ladder with a breath, a bow, or a shared silence."
+    gesture: "group pause or symbolic gesture"
+
+  - name: Seed Forward
+    description: "Name one thing you’ll carry forward—or offer to someone else."
+    gesture: "intention spoken or written"
+
+  - name: Light the Branch
+    description: "Add a small light, color, or symbol to the branch to show this step mattered."
+    gesture: "visual mark or digital token"
