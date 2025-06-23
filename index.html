@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The People’s Branch – Test Index</title>
+  <title>The People�s Branch � Interactive Test</title>
   <style>
     body {
       background-color: #111;
@@ -15,62 +15,66 @@
     h1, h2 {
       color: #ffd700;
     }
-    a {
-      color: #87cefa;
-      text-decoration: none;
+    button {
+      background-color: #333;
+      color: #ffd700;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      cursor: pointer;
+      font-size: 1rem;
     }
-    a:hover {
-      text-decoration: underline;
+    button:hover {
+      background-color: #444;
     }
     .voice-block {
+      display: none;
       background: #222;
       padding: 1rem;
       margin: 1rem 0;
       border-left: 4px solid #ffd700;
     }
+    .visible {
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <h1>🌿 The People’s Branch – Test Index</h1>
-  <p>This is a temporary test page to explore how your ladder system flows.</p>
+  <h1>?? The People�s Branch � Interactive Test</h1>
+  <p>Choose a voice style to explore the prompt:</p>
 
-  <h2>🧭 Start Here</h2>
-  <p><a href="start-here.md">Read the Start Guide</a></p>
+  <div>
+    <button onclick="showVoice('plain')">Plain</button>
+    <button onclick="showVoice('poetic')">Poetic</button>
+    <button onclick="showVoice('analytical')">Analytical</button>
+    <button onclick="showVoice('playful')">Playful</button>
+  </div>
 
-  <h2>🪜 Sample Ladder Rung: <em>First Spark</em></h2>
-
-  <div class="voice-block">
+  <div id="plain" class="voice-block">
     <strong>Plain:</strong> What first made you care about something bigger than yourself?
   </div>
-  <div class="voice-block">
+  <div id="poetic" class="voice-block">
     <strong>Poetic:</strong> What lit the match that still glows under your ribs?
   </div>
-  <div class="voice-block">
+  <div id="analytical" class="voice-block">
     <strong>Analytical:</strong> Identify the origin point of your enduring motivation.
   </div>
-  <div class="voice-block">
+  <div id="playful" class="voice-block">
     <strong>Playful:</strong> What set your brain on fire (in the fun way)?
   </div>
 
-  <h2>🎭 Choose Your Role</h2>
-  <ul>
-    <li><a href="roles.yaml">roles.yaml</a> – See what each role can do</li>
-  </ul>
+  <script>
+    function showVoice(voice) {
+      const voices = ['plain', 'poetic', 'analytical', 'playful'];
+      voices.forEach(v => {
+        document.getElementById(v).classList.remove('visible');
+      });
+      document.getElementById(voice).classList.add('visible');
+    }
+  </script>
 
-  <h2>🎉 Close the Ladder</h2>
-  <ul>
-    <li><a href="celebration.yaml">celebration.yaml</a> – Pick a closing gesture</li>
-  </ul>
-
-  <h2>🛠️ Explore the System</h2>
-  <ul>
-    <li><a href="ladder-manifest.yaml">ladder-manifest.yaml</a></li>
-    <li><a href="ladder-voices.yaml">ladder-voices.yaml</a></li>
-    <li><a href="wish-map.yaml">wish-map.yaml</a></li>
-    <li><a href="sanctuary.yaml">sanctuary.yaml</a></li>
-    <li><a href="weaving-log.yaml">weaving-log.yaml</a></li>
-  </ul>
-
-  <p style="margin-top: 2rem;">🕊️ This is just a test page. When you're ready, we can build a more dynamic interface—or keep it this simple and human.</p>
+  <p style="margin-top: 2rem;">
+    ?? Want to start from the beginning? <a href="start-here.md" style="color:#87cefa;">Read the Start Guide</a>
+  </p>
 </body>
 </html>
