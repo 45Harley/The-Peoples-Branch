@@ -3,45 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The People’s Branch – Interactive Test</title>
+  <title>The People's Branch</title>
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <h1>?? The People’s Branch – Interactive Test</h1>
-  <p>Choose a voice style to explore the prompt:</p>
 
-  <div>
-    <button onclick="showVoice('plain')">Plain</button>
-    <button onclick="showVoice('poetic')">Poetic</button>
-    <button onclick="showVoice('analytical')">Analytical</button>
-    <button onclick="showVoice('playful')">Playful</button>
+  <!-- ?? Ladder Banner (Optional on Home) -->
+  <div class="ui-banner ladder-banner">
+    <p>Welcome to The People’s Branch. This system holds walkable structures for shared truth and memory.</p>
   </div>
 
-  <div id="plain" class="voice-block">
-    <strong>Plain:</strong> What first made you care about something bigger than yourself?
-  </div>
-  <div id="poetic" class="voice-block">
-    <strong>Poetic:</strong> What lit the match that still glows under your ribs?
-  </div>
-  <div id="analytical" class="voice-block">
-    <strong>Analytical:</strong> Identify the origin point of your enduring motivation.
-  </div>
-  <div id="playful" class="voice-block">
-    <strong>Playful:</strong> What set your brain on fire (in the fun way)?
-  </div>
+  <h1>The People’s Branch</h1>
 
-  <script>
-    function showVoice(voice) {
-      const voices = ['plain', 'poetic', 'analytical', 'playful'];
-      voices.forEach(v => {
-        document.getElementById(v).classList.remove('visible');
-      });
-      document.getElementById(voice).classList.add('visible');
-    }
-  </script>
+  <p>Version 0.01 includes a five-rung ladder exploring the movement of truth—from witness to healing.</p>
 
-  <p style="margin-top: 2rem;">
-    ?? Want to start from the beginning? <a href="start-here.md" style="color:#87cefa;">Read the Start Guide</a>
-  </p>
+  <p><strong>Start here:</strong></p>
+  <ul>
+    <li><a href="truth_01_witness.html" style="color: #87cefa;">Enter the Ladder ?</a></li>
+    <li><a href="truth-map.html" style="color: #87cefa;">View the Map</a></li>
+    <li><a href="README.md" style="color: #87cefa;">Project README</a></li>
+    <li><a href="users/profile-template.yaml" style="color: #87cefa;">YAML Profile Template</a></li>
+  </ul>
+
+  <p>This site is built for participation and future layering. For now, walk the cycle. See what holds.</p>
+
 </body>
 </html>

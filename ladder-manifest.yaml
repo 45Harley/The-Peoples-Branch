@@ -1,27 +1,33 @@
-ladders:
-  - id: l-01
-    url: "pages/01_listening.html"
-    title: "Listening as a First Step"
-    depth: 1
-    domain: "all"
-    parent: null
-    tags: ["presence", "stillness", "entry"]
-    reflection_prompt: "When did you last feel truly heard?"
-  
-  - id: l-02
-    url: "pages/02_longing.html"
-    title: "Honoring the Wish"
-    depth: 2
-    domain: "spiritual"
-    parent: "l-01"
-    tags: ["hope", "grief", "desire"]
-    reflection_prompt: "What do you secretly wish the world could be like?"
+ladder:
+  id: truth-ladder-cycle01
+  title: The Truth Ladder – Cycle 01
+  version: 0.01
+  description: >
+    A five-rung walk exploring truth as witness, exposure, turning, reform, and healing.
+    Reflections invited, voice prompts offered, and a soft return via celebration.
 
-  - id: l-03
-    url: "pages/03_rising.html"
-    title: "Forgiveness as Ascent"
-    depth: 3
-    domain: "governance"
-    parent: "l-02"
-    tags: ["reconciliation", "restoration", "courage"]
-    reflection_prompt: "Where does forgiveness seem impossible—and why might it matter?"
+  steps:
+    - id: truth_01_witness
+      title: Witness
+      file: truth_01_witness.html
+      type: rung
+    - id: truth_02_exposure
+      title: Exposure
+      file: truth_02_exposure.html
+      type: rung
+    - id: truth_03_turning
+      title: Turning
+      file: truth_03_turning.html
+      type: rung
+    - id: truth_04_reform
+      title: Reform
+      file: truth_04_reform.html
+      type: rung
+    - id: truth_05_healing
+      title: Healing
+      file: truth_05_healing.html
+      type: rung
+    - id: celebration
+      title: Celebration
+      file: celebration.html
+      type: net

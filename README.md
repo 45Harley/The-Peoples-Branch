@@ -1,65 +1,50 @@
 # The People's Branch
 
-_Truth invites participation. This project builds a walkable structure for reflection, voice, and collective memory._
+This is a working prototype of a modular, walkable framework. Version 0.01 includes a five-step HTML ladder with embedded reflection prompts and navigation.
 
-## 🌿 Overview
+## ✅ Walk the Ladder
 
-**The People’s Branch** is a participatory framework rooted in layered metaphor and modular design. This repository currently includes one operational “ladder” cycle focused on truth: five HTML pages that invite reflection, voice selection, and local memory.
+GitHub Pages is live here:  
+**https://45harley.github.io/The-Peoples-Branch/truth_01_witness.html**
 
-Participants walk from **Witness → Exposure → Turning → Reform → Healing**, with a final soft return via **Celebration**.
-
-## 🧗 Ladder Structure (Cycle-01)
-
-- `truth_01_witness.html`
-- `truth_02_exposure.html`
-- `truth_03_turning.html`
-- `truth_04_reform.html`
-- `truth_05_healing.html`
-- `celebration.html` (return point)
+Sequence:
+1. [Truth 01 – Witness](https://45harley.github.io/The-Peoples-Branch/truth_01_witness.html)
+2. [Truth 02 – Exposure](https://45harley.github.io/The-Peoples-Branch/truth_02_exposure.html)
+3. [Truth 03 – Turning](https://45harley.github.io/The-Peoples-Branch/truth_03_turning.html)
+4. [Truth 04 – Reform](https://45harley.github.io/The-Peoples-Branch/truth_04_reform.html)
+5. [Truth 05 – Healing](https://45harley.github.io/The-Peoples-Branch/truth_05_healing.html)
+6. [Celebration](https://45harley.github.io/The-Peoples-Branch/celebration.html)
 
 Each page includes:
-- A prompt expressed in multiple voices (Plain, Poetic, Analytical, Playful)
-- A reflection form (locally stored)
-- Navigation between steps
-- Embedded banners: **Ladder**, **Rails**, and **Net** metaphors
+- Selectable voice prompts
+- Reflection input (saved locally via `localStorage`)
+- Forward/backward navigation
+- Embedded banners for structure
 
-## 🎨 Styling
+## 👁️ Repo Contents
 
-All layout and banners are styled via [`main.css`](main.css). Class names follow the system metaphors:
-- `.ladder-banner` – placement and guidance
-- `.rails-banner` – connection and continuity
-- `.net-banner` – return and belonging
+- `/truth_*.html` → ladder pages
+- `/users/` → profile YAML files (in progress)
+- `/main.css` → shared styling
+- `ladder-manifest.yaml` → ladder structure
+- `README.md` → this file
+- `start-here.md` → setup guidance (see below)
 
-## 👥 Participation
+## 🔧 Local Use
 
-User profiles are stored as YAML files in [`/users/`](users/):
-- Individual files: `profile-fern.yaml`, `profile-jax.yaml`, etc.
-- A shared registry: `profiles.yaml`
-- Validator: `validate_profiles.py` (Python-based schema check)
+You can walk these pages locally:
+1. Clone or download this repo.
+2. Open `truth_01_witness.html` in your browser.
+3. Reflections will be saved locally (not sent anywhere).
+4. Use DevTools → Application → Local Storage to inspect.
 
-Reflections are currently saved using `localStorage` per browser—intended for preview and testing. Future releases may support persistent or server-side participation.
+## 🧪 Version
 
-## 📦 Getting Started
-
-1. Clone this repo locally or visit the live version (via GitHub Pages).
-2. Start at `truth_01_witness.html`
-3. Explore each voice prompt and submit your own reflection
-4. Walk through the ladder rungs → arrive at `celebration.html`
-5. Optionally copy your reflection into a YAML profile
-
-## 🔧 Version
-
-This is **Version 0.01** — the first operational walkable ladder.
-
-## 📚 Related Files
-
-- `truth-map.html` — optional node map
-- `ladder-manifest.yaml` — ladder index (in progress)
-- `language-guide.yaml` — voice + tone alignment
-- `roles.yaml`, `schema-registry.yaml` — emerging definitions
+This is **Version 0.01** of the project.  
+Goal: a working, testable cycle using a single ladder.
 
 ---
 
-Want to participate? Walk the ladder. Want to contribute? Fork, suggest, remix.
+Now let’s update `start-here.md`. Here’s a clean draft that mirrors the above but focuses on helping contributors and testers get oriented fast.
 
-> _"The truth still waits."_
+Would you like it to include CLI steps for local server testing (e.g. `python -m http.server`) or keep it ultra simple for now? Let me know and I’ll finish that file next.
