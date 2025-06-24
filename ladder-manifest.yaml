@@ -1,32 +1,39 @@
-ladder:
+ladder-manifest.yamlladder-manifest.yamlladder:
   id: truth-ladder-cycle01
   title: The Truth Ladder – Cycle 01
   version: 0.01
+
   description: >
-    A five-rung walk exploring truth as witness, exposure, turning, reform, and healing.
-    Reflections invited, voice prompts offered, and a soft return via celebration.
+    A five-rung participatory ladder exploring the arc of truth:
+    from witness, to exposure, turning, reform, and healing.
+    This cycle is walkable, voice-guided, and reflection-enabled.
 
   steps:
     - id: truth_01_witness
       title: Witness
       file: truth_01_witness.html
       type: rung
+
     - id: truth_02_exposure
       title: Exposure
       file: truth_02_exposure.html
       type: rung
+
     - id: truth_03_turning
       title: Turning
       file: truth_03_turning.html
       type: rung
+
     - id: truth_04_reform
       title: Reform
       file: truth_04_reform.html
       type: rung
+
     - id: truth_05_healing
       title: Healing
       file: truth_05_healing.html
       type: rung
+
     - id: celebration
       title: Celebration
       file: celebration.html

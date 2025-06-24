@@ -3,25 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Truth Ladder – Map</title>
+  <title>Truth Ladder Map</title>
   <link rel="stylesheet" href="main.css" />
+  <style>
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .map-node {
+      border: 2px solid #87cefa;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .map-node a {
+      text-decoration: none;
+      color: #87cefa;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>?? Truth Ladder – Map</h1>
 
-  <p>This is a walkable sequence of reflection. You can begin anywhere, but the order below follows a natural arc—from arrival to healing.</p>
+  <!-- ?? Map Overview -->
+  <div class="ui-banner rails-banner">
+    <p>This map shows the rungs of the current ladder cycle. You can begin at any point—but truth flows best from the start.</p>
+  </div>
 
-  <ol>
-    <li><a href="_01_arrival.html">_01 Arrival</a> – A soft beginning. Step into the space and notice what you’re carrying.</li>
-    <li><a href="truth_01_witness.html">Truth 01: Witness</a> – What have you seen that others missed or denied?</li>
-    <li><a href="truth_02_exposure.html">Truth 02: Exposure</a> – What truths have been revealed, even when it hurt?</li>
-    <li><a href="truth_03_turning.html">Truth 03: Turning</a> – When did you begin to change direction?</li>
-    <li><a href="truth_04_reform.html">Truth 04: Reform</a> – What systems or beliefs have you reshaped?</li>
-    <li><a href="truth_05_healing.html">Truth 05: Healing</a> – What has begun to mend, and what still needs tending?</li>
-  </ol>
+  <h1>Truth Ladder – Map View</h1>
 
-  <p style="margin-top: 2rem;">
-    ?? Or return to the <a href="start-here.html">Start Guide</a>
-  </p>
+  <div class="map-grid">
+    <div class="map-node"><a href="truth_01_witness.html">01<br>Witness</a></div>
+    <div class="map-node"><a href="truth_02_exposure.html">02<br>Exposure</a></div>
+    <div class="map-node"><a href="truth_03_turning.html">03<br>Turning</a></div>
+    <div class="map-node"><a href="truth_04_reform.html">04<br>Reform</a></div>
+    <div class="map-node"><a href="truth_05_healing.html">05<br>Healing</a></div>
+    <div class="map-node"><a href="celebration.html">??<br>Celebration</a></div>
+  </div>
+
 </body>
 </html>
