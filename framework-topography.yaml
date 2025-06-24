@@ -1,0 +1,145 @@
+# framework-topography.yaml
+# Version: 0.3
+# Title: Participatory Terrain
+# Description:
+#   A conceptual and navigational scaffold for spiritual ascent, relational clarity, and lived truth.
+#   This terrain includes experiential zones of humility, movement, elevation, rest, divergence, and return.
+#   Designed for modular expansion and integration with ladder systems (v0.2) and participatory inputs.
+# Author: Harley [with Copilot]
+# Created: 2025-06-24
+# --------------------------------------
+
+meta:
+  version: 0.3
+  namespace: participatory-topography
+  scope: "Conceptual framework for interactive spiritual system"
+  dimensions:
+    - horizontal: wandering, discernment
+    - vertical: ascent, revelation
+    - ambient: reflection, communion
+
+# --------------------------------------
+# Top-Level Zones
+# --------------------------------------
+
+zones:
+
+  valley:
+    name: "Valley of Recognition"
+    purpose: "Space of humility and awakening. Shedding illusions begins here."
+    banners:
+      - "Welcome, traveler. What do you carry?"
+      - "The path begins in silence and laying down weight."
+    next: path
+    permissions: [read]
+    anchors: [humility, seeking]
+
+  path:
+    name: "Winding Path of Participation"
+    purpose: "Discernment and readiness. Gentle movement toward intention."
+    checkpoints:
+      - id: discern-intent
+        description: "Why are you here?"
+      - id: respond-authentically
+        description: "What is present within you now?"
+      - id: release-baggage
+        description: "What must be left behind?"
+    next: ladder
+    prev: valley
+    permissions: [read, write]
+    anchors: [discernment, motion]
+
+  ladder:
+    name: "Ladder of Clarity"
+    purpose: "Modular, vertical ascent through intentional steps."
+    rungs:
+      - listen
+      - witness
+      - engage
+      - contribute
+      - reflect
+    next: summit
+    prev: path
+    triggers:
+      if_checkpoint_complete: path
+    permissions: [write, execute]
+    anchors: [structure, elevation]
+
+  summit:
+    name: "Clear View of the Whole"
+    purpose: "The mountaintop perspective. Readiness to offer and invite."
+    invitation: "Will you build for those still in the valley?"
+    return_routes:
+      - fire-circle
+      - watchtower
+    prev: ladder
+    permissions: [write, symlink]
+    anchors: [clarity, offering]
+
+# --------------------------------------
+# Rest, Redirection, and Secondary Zones
+# --------------------------------------
+
+  grotto:
+    name: "Grotto of Rest"
+    purpose: "Restoration, encouragement, and realignment without pressure."
+    triggers:
+      - fatigue
+      - disorientation
+    return_to: path
+    permissions: [read]
+
+  watchtower:
+    name: "Watchtower"
+    purpose: "Vantage point for retrospection and intentionality."
+    functions:
+      - look_back
+      - preview_routes
+      - reset_intent
+    optional_access: true
+    anchors: [overview]
+
+  false_summit:
+    name: "False Summit"
+    purpose: "Moment of mistaken finality; reawakens deeper need."
+    detection:
+      - spiritual-pride
+      - inertia
+    redirects_to: threshold
+    anchors: [testing]
+
+  threshold:
+    name: "Threshold"
+    purpose: "Crisis or invitation of commitment."
+    prompt: "Will you ascend with open hands and nothing of your own?"
+    found_at:
+      - path:end
+      - false_summit:return
+    next: ladder
+    anchors: [decision]
+
+  crossroads:
+    name: "Crossroads"
+    purpose: "Ethical divergence or reevaluation of direction."
+    decision_modes:
+      - service
+      - ambition
+      - retreat
+      - recommitment
+    affects: path or echoing_chamber
+    anchors: [discernment, risk]
+
+  echoing_chamber:
+    name: "Echoing Chamber"
+    purpose: "Input returns resonantly to refine awareness."
+    prompt_type: generative
+    related_to: fire-circle
+    permissions: [write]
+    anchors: [feedback, testimony]
+
+  fire-circle:
+    name: "Fire Circle"
+    purpose: "Communal resonance space for co-creation and offering."
+    future_feature: true
+    participation: "summit-access or invitation"
+    anchors: [shared-knowing, offering]
