@@ -1,63 +1,65 @@
-# The People’s Branch
+# The People's Branch
 
-*A shared space for reflection, connection, and growth—built by all, for all.*
+_Truth invites participation. This project builds a walkable structure for reflection, voice, and collective memory._
+
+## 🌿 Overview
+
+**The People’s Branch** is a participatory framework rooted in layered metaphor and modular design. This repository currently includes one operational “ladder” cycle focused on truth: five HTML pages that invite reflection, voice selection, and local memory.
+
+Participants walk from **Witness → Exposure → Turning → Reform → Healing**, with a final soft return via **Celebration**.
+
+## 🧗 Ladder Structure (Cycle-01)
+
+- `truth_01_witness.html`
+- `truth_02_exposure.html`
+- `truth_03_turning.html`
+- `truth_04_reform.html`
+- `truth_05_healing.html`
+- `celebration.html` (return point)
+
+Each page includes:
+- A prompt expressed in multiple voices (Plain, Poetic, Analytical, Playful)
+- A reflection form (locally stored)
+- Navigation between steps
+- Embedded banners: **Ladder**, **Rails**, and **Net** metaphors
+
+## 🎨 Styling
+
+All layout and banners are styled via [`main.css`](main.css). Class names follow the system metaphors:
+- `.ladder-banner` – placement and guidance
+- `.rails-banner` – connection and continuity
+- `.net-banner` – return and belonging
+
+## 👥 Participation
+
+User profiles are stored as YAML files in [`/users/`](users/):
+- Individual files: `profile-fern.yaml`, `profile-jax.yaml`, etc.
+- A shared registry: `profiles.yaml`
+- Validator: `validate_profiles.py` (Python-based schema check)
+
+Reflections are currently saved using `localStorage` per browser—intended for preview and testing. Future releases may support persistent or server-side participation.
+
+## 📦 Getting Started
+
+1. Clone this repo locally or visit the live version (via GitHub Pages).
+2. Start at `truth_01_witness.html`
+3. Explore each voice prompt and submit your own reflection
+4. Walk through the ladder rungs → arrive at `celebration.html`
+5. Optionally copy your reflection into a YAML profile
+
+## 🔧 Version
+
+This is **Version 0.01** — the first operational walkable ladder.
+
+## 📚 Related Files
+
+- `truth-map.html` — optional node map
+- `ladder-manifest.yaml` — ladder index (in progress)
+- `language-guide.yaml` — voice + tone alignment
+- `roles.yaml`, `schema-registry.yaml` — emerging definitions
 
 ---
 
-## 🌱 What This Is
+Want to participate? Walk the ladder. Want to contribute? Fork, suggest, remix.
 
-The People’s Branch is a living framework designed to help people pause, notice, and share what matters.
-
-It’s not a platform.  
-It’s not a system.  
-It’s a space to breathe, speak, listen, and rise—together.
-
----
-
-## 🪜 What You’ll Find Here
-
-- **Ladders**: Reflection journeys made of small, clear steps (we call them rungs).
-- **Roles**: You can join as a visitor, participant, guide, or steward.
-- **Voices**: Every prompt is offered in different styles—plain, poetic, analytical, or playful.
-- **Choices**: You decide what to share, and what to keep for yourself.
-
-Everything here is meant to be elder-friendly, kid-welcoming, and gentle on the soul.
-
----
-
-## 📂 Files You Can Explore
-
-| File | Purpose |
-|------|---------|
-| `ladder-manifest.yaml` | Maps out the ladder steps and flow |
-| `ladder-voices.yaml` | Holds all the voice styles for each rung |
-| `roles.yaml` | Defines who can do what |
-| `wish-map.yaml` | A vision for where this might grow next |
-| `sanctuary.yaml` | Holds values that keep this space safe |
-| `celebration.yaml` | Closes each ladder with gratitude and story |
-| `weaving-log.yaml` | Tracks changes and updates over time |
-
----
-
-## 🛠️ How to Use This
-
-1. Start with any ladder step in the `ladder-manifest.yaml`.
-2. Read the prompt in your favorite voice style (from `ladder-voices.yaml`).
-3. Reflect, respond, or just sit with the question.
-4. If you're contributing, check `roles.yaml` to see your role and what's possible.
-
-You don’t have to be a “systems person.”  
-You just have to be a person.
-
----
-
-## 💬 Want to Build With Us?
-
-This is version 0.01—just a seed.  
-But even a seed can hold a forest.  
-
-Whether you write, teach, draw, code, or listen well—you’re invited.
-
-If you’d like to add your voice, your ladder, or your care, open an issue or fork the branch.
-
-Let’s grow something good.
+> _"The truth still waits."_
