@@ -2,7 +2,7 @@
 ## 🌿 Participatory Terrain
 
 Each folder represents a dimension of this participatory topography:
-
+-
 - **Valley** — quiet origins, listening spaces, first witness  
 - **Path** — sequences of movement and invitation  
 - **Ladder** — deliberate ascent through transformation  
