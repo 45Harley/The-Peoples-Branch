@@ -1,34 +1,15 @@
-# export-leaf-folders.ps1
-# Outputs leaf folders and their files, plus root files, into a timestamped text file
 
-$root = "C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch"
-$timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
-$outputPath = "$root\leaf-directory-files_$timestamp.txt"
-$output = @()
+# basic-directory-list.ps1
+# Lists all files in the current directory and subdirectories
 
-# Include root folder and its files
-$output += "📁 $root"
-$rootFiles = Get-ChildItem -Path $root -File
-foreach ($file in $rootFiles) {
-    $output += "    📄 $($file.Name)"
-}
-$output += ""
+$root = Get-Location
+$date = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$outputFile = "leaf-directory-files_$date.txt"
 
-# Find all leaf directories (no subfolders)
-$leafDirs = Get-ChildItem -Path $root -Recurse -Directory | Where-Object {
-    (Get-ChildItem $_.FullName -Directory).Count -eq 0
-}
+Get-ChildItem -Recurse -File |
+    ForEach-Object {
+        $relativePath = $_.FullName.Replace($root.Path + "\", "")
+        "FILE: $relativePath"
+    } | Out-File -Encoding UTF8 $outputFile
 
-# Add each leaf folder and its files
-foreach ($dir in $leafDirs) {
-    $output += "📁 $($dir.FullName)"
-    $files = Get-ChildItem $dir.FullName -File
-    foreach ($file in $files) {
-        $output += "    📄 $($file.Name)"
-    }
-    $output += ""
-}
-
-# Write to file
-$output | Out-File -FilePath $outputPath -Encoding UTF8
-Write-Output "✅ Snapshot saved to: $outputPath"
+Write-Host "`n✅ Snapshot saved as $outputFile"

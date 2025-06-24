@@ -3,46 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Truth Ladder Map</title>
+  <title>Truth Map</title>
   <link rel="stylesheet" href="main.css" />
   <style>
-    .map-grid {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 2rem;
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f6f5f0;
+      margin: 0;
+      padding: 2em;
+      color: #2e2b25;
     }
-    .map-node {
-      border: 2px solid #87cefa;
-      padding: 1rem;
-      border-radius: 8px;
+    h1 {
       text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
     }
-    .map-node a {
+    .intro {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 3em;
+    }
+    .map {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .zone {
+      border-left: 4px solid #776b5d;
+      padding-left: 1em;
+    }
+    .zone h2 {
+      margin-top: 0;
+      color: #453b31;
+    }
+    .zone ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .zone li {
+      margin-bottom: 0.5em;
+    }
+    .zone a {
       text-decoration: none;
-      color: #87cefa;
-      font-weight: bold;
+      color: #5a4e42;
+    }
+    .zone a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 4em;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777268;
     }
   </style>
 </head>
 <body>
+  <h1>Truth Map</h1>
+  <p class="intro">A living index of transformation — from first witness to healing return.</p>
 
-  <!-- ?? Map Overview -->
-  <div class="ui-banner rails-banner">
-    <p>This map shows the rungs of the current ladder cycle. You can begin at any point—but truth flows best from the start.</p>
+  <div class="map">
+    <div class="zone">
+      <h2>?? Valley</h2>
+      <ul>
+        <li><a href="truth_01_witness.html">Witness</a></li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h2>??? Path</h2>
+      <ul>
+        <li><a href="truth_02_exposure.html">Exposure</a></li>
+        <li><a href="truth_03_turning.html">Turning</a></li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h2>?? Ladder</h2>
+      <ul>
+        <li><a href="truth_04_reform.html">Reform</a></li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h2>??? Summit</h2>
+      <ul>
+        <li><a href="truth_05_healing.html">Healing</a></li>
+      </ul>
+    </div>
+
+    <div class="zone">
+      <h2>??? Grotto</h2>
+      <ul>
+        <li><a href="celebration.html">Celebration</a></li>
+        <li><a href="sanctuary.yaml">Sanctuary (YAML)</a></li>
+      </ul>
+    </div>
   </div>
 
-  <h1>Truth Ladder – Map View</h1>
-
-  <div class="map-grid">
-    <div class="map-node"><a href="truth_01_witness.html">01<br>Witness</a></div>
-    <div class="map-node"><a href="truth_02_exposure.html">02<br>Exposure</a></div>
-    <div class="map-node"><a href="truth_03_turning.html">03<br>Turning</a></div>
-    <div class="map-node"><a href="truth_04_reform.html">04<br>Reform</a></div>
-    <div class="map-node"><a href="truth_05_healing.html">05<br>Healing</a></div>
-    <div class="map-node"><a href="celebration.html">??<br>Celebration</a></div>
-  </div>
-
+  <footer>
+    This map is alive. New branches, ladders, and crossings may emerge.<br />
+    Return often. Step gently.
+  </footer>
 </body>
 </html>

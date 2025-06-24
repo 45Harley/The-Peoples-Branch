@@ -1,40 +1,32 @@
-ladder-manifest.yamlladder-manifest.yamlladder:
-  id: truth-ladder-cycle01
-  title: The Truth Ladder – Cycle 01
-  version: 0.01
+# ladder-manifest.yaml
 
+meta:
+  version: 0.2
+  updated: 2025-06-24
   description: >
-    A five-rung participatory ladder exploring the arc of truth:
-    from witness, to exposure, turning, reform, and healing.
-    This cycle is walkable, voice-guided, and reflection-enabled.
+    This manifest defines all ladders currently scaffolded within The People's Branch.
+    Each ladder is a modular transformation structure composed of rungs, movements, and symbolic resonance.
 
-  steps:
-    - id: truth_01_witness
-      title: Witness
-      file: truth_01_witness.html
-      type: rung
+ladders:
+  - id: ladder-of-truth
+    title: Ladder of Truth
+    location: valley → path → ladder → summit → grotto
+    description: >
+      A five-stage ascent through witnessing, exposure, turning, reform, and healing.
+      Oriented around the practice of naming harm and transmuting it into communal repair.
+    file: ../ladders/ladder-of-truth.yaml
+    scenes:
+      - truth_01_witness.html
+      - truth_02_exposure.html
+      - truth_03_turning.html
+      - truth_04_reform.html
+      - truth_05_healing.html
+    participants:
+      scaffolded: true
+      profile-schema: ../framework/profile-schema.yaml
+      profile-path: ../users/
 
-    - id: truth_02_exposure
-      title: Exposure
-      file: truth_02_exposure.html
-      type: rung
-
-    - id: truth_03_turning
-      title: Turning
-      file: truth_03_turning.html
-      type: rung
-
-    - id: truth_04_reform
-      title: Reform
-      file: truth_04_reform.html
-      type: rung
-
-    - id: truth_05_healing
-      title: Healing
-      file: truth_05_healing.html
-      type: rung
-
-    - id: celebration
-      title: Celebration
-      file: celebration.html
-      type: net
+  # Future ladders may include:
+  # - ladder-of-grief
+  # - ladder-of-governance
+  # - ladder-of-regeneration

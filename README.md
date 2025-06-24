@@ -1,33 +1,42 @@
-# 🪜 The People's Branch
 
-_Truth invites participation. This is a modular, walkable system._
+## 🌿 Participatory Terrain
+
+Each folder represents a dimension of this participatory topography:
+
+- **Valley** — quiet origins, listening spaces, first witness  
+- **Path** — sequences of movement and invitation  
+- **Ladder** — deliberate ascent through transformation  
+- **Summit** — moments of clarity, declaration, or offering  
+- **Grotto** — hidden, sacred, regenerative spaces  
+- **Crossroads**, **watchtowers**, and **fire circles** may emerge over time
+
+These metaphors are embedded in both content and structure. Each YAML file reflects not just configuration, but *spiritual positioning*.
+
+## 🚀 Getting Started
+
+You can view this system in two primary ways:
+
+1. **Explore it as a repository**  
+   Browse the folders and read through the YAMLs, HTML pages, and markdown files. Begin at `start-here.md` or explore the `truth-map.html`.
+
+2. **Run it locally via GitHub Pages**  
+   This site is designed to render HTML artifacts for narrative walkthroughs. Ensure your repo is GitHub Pages–enabled (from the `/root`), and visit the published URL to experience the transformation ladders and narrative paths.
+
+## ✍️ Contributing
+
+This is an evolving commons. To participate:
+
+- Fork the repository  
+- Create a `profile-[yourname].yaml` in `/users/`  
+- Propose a new scene, ladder, or ritual thread  
+- Or simply offer edits, comments, or blessings  
+
+We welcome both poetic gestures and technical refinements.
+
+## 🙏 Acknowledgments
+
+This framework is guided by deep traditions of truth-telling, communal healing, sacred memory, and iterative witnessing. Many voices have shaped its topography—seen and unseen.
 
 ---
 
-## ✅ Walk the Ladder (Version 0.01)
-
-Start here:  
-**[→ truth_01_witness.html](https://45harley.github.io/The-Peoples-Branch/truth_01_witness.html)**
-
-**Cycle-01 Includes:**
-
-| Step | Title       | File                         |
-|------|-------------|------------------------------|
-| 01   | Witness     | `truth_01_witness.html`      |
-| 02   | Exposure    | `truth_02_exposure.html`     |
-| 03   | Turning     | `truth_03_turning.html`      |
-| 04   | Reform      | `truth_04_reform.html`       |
-| 05   | Healing     | `truth_05_healing.html`      |
-| —    | Celebration | `celebration.html`           |
-
-Each page includes:
-- Voice-based prompts (Plain, Poetic, Analytical, Playful)
-- Reflection input (stored in-browser via localStorage)
-- Navigation to next/previous rungs
-- System banners: `.ladder-banner`, `.rails-banner`, `.net-banner`
-
----
-
-## 📂 Folder Contents
-
-The-Peoples-Branch/ ├── index.html ├── truth_01_witness.html ├── truth_02_exposure.html ├── truth_03_turning.html ├── truth_04_reform.html ├── truth_05_healing.html ├── celebration.html ├── truth-map.html ├── main.css ├── ladder-manifest.yaml ├── README.md ├── start-here.md └── users/ ├── profile-template.yaml ├── profiles.yaml └── validate_profiles.py
+*You are welcome here. May your footsteps leave echoes of care.*

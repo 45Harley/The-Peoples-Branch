@@ -1,28 +1,43 @@
+# ladder-of-truth.yaml
+
 id: ladder-of-truth
 title: Ladder of Truth
 version: 0.2
-status: draft
-purpose: |
-  To guide participants through a transformative reckoning—moving from silence to witness,
-  from witness to exposure, through turning and reformation, toward healing and clarity.
-anchor_zones:
-  - valley
-  - path
-  - summit
+updated: 2025-06-24
 
-rungs:
-  - id: witness
-    title: Witness
-    description: The first step of seeing, naming, and standing present to what has been hidden or denied.
-  - id: exposure
-    title: Exposure
-    description: The act of bringing unseen or obscured truths into the open, with integrity and care.
-  - id: turning
-    title: Turning
-    description: The threshold of inward and outward change—a pivot toward responsibility.
-  - id: reform
-    title: Reform
-    description: Structural reconfiguration toward justice, transparency, and coherence.
-  - id: healing
-    title: Healing
-    description: Restoration through acknowledgment, community repair, and continuity of care.
+description: >
+  A transformation ladder for confronting and transmuting harm. Each rung holds a scene, a state of witness, and an opportunity for reckoning.
+
+structure:
+  sequence:
+    - id: truth_01
+      title: Witness
+      phase: valley
+      file: ../truth_01_witness.html
+      summary: Initial awareness. Naming what has occurred, without judgment.
+    - id: truth_02
+      title: Exposure
+      phase: path
+      file: ../truth_02_exposure.html
+      summary: Letting harm be seen and heard—raw, unhidden.
+    - id: truth_03
+      title: Turning
+      phase: path
+      file: ../truth_03_turning.html
+      summary: A turning of gaze, of posture, of willingness. To shift, to move.
+    - id: truth_04
+      title: Reform
+      phase: ladder
+      file: ../truth_04_reform.html
+      summary: Structural and spiritual reform. Naming new commitments.
+    - id: truth_05
+      title: Healing
+      phase: summit
+      file: ../truth_05_healing.html
+      summary: Collective restoration. Letting what was wounded breathe and regrow.
+
+meta:
+  origin: framework/ladder-manifest.yaml
+  mapped-via: truth-map.html
+  contributor-notes: >
+    Each step corresponds to a lived encounter. Feel free to extend this ladder, remix its steps, or adapt for new domains.
