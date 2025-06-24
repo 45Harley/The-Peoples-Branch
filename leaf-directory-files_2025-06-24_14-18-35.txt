@@ -1,0 +1,54 @@
+﻿📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch
+    📄 ai 1 discussion.docx
+    📄 bl_01_arrival.html
+    📄 celebration.html
+    📄 celebration.yaml
+    📄 filelist.txt
+    📄 framework-topography.yaml
+    📄 index.html
+    📄 ladder-manifest.yaml
+    📄 ladder-voices.yaml
+    📄 language-guide.yaml
+    📄 main.css
+    📄 README.md
+    📄 roles.yaml
+    📄 sanctuary.yaml
+    📄 schema-registry.yaml
+    📄 start-here.md
+    📄 truth-map.html
+    📄 truth_01_witness.html
+    📄 truth_02_exposure.html
+    📄 truth_03_turning.html
+    📄 truth_04_reform.html
+    📄 truth_05_healing.html
+    📄 weaving-log.yaml
+    📄 wish-map.yaml
+    📄 _01_arrival.html
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\docs
+    📄 README.md
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\fframework
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\ladders
+    📄 README.md
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\pages
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\paths
+    📄 truth-path.yaml
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\scenes
+    📄 README.md
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\templates
+
+📁 C:\Users\harle\OneDrive\Documents\GitHub\The-Peoples-Branch\users
+    📄 profile-fern.yaml
+    📄 profile-jax.yaml
+    📄 profile-schema.yaml
+    📄 profile-sky.yaml
+    📄 profile-template.yaml
+    📄 profiles.yaml
+    📄 validate_profiles.py
+

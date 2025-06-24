@@ -1,0 +1,28 @@
+id: ladder-of-truth
+title: Ladder of Truth
+version: 0.2
+status: draft
+purpose: |
+  To guide participants through a transformative reckoning—moving from silence to witness,
+  from witness to exposure, through turning and reformation, toward healing and clarity.
+anchor_zones:
+  - valley
+  - path
+  - summit
+
+rungs:
+  - id: witness
+    title: Witness
+    description: The first step of seeing, naming, and standing present to what has been hidden or denied.
+  - id: exposure
+    title: Exposure
+    description: The act of bringing unseen or obscured truths into the open, with integrity and care.
+  - id: turning
+    title: Turning
+    description: The threshold of inward and outward change—a pivot toward responsibility.
+  - id: reform
+    title: Reform
+    description: Structural reconfiguration toward justice, transparency, and coherence.
+  - id: healing
+    title: Healing
+    description: Restoration through acknowledgment, community repair, and continuity of care.
