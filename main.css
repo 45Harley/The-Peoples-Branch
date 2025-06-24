@@ -1,51 +1,58 @@
-/* ?? The People’s Branch – Shared Styles */
+/* main.css — Harley's dark theme baseline */
 
 body {
-  background-color: #111;
-  color: #fdf6e3;
-  font-family: 'Segoe UI', 'Avenir', sans-serif;
+  background-color: #000;
+  color: #f0f0f0;
+  font-family: Georgia, serif;
   line-height: 1.6;
-  padding: 2rem;
-  max-width: 75ch;
-  margin: auto;
-  border: 2px solid #ffd700;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #222;
+  margin: 0;
+  padding: 3em 2em;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-h1, h2, h3 {
-  color: #ffd700;
-  margin-top: 2rem;
+h1, h2, h3, h4 {
+  color: #f6f26f; /* warm yellow for headings */
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 1.5em;
+  color: #ddd;
 }
 
 a {
-  color: #87cefa;
+  color: #f6f26f;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
 
-button {
-  background-color: #333;
-  color: #ffd700;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin: 0.25rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-button:hover {
-  background-color: #444;
+nav ul {
+  list-style: none;
+  padding-left: 0;
 }
 
-.voice-block {
-  background: #222;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-left: 4px solid #ffd700;
-  display: none;
+nav li {
+  margin: 1em 0;
 }
-.visible {
-  display: block;
+
+.intro {
+  font-style: italic;
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 2em;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 4em;
+  padding-top: 1em;
+  border-top: 1px solid #333;
 }
