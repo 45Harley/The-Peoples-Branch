@@ -1,4 +1,3 @@
-
 ## 🌿 Participatory Terrain
 
 Each folder represents a dimension of this participatory topography:
@@ -10,7 +9,7 @@ Each folder represents a dimension of this participatory topography:
 - **Grotto** — hidden, sacred, regenerative spaces  
 - **Crossroads**, **watchtowers**, and **fire circles** may emerge over time
 
-These metaphors are embedded in both content and structure. Each YAML file reflects not just configuration, but *spiritual positioning*.
+These metaphors are embedded in both content and structure. Each YAML file reflects not just configuration, but *mental positioning*.
 
 ## 🚀 Getting Started
 
@@ -34,9 +33,3 @@ This is an evolving commons. To participate:
 We welcome both poetic gestures and technical refinements.
 
 ## 🙏 Acknowledgments
-
-This framework is guided by deep traditions of truth-telling, communal healing, sacred memory, and iterative witnessing. Many voices have shaped its topography—seen and unseen.
-
----
-
-*You are welcome here. May your footsteps leave echoes of care.*
