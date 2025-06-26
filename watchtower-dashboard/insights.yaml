@@ -1,0 +1,11 @@
+- id: civic-tech
+  title: "Civic Tech Lab"
+  insight: "Governance is going open-source."
+  resonance: 8.9
+  source: "Soup.io – Civic Engagement Trends"
+  alignment_zone: "Seeds of the Future"
+  action_links:
+    - label: "Propose as Ladder"
+      href: "#ladder-proposal"
+    - label: "Nominate for Summit"
+      href: "#summit-nominate"
