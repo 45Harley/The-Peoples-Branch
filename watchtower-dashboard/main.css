@@ -1,0 +1,99 @@
+/* === Base Styles (Original) === */
+body {
+  background-color: #000;
+  color: #eee;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 2em;
+}
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+header h1 { color: #6cf; }
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1em;
+  margin-top: 2em;
+}
+.card {
+  background: #111;
+  padding: 1.5em;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+.insight {
+  color: #ccc;
+}
+a { color: #6cf; text-decoration: none; }
+
+.modal {
+  display: none; /* Add JS to toggle visibility */
+}
+
+
+/* === WATCHTOWER MODULE STYLES START === */
+
+.wt-container {
+  background-color: #000;
+  color: #eee;
+  font-family: system-ui, sans-serif;
+  padding: 2em;
+  max-width: 960px;
+  margin: auto;
+}
+.wt-header {
+  color: #6cf;
+  margin-bottom: 1em;
+}
+.wt-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1em;
+  margin-top: 2em;
+}
+.wt-card {
+  background: #111;
+  padding: 1.5em;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+.wt-card h2 {
+  margin-top: 0;
+}
+.wt-insight {
+  color: #ccc;
+}
+.wt-link {
+  color: #6cf;
+  text-decoration: none;
+}
+.wt-modal {
+  display: none;
+  background: rgba(0, 0, 0, 0.95);
+  color: #eee;
+  padding: 2em;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: auto;
+  border: 1px solid #444;
+  border-radius: 12px;
+  z-index: 1000;
+}
+.wt-modal a {
+  color: #6cf;
+  text-decoration: underline;
+}
+.wt-resonance {
+  color: #6cf;
+}
+.wt-action {
+  color: #f8f;
+  margin-top: 1em;
+  display: block;
+}
+
+/* === WATCHTOWER MODULE STYLES END === */

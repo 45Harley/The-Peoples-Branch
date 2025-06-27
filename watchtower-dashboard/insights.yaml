@@ -1,11 +1,74 @@
-- id: civic-tech
-  title: "Civic Tech Lab"
-  insight: "Governance is going open-source."
-  resonance: 8.9
-  source: "Soup.io – Civic Engagement Trends"
-  alignment_zone: "Seeds of the Future"
-  action_links:
-    - label: "Propose as Ladder"
-      href: "#ladder-proposal"
-    - label: "Nominate for Summit"
-      href: "#summit-nominate"
+# watchtower-dashboard/insights.yaml
+
+insights:
+  - id: civic-tech-lab
+    title: "💻 Civic Tech Lab"
+    summary: "Governance is going open-source."
+    resonance: 8.9
+    moral_lens: "Tech as civic infrastructure"
+    source:
+      name: "Soup.io"
+      url: "https://www.soup.io/the-latest-trends-in-civic-engagement-real-life-examples-and-case-studies"
+    actions:
+      - "🪜 Propose as Ladder"
+      - "🌄 Nominate for Summit"
+
+  - id: lineage-lens
+    title: "🌿 Lineage Lens"
+    summary: "Ancestral models revive in local climate stewardship law."
+    resonance: 9.2
+    moral_lens: "Governance as memory and ceremony"
+    source:
+      name: "Indigenous Climate Action"
+      url: "https://www.indigenousclimateaction.com/"
+    actions:
+      - "🪜 Translate to Commons Ladder"
+      - "🌀 Add to Grotto Reflection"
+
+  - id: equity-lens
+    title: "⚖️ Equity Lens"
+    summary: "Budget cuts outpace services in frontline communities."
+    resonance: 8.7
+    moral_lens: "Equity is not garnish—it’s the meal"
+    source:
+      name: "Urban Institute"
+      url: "https://www.urban.org/"
+    actions:
+      - "🌄 Nominate for Summit Dialogue"
+      - "🪜 Embed in Ladder of Distribution"
+
+  - id: civic-pulse
+    title: "🎨 Civic Pulse"
+    summary: "#PeoplePowered spikes after housing justice win."
+    resonance: 9.4
+    moral_lens: "Art as civic infrastructure"
+    source:
+      name: "Hyperallergic"
+      url: "https://hyperallergic.com/"
+    actions:
+      - "🌀 Add to Grotto Reflection"
+      - "🌄 Nominate for Summit Dialogue"
+
+  - id: structural-tensions
+    title: "⚡ Grid Sovereignty"
+    summary: "Power outages spike as legacy grids buckle."
+    resonance: 8.4
+    moral_lens: "Infrastructure remembers what it was built to protect"
+    source:
+      name: "Utility Dive"
+      url: "https://www.utilitydive.com/"
+    actions:
+      - "🌄 Nominate for Summit Dialogue"
+      - "🪜 Propose Ladder: Energy Justice"
+
+  - id: seeds-of-the-future
+    title: "🛰️ Earth Commons Satellites"
+    summary: "Low-orbit sensors support Indigenous climate stewardship."
+    resonance: 9.1
+    moral_lens: "Technology honors the land when it listens first"
+    source:
+      name: "Earthblox.io"
+      url: "https://earthblox.io/"
+    actions:
+      - "🌀 Add to Grotto: Planetary Kinship"
+      - "🌄 Nominate for Summit: Climate Trust"
