@@ -1,28 +1,62 @@
+/* 🌙 Base - shared across all pages */
 body {
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f7fa;
-  color: #222;
-}
-
-header {
-  background-color: white;
-  padding: 2rem 1rem 0.5rem;
-  text-align: center;
-  position: relative;
-  z-index: 10;
-}
-
-/* 🧭 Banner */
-
-.wt-banner {
+  font-family: Georgia, serif;
   background-color: #111;
-  color: #f9f9f9;
+  color: #f0f0f0;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 75%;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  border: 2px solid #e6c84a;
+}
+
+h1, h2, h3 {
+  color: #ffd700;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  border-bottom: 1px solid #ffd700;
+  padding-bottom: 0.3rem;
+}
+
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.4rem; }
+
+p, ul, ol {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: #66baff;
+  text-decoration: none;
+}
+a:hover {
+  color: #99ccff;
+  text-decoration: underline;
+}
+
+/* 📦 Layout for dashboard spacing */
+.wt-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+
+/* 🧭 Watchtower Banner */
+.wt-banner {
+  background-color: #000;
+  color: #f5f5dc;
   padding: 1.5rem 2rem;
   text-align: center;
-  border-bottom: 2px solid #444;
-  font-family: 'Georgia', serif;
+  border-bottom: 2px solid #e6c84a;
 }
 
 .wt-banner h2 {
@@ -39,18 +73,11 @@ header {
   max-width: 40rem;
 }
 
-/* 📦 Layout */
-
-.wt-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  padding-top: 2rem;
-}
-
+/* 🧊 Insight Cards */
 .wt-header {
   margin: 0;
   font-size: 2rem;
+  color: #ffdb5c;
 }
 
 .wt-dashboard {
@@ -61,13 +88,11 @@ header {
   margin-top: 2rem;
 }
 
-/* 🪧 Insight Cards */
-
 .wt-card {
-  background-color: white;
+  background-color: #1a1a1a;
   border-radius: 8px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
   flex: 1 1 calc(30% - 2rem);
   min-width: 280px;
   max-width: 400px;
@@ -81,7 +106,7 @@ header {
 }
 
 .wt-link {
-  color: #0077cc;
+  color: #99ccff;
   text-decoration: none;
   font-weight: 500;
 }
@@ -90,23 +115,23 @@ header {
   text-decoration: underline;
 }
 
+/* 🧷 Action Button */
 .wt-action {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
-  background: #e8f0fe;
-  color: #003366;
+  background: #333;
+  color: #ffd700;
   padding: 0.4rem 0.75rem;
   text-decoration: none;
   border-radius: 4px;
   font-size: 0.9rem;
+  border: 1px solid #e6c84a;
 }
-
 .wt-action:hover {
-  background: #d2e3fc;
+  background: #222;
 }
 
-/* 🧊 Modal */
-
+/* 🪟 Modal */
 .wt-modal {
   display: none;
   position: fixed;
@@ -121,8 +146,7 @@ header {
   box-sizing: border-box;
 }
 
-/* 🖤 Dark Mode Modal Card */
-
+/* 🖤 Dark Modal Content */
 .wt-modal .wt-card {
   margin: 5% auto;
   max-width: 600px;
@@ -130,13 +154,12 @@ header {
   color: #f0f0f0;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
 }
 
 .wt-modal .wt-card a {
   color: #66baff;
 }
-
 .wt-modal .wt-card a:hover {
   color: #99ccff;
   text-decoration: underline;
@@ -164,7 +187,6 @@ header {
   font-size: 1.2rem;
   color: #999;
 }
-
 .wt-close:hover {
   color: #fff;
 }
