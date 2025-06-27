@@ -4,18 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Watchtower Dashboard</title>
-  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="watchtower.css" />
 </head>
 <body>
-  <div class="wt-container">
-    <header>
-      <h1 class="wt-header">🧭 Threads of Civic Insight</h1>
-      <p>Harvested and interpreted from the evolving landscape of governance and community action.</p>
-    </header>
+  <section class="wt-banner">
+    <h2>🧭 Threads of Civic Insight</h2>
+    <p class="wt-subtitle">Harvested and interpreted from the evolving landscape of governance and community action.</p>
 
-    <main class="wt-dashboard"></main>
+    <div style="text-align: center; margin-top: 1rem;">
+      <a href="#wt-insights" class="wt-action">↓ View Insights</a>
+    </div>
+  </section>
+
+  <div class="wt-container">
+    <main id="wt-insights" class="wt-dashboard"></main>
   </div>
 
-  <script src="watchtower.js"></script>
+  <script type="module" src="watchtower.js"></script>
 </body>
 </html>
