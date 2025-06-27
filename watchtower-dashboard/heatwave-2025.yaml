@@ -1,0 +1,26 @@
+// 📦 Lightweight YAML parser for browsers
+import yaml from 'https://cdn.skypack.dev/js-yaml@4.1.0';
+
+// 🧠 Load a theme by name, falling back to YAML if JSON is missing
+export async function loadTheme(themeName) {
+  const jsonURL = `/data/${themeName}.json`;
+  const yamlURL = `/themes/${themeName}.yaml`;
+
+  try {
+    const jsonRes = await fetch(jsonURL);
+    if (jsonRes.ok) {
+      const json = await jsonRes.json();
+      return json;
+    }
+
+    const yamlRes = await fetch(yamlURL);
+    if (!yamlRes.ok) throw new Error('Theme not found.');
+    const rawYAML = await yamlRes.text();
+    const parsedYAML = yaml.load(rawYAML);
+
+    return parsedYAML;
+  } catch (err) {
+    console.error(`Failed to load theme "${themeName}":`, err.message);
+    return null;
+  }
+}

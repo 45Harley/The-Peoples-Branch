@@ -1,99 +1,118 @@
-/* === Base Styles (Original) === */
 body {
-  background-color: #000;
-  color: #eee;
   font-family: system-ui, sans-serif;
   margin: 0;
-  padding: 2em;
-}
-.container {
-  max-width: 960px;
-  margin: auto;
-}
-header h1 { color: #6cf; }
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1em;
-  margin-top: 2em;
-}
-.card {
-  background: #111;
-  padding: 1.5em;
-  border: 1px solid #333;
-  border-radius: 8px;
-}
-.insight {
-  color: #ccc;
-}
-a { color: #6cf; text-decoration: none; }
-
-.modal {
-  display: none; /* Add JS to toggle visibility */
+  padding: 0;
+  background-color: #f5f7fa;
+  color: #222;
 }
 
-
-/* === WATCHTOWER MODULE STYLES START === */
+header {
+  background-color: white;
+  padding: 2rem 1rem 0.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
 
 .wt-container {
-  background-color: #000;
-  color: #eee;
-  font-family: system-ui, sans-serif;
-  padding: 2em;
-  max-width: 960px;
-  margin: auto;
-}
-.wt-header {
-  color: #6cf;
-  margin-bottom: 1em;
-}
-.wt-dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1em;
-  margin-top: 2em;
-}
-.wt-card {
-  background: #111;
-  padding: 1.5em;
-  border: 1px solid #333;
-  border-radius: 8px;
-}
-.wt-card h2 {
-  margin-top: 0;
-}
-.wt-insight {
-  color: #ccc;
-}
-.wt-link {
-  color: #6cf;
-  text-decoration: none;
-}
-.wt-modal {
-  display: none;
-  background: rgba(0, 0, 0, 0.95);
-  color: #eee;
-  padding: 2em;
-  position: fixed;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: auto;
-  border: 1px solid #444;
-  border-radius: 12px;
-  z-index: 1000;
-}
-.wt-modal a {
-  color: #6cf;
-  text-decoration: underline;
-}
-.wt-resonance {
-  color: #6cf;
-}
-.wt-action {
-  color: #f8f;
-  margin-top: 1em;
-  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 2rem; /* extra space below header */
 }
 
-/* === WATCHTOWER MODULE STYLES END === */
+.wt-header {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.wt-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.wt-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex: 1 1 calc(30% - 2rem);
+  min-width: 280px;
+  max-width: 400px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.wt-insight {
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.wt-link {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.wt-link:hover {
+  text-decoration: underline;
+}
+
+.wt-action {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0 0;
+  background: #e8f0fe;
+  color: #003366;
+  padding: 0.4rem 0.75rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.wt-action:hover {
+  background: #d2e3fc;
+}
+
+.wt-modal {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.wt-modal .wt-card {
+  margin: 5% auto;
+  max-width: 600px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.wt-resonance {
+  font-weight: bold;
+  color: #006699;
+}
+
+.wt-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.wt-close:hover {
+  color: #000;
+}
