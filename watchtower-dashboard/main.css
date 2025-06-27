@@ -1,4 +1,4 @@
-/* 🌙 Base - shared across all pages */
+/* 🌙 Base Styling for All Pages */
 body {
   font-family: Georgia, serif;
   background-color: #111;
@@ -37,17 +37,65 @@ a {
   color: #66baff;
   text-decoration: none;
 }
+
 a:hover {
   color: #99ccff;
   text-decoration: underline;
 }
 
-/* 📦 Layout for dashboard spacing */
-.wt-container {
-  max-width: 1200px;
+/* 🌀 Page Intro Block */
+.intro {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 3em;
+  color: #ccc;
+}
+
+/* 📜 Footer for Leaf Pages */
+footer {
+  margin-top: 4em;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+  font-style: italic;
+}
+
+/* 🌐 Truth Map Layout */
+.map {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 1rem;
-  padding-top: 2rem;
+}
+
+.zone {
+  border-left: 4px solid #776b5d;
+  padding-left: 1em;
+}
+
+.zone h2 {
+  margin-top: 0;
+  color: #ffdb5c;
+}
+
+.zone ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.zone li {
+  margin-bottom: 0.5em;
+}
+
+.zone a {
+  text-decoration: none;
+  color: #66baff;
+}
+
+.zone a:hover {
+  text-decoration: underline;
+  color: #99ccff;
 }
 
 /* 🧭 Watchtower Banner */
@@ -73,7 +121,14 @@ a:hover {
   max-width: 40rem;
 }
 
-/* 🧊 Insight Cards */
+/* 📦 Dashboard Container */
+.wt-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+
 .wt-header {
   margin: 0;
   font-size: 2rem;
@@ -88,6 +143,7 @@ a:hover {
   margin-top: 2rem;
 }
 
+/* 🧊 Insight Cards */
 .wt-card {
   background-color: #1a1a1a;
   border-radius: 8px;
@@ -115,7 +171,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 🧷 Action Button */
+/* 🧷 Action Buttons */
 .wt-action {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
@@ -127,11 +183,12 @@ a:hover {
   font-size: 0.9rem;
   border: 1px solid #e6c84a;
 }
+
 .wt-action:hover {
   background: #222;
 }
 
-/* 🪟 Modal */
+/* 🪟 Modal Window */
 .wt-modal {
   display: none;
   position: fixed;
@@ -146,7 +203,7 @@ a:hover {
   box-sizing: border-box;
 }
 
-/* 🖤 Dark Modal Content */
+/* 🖤 Modal Card Content */
 .wt-modal .wt-card {
   margin: 5% auto;
   max-width: 600px;
@@ -160,6 +217,7 @@ a:hover {
 .wt-modal .wt-card a {
   color: #66baff;
 }
+
 .wt-modal .wt-card a:hover {
   color: #99ccff;
   text-decoration: underline;
@@ -187,6 +245,7 @@ a:hover {
   font-size: 1.2rem;
   color: #999;
 }
+
 .wt-close:hover {
   color: #fff;
 }
