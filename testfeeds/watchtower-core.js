@@ -1,9 +1,7 @@
-// testfeeds/watchtower-core.js
-
 const feedSources = {
   npr: "https://feeds.npr.org/1004/rss.xml",
   guardian: "https://www.theguardian.com/world/rss",
-  ap: "https://www.apnews.com/apf-intlnews?format=RSS",
+  ap: "https://apnews.com/apf-intlnews?format=RSS",
   dw: "https://rss.dw.com/rdf/rss-en-world",
   aljazeera: "https://www.aljazeera.com/xml/rss/all.xml"
 };
@@ -29,17 +27,18 @@ async function loadFeed() {
     display.innerHTML = "";
 
     data.items.slice(0, 5).forEach(item => {
-      const box = document.createElement("div");
-      box.className = "feed-box";
-      box.innerHTML = `
-        <div class="entry">
-          <div class="timestamp">${new Date(item.pubDate).toLocaleString()}</div>
-          <strong>${item.title}</strong>
-          <p>${item.description}</p>
-          <div><a href="${item.link}" target="_blank">🔗 Read more</a></div>
-        </div>
-      `;
-      display.appendChild(box);
+      const echo = {
+        title: item.title,
+        description: item.description,
+        origin: key.toUpperCase(),
+        evaluated: {
+          degree: 2,
+          tone: "curiosity",
+          zone: "summit",
+          markers: ["signal"]
+        }
+      };
+      logEcho(echo);
     });
   } catch (err) {
     console.error("Feed error:", err);
@@ -48,9 +47,27 @@ async function loadFeed() {
 }
 
 function saveEchoes() {
-  alert("Save Echoes clicked. You can now export or extend this.");
+  if (!window.inMemoryLog || window.inMemoryLog.length === 0) {
+    alert("No echoes to save.");
+    return;
+  }
+
+  const dateStr = new Date().toISOString().split("T")[0];
+  const filename = `log-${dateStr}.json`;
+  const json = JSON.stringify(window.inMemoryLog, null, 2);
+
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
-// Expose globally
 window.loadFeed = loadFeed;
 window.saveEchoes = saveEchoes;
