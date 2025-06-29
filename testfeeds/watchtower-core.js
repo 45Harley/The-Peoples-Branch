@@ -5,10 +5,10 @@ const feedSelect = document.getElementById('feedDropdown');
 const pulseButton = document.getElementById('pulseButton');
 const echoLog = document.getElementById('echoLog');
 
-// Load YAML and populate feed selector
+// Load feeds-source.yaml from same directory
 async function loadFeeds() {
   try {
-    const res = await fetch('./testfeeds/feeds-source.yaml');
+    const res = await fetch('./feeds-source.yaml');
     const text = await res.text();
     const data = jsyaml.load(text);
     feeds = data.feeds || [];
@@ -27,12 +27,12 @@ async function loadFeeds() {
   }
 }
 
-// On dropdown change
+// On feed change
 feedSelect.addEventListener('change', (e) => {
   currentFeed = e.target.value;
 });
 
-// On pulse
+// Pulse selected feed
 pulseButton.addEventListener('click', async () => {
   const selected = feeds.find(f => f.key === currentFeed);
   if (!selected) return;
