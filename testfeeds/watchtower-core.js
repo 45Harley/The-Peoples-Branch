@@ -5,7 +5,9 @@ const feedSelect = document.getElementById('feedDropdown');
 const pulseButton = document.getElementById('pulseButton');
 const echoLog = document.getElementById('echoLog');
 
-// Load feeds-source.yaml (same dir as HTML)
+const corsProxy = 'https://api.allorigins.win/raw?url=';
+
+// Load feeds-source.yaml (same directory as HTML)
 async function loadFeeds() {
   const yamlPath = './feeds-source.yaml';
   console.log(`🔍 Attempting to fetch: ${yamlPath}`);
@@ -46,8 +48,11 @@ pulseButton.addEventListener('click', async () => {
   const selected = feeds.find(f => f.key === currentFeed);
   if (!selected) return;
 
+  const proxiedURL = corsProxy + encodeURIComponent(selected.url);
+  console.log(`🌐 Pinging feed via CORS proxy:\n${proxiedURL}`);
+
   try {
-    const res = await fetch(selected.url);
+    const res = await fetch(proxiedURL);
     const xmlText = await res.text();
     const parser = new DOMParser();
     const xml = parser.parseFromString(xmlText, 'text/xml');
@@ -75,7 +80,7 @@ pulseButton.addEventListener('click', async () => {
 
   } catch (err) {
     console.error('⚠️ Pulse failed for:', selected.label, err);
-    echoLog.innerHTML = `<p><em>Unable to fetch: ${selected.label}</em></p>`;
+    echoLog.innerHTML = `<p><em>Unable to fetch: ${selected.label} (via CORS proxy)</em></p>`;
   }
 });
 
