@@ -1,22 +1,19 @@
-import fs from 'fs';
-import yaml from 'js-yaml';
+let feeds = [];
+let currentFeed = null;
 
 const feedSelect = document.getElementById('feedDropdown');
 const pulseButton = document.getElementById('pulseButton');
 const echoLog = document.getElementById('echoLog');
 
-let feeds = []; // populated from YAML
-let currentFeed = null;
-
-// Load YAML and populate dropdown
-function loadFeeds() {
+// Load YAML and populate feed selector
+async function loadFeeds() {
   try {
-    const file = fs.readFileSync('./testfeeds/feeds-source.yaml', 'utf8');
-    const data = yaml.load(file);
+    const res = await fetch('./testfeeds/feeds-source.yaml');
+    const text = await res.text();
+    const data = jsyaml.load(text);
+    feeds = data.feeds || [];
 
-    feeds = data.feeds;
-    feedSelect.innerHTML = ''; // clear old options
-
+    feedSelect.innerHTML = '';
     feeds.forEach(feed => {
       const option = document.createElement('option');
       option.value = feed.key;
@@ -30,59 +27,46 @@ function loadFeeds() {
   }
 }
 
-// Watch for feed selection
-feedSelect.addEventListener('change', e => {
+// On dropdown change
+feedSelect.addEventListener('change', (e) => {
   currentFeed = e.target.value;
 });
 
-// Pulse button logic
-pulseButton.addEventListener('click', () => {
-  const selectedFeed = feeds.find(f => f.key === currentFeed);
-  if (!selectedFeed) {
-    console.warn('No feed selected.');
-    return;
-  }
+// On pulse
+pulseButton.addEventListener('click', async () => {
+  const selected = feeds.find(f => f.key === currentFeed);
+  if (!selected) return;
 
-  fetch(selectedFeed.url)
-    .then(res => res.text())
-    .then(data => {
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(data, 'text/xml');
-      const items = Array.from(xml.querySelectorAll('item'));
+  try {
+    const res = await fetch(selected.url);
+    const xmlText = await res.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, 'text/xml');
+    const items = Array.from(xml.querySelectorAll('item'));
 
-      items.forEach(item => {
-        const title = item.querySelector('title')?.textContent || '(No title)';
-        const pubDate = item.querySelector('pubDate')?.textContent || '';
-        const description = item.querySelector('description')?.textContent || '';
+    echoLog.innerHTML = '';
 
-        const entry = {
-          title,
-          description,
-          origin: selectedFeed.key,
-          method: 'pulse',
-          timestamp: new Date().toISOString(),
-          pubDate
-        };
+    items.slice(0, 5).forEach(item => {
+      const title = item.querySelector('title')?.textContent || '(No title)';
+      const description = item.querySelector('description')?.textContent || '';
+      const pubDate = item.querySelector('pubDate')?.textContent || '';
+      const link = item.querySelector('link')?.textContent || '';
 
-        logEcho(entry);
-      });
-    })
-    .catch(err => {
-      console.error('Feed fetch failed:', err);
+      const card = document.createElement('div');
+      card.className = 'echo-entry';
+      card.innerHTML = `
+        <h4>${title}</h4>
+        <p><em>${pubDate} | ${selected.label}</em></p>
+        <p>${description}</p>
+        <a href="${link}" target="_blank">Read more →</a>
+      `;
+      echoLog.appendChild(card);
     });
-});
 
-// Echo logging (basic Phase 1 version)
-function logEcho(entry) {
-  const logItem = document.createElement('div');
-  logItem.className = 'echo-entry';
-  logItem.innerHTML = `
-    <h4>${entry.title}</h4>
-    <p><em>${entry.origin} | ${entry.pubDate}</em></p>
-    <p>${entry.description}</p>
-    <hr/>
-  `;
-  echoLog.prepend(logItem);
-}
+  } catch (err) {
+    console.error('Pulse failed:', err);
+    echoLog.innerHTML = `<p><em>Unable to fetch feed: ${selected.label}</em></p>`;
+  }
+});
 
 loadFeeds();

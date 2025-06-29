@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Watchtower</title>
-  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./main.css" />
+
+  <!-- Load js-yaml for browser-based YAML parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 
   <style>
-    /* fallback style if main.css isn’t ready */
     body {
       background-color: #0e0e0e;
       color: #ddd;
@@ -28,6 +30,8 @@
       padding: 1em 0;
     }
   </style>
+
+  <script type="module" src="./watchtower-core.js"></script>
 </head>
 
 <body>
@@ -42,7 +46,5 @@
   <section id="echoLog" style="margin-top: 2em;">
     <p><em>No echoes yet…</em></p>
   </section>
-
-  <script type="module" src="./watchtower-core.js"></script>
 </body>
 </html>
