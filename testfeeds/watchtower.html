@@ -17,6 +17,7 @@
       background: #333; color: #fff; border: 1px solid #555; padding: 0.4em 0.8em;
     }
   </style>
+  <script src="../watchtower-dashboard/resonance-summary.js"></script>
 </head>
 <body>
   <h2>🛰️ Watchtower · Echo Scope</h2>
@@ -24,11 +25,10 @@
   <div class="control-bar">
     <select id="feedSelect">
       <option value="">-- Select Feed --</option>
-      <option value="npr">NPR World</option>
-      <option value="guardian">The Guardian World</option>
-      <option value="ap">AP World</option>
-      <option value="dw">DW News</option>
-      <option value="aljazeera">Al Jazeera</option>
+      <option value="bbc">BBC World News</option>
+      <option value="nasa">NASA Breaking News</option>
+      <option value="mozilla">Mozilla Blog</option>
+      <option value="github">GitHub Blog</option>
     </select>
     <button onclick="loadFeed()">Pulse</button>
     <button onclick="saveEchoes()">📥 Save Echoes</button>
@@ -54,7 +54,6 @@
   </div>
 
   <script type="module" src="watchtower-core.js"></script>
-  <script src="../watchtower-dashboard/resonance-summary.js"></script>
 
   <script>
     window.inMemoryLog = [];
@@ -80,7 +79,7 @@
       const container = document.getElementById("ledgerDisplay");
       container.innerHTML = "";
       log.forEach(entry => container.appendChild(renderLedgerEcho(entry)));
-      document.getElementById("whisper").textContent = summarizeLedger(log);
+      document.getElementById("whisper").textContent = window.summarizeLedger(log);
     }
 
     function scrollToLedgerTop() {
@@ -104,7 +103,7 @@
       window.inMemoryLog.push(entry);
       const container = document.getElementById("ledgerDisplay");
       container.appendChild(renderLedgerEcho(entry));
-      document.getElementById("whisper").textContent = summarizeLedger(window.inMemoryLog);
+      document.getElementById("whisper").textContent = window.summarizeLedger(window.inMemoryLog);
     }
 
     document.getElementById("logSource").addEventListener("change", function () {
