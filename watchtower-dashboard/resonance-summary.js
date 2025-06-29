@@ -1,4 +1,4 @@
-function summarizeLedger(log) {
+ function summarizeLedger(log) {
   if (!log || log.length === 0) return "🌀 No echoes recorded.";
 
   const zones = {}, tones = {}, markers = {};
