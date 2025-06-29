@@ -9,8 +9,8 @@ async function loadFeed() {
   const select = document.getElementById("feedSelect");
   const key = select.value;
   const url = feedSources[key];
-
   const display = document.getElementById("feedDisplay");
+
   display.innerHTML = "⏳ Loading feed…";
 
   if (!url) {
@@ -23,14 +23,20 @@ async function loadFeed() {
   try {
     const res = await fetch(api);
     const data = await res.json();
-    display.innerHTML = "";
 
-    if (!data.items || !data.items.length) {
-      display.innerHTML = "📭 No items found in feed.";
+    if (data.status === "error" || !data.items || !data.items.length) {
+      console.warn(`[${key.toUpperCase()}] returned no usable items.`);
+      display.innerHTML = `🚫 Feed "${key}" responded but was empty or errored.`;
       return;
     }
 
+    display.innerHTML = ""; // Clear UI
+
+    let echoCount = 0;
+
     data.items.slice(0, 5).forEach(item => {
+      if (!item.title || !item.description) return;
+
       const echo = {
         title: item.title,
         description: item.description,
@@ -42,11 +48,18 @@ async function loadFeed() {
           markers: ["signal"]
         }
       };
+
       logEcho(echo);
+      echoCount++;
     });
+
+    if (echoCount === 0) {
+      display.innerHTML = `📭 Feed loaded but had no usable echoes.`;
+    }
+
   } catch (err) {
-    console.error("Feed error:", err);
-    display.innerHTML = "🚫 Failed to fetch feed.";
+    console.error(`Feed error [${key}]:`, err);
+    display.innerHTML = `🚫 Failed to fetch feed "${key}". Check console for details.`;
   }
 }
 
