@@ -1,9 +1,8 @@
 const feedSources = {
-  npr: "https://feeds.npr.org/1004/rss.xml",
-  guardian: "https://www.theguardian.com/world/rss",
-  ap: "https://apnews.com/apf-intlnews?format=RSS",
-  dw: "https://rss.dw.com/rdf/rss-en-world",
-  aljazeera: "https://www.aljazeera.com/xml/rss/all.xml"
+  bbc: "https://feeds.bbci.co.uk/news/world/rss.xml",
+  nasa: "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+  mozilla: "https://blog.mozilla.org/feed/",
+  github: "https://github.blog/feed/"
 };
 
 async function loadFeed() {
@@ -25,6 +24,11 @@ async function loadFeed() {
     const res = await fetch(api);
     const data = await res.json();
     display.innerHTML = "";
+
+    if (!data.items || !data.items.length) {
+      display.innerHTML = "📭 No items found in feed.";
+      return;
+    }
 
     data.items.slice(0, 5).forEach(item => {
       const echo = {
