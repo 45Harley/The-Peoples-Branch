@@ -7,8 +7,15 @@ const echoLog = document.getElementById('echoLog');
 
 // Load feeds-source.yaml (same dir as HTML)
 async function loadFeeds() {
+  const yamlPath = './feeds-source.yaml';
+  console.log(`🔍 Attempting to fetch: ${yamlPath}`);
+
   try {
-    const res = await fetch('./feeds-source.yaml'); // ✅ fixed path
+    const res = await fetch(yamlPath);
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    }
+
     const text = await res.text();
     const data = jsyaml.load(text);
     feeds = data.feeds || [];
@@ -22,9 +29,10 @@ async function loadFeeds() {
     });
 
     currentFeed = feeds[0]?.key;
+    console.log(`✅ Loaded ${feeds.length} feeds from ${yamlPath}`);
   } catch (err) {
-    console.error('Failed to load feeds-source.yaml:', err);
-    echoLog.innerHTML = `<p><em>Could not load feed sources.</em></p>`;
+    console.error('🚨 Failed to load feeds-source.yaml:', err);
+    echoLog.innerHTML = `<p><em>Could not load feed sources from <code>${yamlPath}</code>.</em></p>`;
   }
 }
 
@@ -66,7 +74,7 @@ pulseButton.addEventListener('click', async () => {
     });
 
   } catch (err) {
-    console.error('Pulse failed:', err);
+    console.error('⚠️ Pulse failed for:', selected.label, err);
     echoLog.innerHTML = `<p><em>Unable to fetch: ${selected.label}</em></p>`;
   }
 });
