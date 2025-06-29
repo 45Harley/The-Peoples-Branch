@@ -1,9 +1,7 @@
-export function summarizeLedger(log) {
+function summarizeLedger(log) {
   if (!log || log.length === 0) return "🌀 No echoes recorded.";
 
-  const zones = {};
-  const tones = {};
-  const markers = {};
+  const zones = {}, tones = {}, markers = {};
 
   log.forEach(entry => {
     const z = entry.evaluated?.zone || "unknown";
@@ -28,3 +26,5 @@ export function summarizeLedger(log) {
 
   return `🧭 Zone: ${zone} · 🎭 Tone: ${tone} · 🎯 Marker: ${marker} (top echo out of ${log.length})`;
 }
+
+window.summarizeLedger = summarizeLedger;
