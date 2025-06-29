@@ -1,90 +1,88 @@
-const feedSources = {
-  bbc: "https://feeds.bbci.co.uk/news/world/rss.xml",
-  nasa: "https://www.nasa.gov/rss/dyn/breaking_news.rss",
-  mozilla: "https://blog.mozilla.org/feed/",
-  github: "https://github.blog/feed/"
-};
+import fs from 'fs';
+import yaml from 'js-yaml';
 
-async function loadFeed() {
-  const select = document.getElementById("feedSelect");
-  const key = select.value;
-  const url = feedSources[key];
-  const display = document.getElementById("feedDisplay");
+const feedSelect = document.getElementById('feedDropdown');
+const pulseButton = document.getElementById('pulseButton');
+const echoLog = document.getElementById('echoLog');
 
-  display.innerHTML = "⏳ Loading feed…";
+let feeds = []; // populated from YAML
+let currentFeed = null;
 
-  if (!url) {
-    display.innerHTML = "⚠️ Please select a feed.";
-    return;
-  }
-
-  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
-
+// Load YAML and populate dropdown
+function loadFeeds() {
   try {
-    const res = await fetch(api);
-    const data = await res.json();
+    const file = fs.readFileSync('./testfeeds/feeds-source.yaml', 'utf8');
+    const data = yaml.load(file);
 
-    if (data.status === "error" || !data.items || !data.items.length) {
-      console.warn(`[${key.toUpperCase()}] returned no usable items.`);
-      display.innerHTML = `🚫 Feed "${key}" responded but was empty or errored.`;
-      return;
-    }
+    feeds = data.feeds;
+    feedSelect.innerHTML = ''; // clear old options
 
-    display.innerHTML = ""; // Clear UI
-
-    let echoCount = 0;
-
-    data.items.slice(0, 5).forEach(item => {
-      if (!item.title || !item.description) return;
-
-      const echo = {
-        title: item.title,
-        description: item.description,
-        origin: key.toUpperCase(),
-        evaluated: {
-          degree: 2,
-          tone: "curiosity",
-          zone: "summit",
-          markers: ["signal"]
-        }
-      };
-
-      logEcho(echo);
-      echoCount++;
+    feeds.forEach(feed => {
+      const option = document.createElement('option');
+      option.value = feed.key;
+      option.textContent = feed.label;
+      feedSelect.appendChild(option);
     });
 
-    if (echoCount === 0) {
-      display.innerHTML = `📭 Feed loaded but had no usable echoes.`;
-    }
-
+    currentFeed = feeds[0]?.key;
   } catch (err) {
-    console.error(`Feed error [${key}]:`, err);
-    display.innerHTML = `🚫 Failed to fetch feed "${key}". Check console for details.`;
+    console.error('Failed to load feeds-source.yaml:', err);
   }
 }
 
-function saveEchoes() {
-  if (!window.inMemoryLog || window.inMemoryLog.length === 0) {
-    alert("No echoes to save.");
+// Watch for feed selection
+feedSelect.addEventListener('change', e => {
+  currentFeed = e.target.value;
+});
+
+// Pulse button logic
+pulseButton.addEventListener('click', () => {
+  const selectedFeed = feeds.find(f => f.key === currentFeed);
+  if (!selectedFeed) {
+    console.warn('No feed selected.');
     return;
   }
 
-  const dateStr = new Date().toISOString().split("T")[0];
-  const filename = `log-${dateStr}.json`;
-  const json = JSON.stringify(window.inMemoryLog, null, 2);
+  fetch(selectedFeed.url)
+    .then(res => res.text())
+    .then(data => {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(data, 'text/xml');
+      const items = Array.from(xml.querySelectorAll('item'));
 
-  const blob = new Blob([json], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
+      items.forEach(item => {
+        const title = item.querySelector('title')?.textContent || '(No title)';
+        const pubDate = item.querySelector('pubDate')?.textContent || '';
+        const description = item.querySelector('description')?.textContent || '';
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.style.display = "none";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+        const entry = {
+          title,
+          description,
+          origin: selectedFeed.key,
+          method: 'pulse',
+          timestamp: new Date().toISOString(),
+          pubDate
+        };
+
+        logEcho(entry);
+      });
+    })
+    .catch(err => {
+      console.error('Feed fetch failed:', err);
+    });
+});
+
+// Echo logging (basic Phase 1 version)
+function logEcho(entry) {
+  const logItem = document.createElement('div');
+  logItem.className = 'echo-entry';
+  logItem.innerHTML = `
+    <h4>${entry.title}</h4>
+    <p><em>${entry.origin} | ${entry.pubDate}</em></p>
+    <p>${entry.description}</p>
+    <hr/>
+  `;
+  echoLog.prepend(logItem);
 }
 
-window.loadFeed = loadFeed;
-window.saveEchoes = saveEchoes;
+loadFeeds();

@@ -2,132 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Watchtower · Echo Scope</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Watchtower</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+
   <style>
-    body { background: #111; color: #eee; font-family: sans-serif; padding: 1em; }
-    .control-bar { margin-bottom: 1em; display: flex; gap: 1em; flex-wrap: wrap; }
-    .ledger-section { margin-top: 4em; border-top: 1px solid #444; padding-top: 2em; }
-    .echo-card { background: #222; border-left: 5px solid #666; margin: 1em 0; padding: 1em; border-radius: 4px; }
-    .echo-card.degree-1 { border-color: #f66; }
-    .echo-card.degree-2 { border-color: #fc3; }
-    .echo-card.degree-3 { border-color: #6f6; }
-    .echo-card small { color: #aaa; font-size: 0.8em; }
-    #whisper { font-style: italic; color: #ccc; margin-bottom: 1em; }
-    select, button, input[type="file"] {
-      background: #333; color: #fff; border: 1px solid #555; padding: 0.4em 0.8em;
+    /* fallback style if main.css isn’t ready */
+    body {
+      background-color: #0e0e0e;
+      color: #ddd;
+      font-family: system-ui, sans-serif;
+      padding: 2em;
+    }
+    select, button {
+      font-size: 1em;
+      padding: 0.4em 0.7em;
+      margin-right: 1em;
+      background: #222;
+      color: #eee;
+      border: 1px solid #555;
+      border-radius: 4px;
+    }
+    .echo-entry {
+      border-bottom: 1px solid #444;
+      padding: 1em 0;
     }
   </style>
-  <script src="../watchtower-dashboard/resonance-summary.js"></script>
 </head>
+
 <body>
-  <h2>🛰️ Watchtower · Echo Scope</h2>
+  <h1>Watchtower 📡</h1>
 
-  <div class="control-bar">
-    <select id="feedSelect">
-      <option value="">-- Select Feed --</option>
-      <option value="bbc">BBC World News</option>
-      <option value="nasa">NASA Breaking News</option>
-      <option value="mozilla">Mozilla Blog</option>
-      <option value="github">GitHub Blog</option>
-    </select>
-    <button onclick="loadFeed()">Pulse</button>
-    <button onclick="saveEchoes()">📥 Save Echoes</button>
+  <div id="controls">
+    <label for="feedDropdown">Choose a feed:</label>
+    <select id="feedDropdown"></select>
+    <button id="pulseButton">Pulse</button>
   </div>
 
-  <div id="feedDisplay"></div>
+  <section id="echoLog" style="margin-top: 2em;">
+    <p><em>No echoes yet…</em></p>
+  </section>
 
-  <div class="ledger-section">
-    <h3>📡 Resonance Ledger</h3>
-    <div id="whisper">🌀 No ledger loaded yet.</div>
-
-    <div class="control-bar">
-      <select id="logSource">
-        <option value="current">(current memory)</option>
-        <option value="upload">Upload from file…</option>
-      </select>
-      <input type="file" id="logSelector" accept=".json" style="display: none;" />
-      <button onclick="scrollToLedgerTop()">🔝 Top</button>
-      <button onclick="scrollToLedgerBottom()">🔚 Bottom</button>
-    </div>
-
-    <div id="ledgerDisplay"></div>
-  </div>
-
-  <script type="module" src="watchtower-core.js"></script>
-
-  <script>
-    window.inMemoryLog = [];
-
-    function renderLedgerEcho(entry) {
-      const d = entry.evaluated?.degree || 0;
-      const zone = entry.evaluated?.zone || "unknown";
-      const tone = entry.evaluated?.tone || "neutral";
-      const markers = (entry.evaluated?.markers || []).join(", ");
-      const card = document.createElement("div");
-      card.className = `echo-card degree-${d}`;
-      card.innerHTML = `
-        <strong>${entry.title}</strong><br>
-        <small>${entry.timestamp} — <em>${entry.origin}</em></small>
-        <p>${entry.description}</p>
-        <small>🎚️ Degree ${d}, 🧭 Zone: ${zone}, Tone: ${tone}</small><br>
-        <small>🎯 Markers: ${markers}</small>
-      `;
-      return card;
-    }
-
-    function renderLog(log) {
-      const container = document.getElementById("ledgerDisplay");
-      container.innerHTML = "";
-      log.forEach(entry => container.appendChild(renderLedgerEcho(entry)));
-      document.getElementById("whisper").textContent = window.summarizeLedger(log);
-    }
-
-    function scrollToLedgerTop() {
-      window.scrollTo({ top: document.querySelector('.ledger-section').offsetTop, behavior: 'smooth' });
-    }
-
-    function scrollToLedgerBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-
-    function logEcho(entry) {
-      entry.timestamp = new Date().toISOString();
-      entry.origin = entry.origin || "manual";
-      entry.evaluated = entry.evaluated || {
-        degree: 2,
-        tone: "wonder",
-        zone: "summit",
-        markers: ["truth"]
-      };
-
-      window.inMemoryLog.push(entry);
-      const container = document.getElementById("ledgerDisplay");
-      container.appendChild(renderLedgerEcho(entry));
-      document.getElementById("whisper").textContent = window.summarizeLedger(window.inMemoryLog);
-    }
-
-    document.getElementById("logSource").addEventListener("change", function () {
-      const value = this.value;
-      const fileInput = document.getElementById("logSelector");
-
-      if (value === "upload") {
-        fileInput.click();
-      } else {
-        renderLog(window.inMemoryLog);
-      }
-    });
-
-    document.getElementById("logSelector").addEventListener("change", function (event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const log = JSON.parse(e.target.result);
-        window.inMemoryLog = log;
-        renderLog(log);
-      };
-      reader.readAsText(file);
-    });
-  </script>
+  <script type="module" src="./watchtower-core.js"></script>
 </body>
 </html>

@@ -1,70 +1,63 @@
-eeds-sourcy.yaml:feeds:
+feeds:
+  - key: theatlantic
+    label: The Atlantic
+    url: https://www.theatlantic.com/feed/all/
+    allowPulse: true
+    moralLens: ["governance", "grief", "justice"]
+    rating: 4
+
+  - key: csmonitor
+    label: The Christian Science Monitor
+    url: https://rss.csmonitor.com/feeds/all
+    allowPulse: true
+    moralLens: ["ethics", "internationalism", "resilience"]
+    rating: 4
+
+  - key: reuters
+    label: Reuters World News
+    url: https://www.reutersagency.com/feed/?best-topics=world&post_type=best
+    allowPulse: true
+    moralLens: ["signal", "geopolitics", "truth"]
+    rating: 5
+
+  - key: aljazeera
+    label: Al Jazeera English
+    url: https://www.aljazeera.com/xml/rss/all.xml
+    allowPulse: true
+    moralLens: ["justice", "conflict", "human rights"]
+    rating: 5
+
+  - key: guardian
+    label: The Guardian (World)
+    url: https://www.theguardian.com/world/rss
+    allowPulse: true
+    moralLens: ["climate", "inequality", "truth"]
+    rating: 5
+
+  - key: nasa
+    label: NASA Earth Observatory
+    url: https://earthobservatory.nasa.gov/feeds/rss/all
+    allowPulse: true
+    moralLens: ["ecology", "awe", "signal"]
+    rating: 4
+
   - key: bbc
     label: BBC World News
     url: https://feeds.bbci.co.uk/news/world/rss.xml
-    active: true
-    rating: 4.8
-    issues: []
-    moralLens:
-      credibility: 4.7
-      inclusivity: 4.2
-      sensationalism: 1.9
-      emotionalTone: "measured"
-      knownBiases: ["public-service", "UK perspective"]
-      ethicalThemes: ["conflict", "governance", "disaster relief"]
-
-  - key: nasa
-    label: NASA Breaking News
-    url: https://www.nasa.gov/rss/dyn/breaking_news.rss
-    active: true
-    rating: 4.5
-    issues: []
-    moralLens:
-      credibility: 5.0
-      inclusivity: 3.0
-      sensationalism: 0.5
-      emotionalTone: "factual"
-      knownBiases: ["pro-STEM", "US federal science"]
-      ethicalThemes: ["exploration", "climate monitoring", "transparency"]
+    allowPulse: true
+    moralLens: ["signal", "governance", "urgency"]
+    rating: 4
 
   - key: mozilla
     label: Mozilla Blog
     url: https://blog.mozilla.org/feed/
-    active: true
-    rating: 4.2
-    issues: []
-    moralLens:
-      credibility: 4.0
-      inclusivity: 4.0
-      sensationalism: 0.9
-      emotionalTone: "advocacy"
-      knownBiases: ["pro-open web", "anti-surveillance"]
-      ethicalThemes: ["privacy", "digital rights", "community empowerment"]
+    allowPulse: true
+    moralLens: ["privacy", "open web", "ethics"]
+    rating: 3
 
   - key: github
     label: GitHub Blog
     url: https://github.blog/feed/
-    active: true
-    rating: 3.7
-    issues: []
-    moralLens:
-      credibility: 4.2
-      inclusivity: 2.5
-      sensationalism: 1.2
-      emotionalTone: "corporate-casual"
-      knownBiases: ["developer-centric", "platform-positive"]
-      ethicalThemes: ["automation", "open-source", "collaboration"]
-
-  - key: guardian
-    label: The Guardian World
-    url: https://www.theguardian.com/world/rss
-    active: false
-    rating: 2.8
-    issues: ["CORS blocked on GitHub Pages"]
-    moralLens:
-      credibility: 4.3
-      inclusivity: 4.6
-      sensationalism: 2.4
-      emotionalTone: "urgent"
-      knownBiases: ["center-left", "UK-centric"]
-      ethicalThemes: ["inequality", "justice", "environment"]
+    allowPulse: true
+    moralLens: ["technology", "collaboration", "signal"]
+    rating: 3
