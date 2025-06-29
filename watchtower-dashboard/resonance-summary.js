@@ -1,39 +1,30 @@
-// watchtower-dashboard/resonance-summary.js
+export function summarizeLedger(log) {
+  if (!log || log.length === 0) return "🌀 No echoes recorded.";
 
-function summarizeLedger(log) {
-  if (!Array.isArray(log)) return "🌀 No echoes loaded.";
-
-  const tally = {
-    degree: {},
-    zone: {},
-    tone: {},
-    markers: {}
-  };
+  const zones = {};
+  const tones = {};
+  const markers = {};
 
   log.forEach(entry => {
-    const e = entry.evaluated || {};
-    tally.degree[e.degree] = (tally.degree[e.degree] || 0) + 1;
-    tally.zone[e.zone] = (tally.zone[e.zone] || 0) + 1;
-    tally.tone[e.tone] = (tally.tone[e.tone] || 0) + 1;
-    if (Array.isArray(e.markers)) {
-      e.markers.forEach(m => tally.markers[m] = (tally.markers[m] || 0) + 1);
-    }
+    const z = entry.evaluated?.zone || "unknown";
+    const t = entry.evaluated?.tone || "neutral";
+    const m = entry.evaluated?.markers || [];
+
+    zones[z] = (zones[z] || 0) + 1;
+    tones[t] = (tones[t] || 0) + 1;
+    m.forEach(marker => {
+      markers[marker] = (markers[marker] || 0) + 1;
+    });
   });
 
-  function topOf(obj) {
-    return Object.entries(obj).sort((a, b) => b[1] - a[1])[0]?.[0] || "unknown";
-  }
+  const top = (map) =>
+    Object.entries(map)
+      .sort((a, b) => b[1] - a[1])
+      .map(e => e[0])[0];
 
-  const topZone = topOf(tally.zone);
-  const topTone = topOf(tally.tone);
-  const topDegree = topOf(tally.degree);
-  const markers = Object.entries(tally.markers)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(pair => pair[0]);
+  const zone = top(zones);
+  const tone = top(tones);
+  const marker = top(markers);
 
-  return `🧭 Echoes cluster in the ${topZone}, carrying a tone of ${topTone}, with top markers: ${markers.join(", ")} (degree ${topDegree}).`;
+  return `🧭 Zone: ${zone} · 🎭 Tone: ${tone} · 🎯 Marker: ${marker} (top echo out of ${log.length})`;
 }
-
-// Expose for use in the page
-window.summarizeLedger = summarizeLedger;

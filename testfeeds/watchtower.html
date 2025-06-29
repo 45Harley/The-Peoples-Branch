@@ -41,10 +41,15 @@
     <div id="whisper">🌀 No ledger loaded yet.</div>
 
     <div class="control-bar">
-      <input type="file" id="logSelector" accept=".json">
+      <select id="logSource">
+        <option value="current">(current memory)</option>
+        <option value="upload">Upload from file…</option>
+      </select>
+      <input type="file" id="logSelector" accept=".json" style="display: none;" />
       <button onclick="scrollToLedgerTop()">🔝 Top</button>
       <button onclick="scrollToLedgerBottom()">🔚 Bottom</button>
     </div>
+
     <div id="ledgerDisplay"></div>
   </div>
 
@@ -52,6 +57,8 @@
   <script src="../watchtower-dashboard/resonance-summary.js"></script>
 
   <script>
+    window.inMemoryLog = [];
+
     function renderLedgerEcho(entry) {
       const d = entry.evaluated?.degree || 0;
       const zone = entry.evaluated?.zone || "unknown";
@@ -69,6 +76,13 @@
       return card;
     }
 
+    function renderLog(log) {
+      const container = document.getElementById("ledgerDisplay");
+      container.innerHTML = "";
+      log.forEach(entry => container.appendChild(renderLedgerEcho(entry)));
+      document.getElementById("whisper").textContent = summarizeLedger(log);
+    }
+
     function scrollToLedgerTop() {
       window.scrollTo({ top: document.querySelector('.ledger-section').offsetTop, behavior: 'smooth' });
     }
@@ -77,17 +91,41 @@
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
-    document.getElementById("logSelector").addEventListener("change", function(event) {
+    function logEcho(entry) {
+      entry.timestamp = new Date().toISOString();
+      entry.origin = entry.origin || "manual";
+      entry.evaluated = entry.evaluated || {
+        degree: 2,
+        tone: "wonder",
+        zone: "summit",
+        markers: ["truth"]
+      };
+
+      window.inMemoryLog.push(entry);
+      const container = document.getElementById("ledgerDisplay");
+      container.appendChild(renderLedgerEcho(entry));
+      document.getElementById("whisper").textContent = summarizeLedger(window.inMemoryLog);
+    }
+
+    document.getElementById("logSource").addEventListener("change", function () {
+      const value = this.value;
+      const fileInput = document.getElementById("logSelector");
+
+      if (value === "upload") {
+        fileInput.click();
+      } else {
+        renderLog(window.inMemoryLog);
+      }
+    });
+
+    document.getElementById("logSelector").addEventListener("change", function (event) {
       const file = event.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         const log = JSON.parse(e.target.result);
-        const container = document.getElementById("ledgerDisplay");
-        container.innerHTML = '';
-        log.forEach(entry => container.appendChild(renderLedgerEcho(entry)));
-        document.getElementById("whisper").textContent = summarizeLedger(log);
+        window.inMemoryLog = log;
+        renderLog(log);
       };
       reader.readAsText(file);
     });
