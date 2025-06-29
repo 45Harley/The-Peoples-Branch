@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Echo Analyzer — Browser Test</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #ddd;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+      line-height: 1.5;
+    }
+    .echo-block {
+      border: 1px solid #444;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      background: #1a1a1a;
+    }
+    .degree-1 { border-left: 6px solid #cc3333; }
+    .degree-2 { border-left: 6px solid #fcbf49; }
+    .degree-3 { border-left: 6px solid #33cccc; }
+    .label { font-weight: bold; color: #888; }
+    .title { color: #fff; font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>🖤 Echo Analyzer — Browser Test</h1>
+  <div id="output"></div>
+
+  <script type="module">
+    import { analyzeMoralDegrees } from '../framework/moral-analyzer-browser.js';
+
+    const testEchoes = [
+      {
+        title: "Retaliation Erupts After Border Strike",
+        description: "Military leaders vow to retaliate. Civilians flee cities amid fear and fire."
+      },
+      {
+        title: "Community Mourns, Seeks Justice After Tragedy",
+        description: "Locals organize vigils and demand reform, expressing both grief and courage."
+      },
+      {
+        title: "In Stillness, They Found the Truth",
+        description: "Former enemies embrace. A shared silence dissolves years of pain."
+      }
+    ];
+
+    const outputDiv = document.getElementById('output');
+
+    async function run() {
+      for (const entry of testEchoes) {
+        const result = await analyzeMoralDegrees(`${entry.title} ${entry.description}`);
+        const block = document.createElement('div');
+        block.classList.add('echo-block', `degree-${result.dominant_degree || 0}`);
+
+        block.innerHTML = `
+          <div class="title">📰 ${entry.title}</div>
+          <div><span class="label">Description:</span> ${entry.description}</div>
+          <div><span class="label">Dominant Degree:</span> ${result.dominant_degree ?? 'N/A'}</div>
+          <div><span class="label">Degree Count:</span> ${result.degree_count}</div>
+          <div><span class="label">Matched Markers:</span> ${result.markers_all.join(', ') || 'None'}</div>
+        `;
+
+        outputDiv.appendChild(block);
+      }
+    }
+
+    run();
+  </script>
+</body>
+</html>

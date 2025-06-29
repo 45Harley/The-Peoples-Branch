@@ -1,32 +1,43 @@
-# ladder-manifest.yaml
+# ladder-of-truth.yaml
+
+id: ladder-of-truth
+title: Ladder of Truth
+version: 0.2
+updated: 2025-06-24
+
+description: >
+  A transformation ladder for confronting and transmuting harm. Each rung holds a scene, a state of witness, and an opportunity for reckoning.
+
+structure:
+  sequence:
+    - id: truth_01
+      title: Witness
+      phase: valley
+      file: ../truth_01_witness.html
+      summary: Initial awareness. Naming what has occurred, without judgment.
+    - id: truth_02
+      title: Exposure
+      phase: path
+      file: ../truth_02_exposure.html
+      summary: Letting harm be seen and heard—raw, unhidden.
+    - id: truth_03
+      title: Turning
+      phase: path
+      file: ../truth_03_turning.html
+      summary: A turning of gaze, of posture, of willingness. To shift, to move.
+    - id: truth_04
+      title: Reform
+      phase: ladder
+      file: ../truth_04_reform.html
+      summary: Structural and spiritual reform. Naming new commitments.
+    - id: truth_05
+      title: Healing
+      phase: summit
+      file: ../truth_05_healing.html
+      summary: Collective restoration. Letting what was wounded breathe and regrow.
 
 meta:
-  version: 0.2
-  updated: 2025-06-24
-  description: >
-    This manifest defines all ladders currently scaffolded within The People's Branch.
-    Each ladder is a modular transformation structure composed of rungs, movements, and symbolic resonance.
-
-ladders:
-  - id: ladder-of-truth
-    title: Ladder of Truth
-    location: valley → path → ladder → summit → grotto
-    description: >
-      A five-stage ascent through witnessing, exposure, turning, reform, and healing.
-      Oriented around the practice of naming harm and transmuting it into communal repair.
-    file: ../ladders/ladder-of-truth.yaml
-    scenes:
-      - truth_01_witness.html
-      - truth_02_exposure.html
-      - truth_03_turning.html
-      - truth_04_reform.html
-      - truth_05_healing.html
-    participants:
-      scaffolded: true
-      profile-schema: ../framework/profile-schema.yaml
-      profile-path: ../users/
-
-  # Future ladders may include:
-  # - ladder-of-grief
-  # - ladder-of-governance
-  # - ladder-of-regeneration
+  origin: framework/ladder-manifest.yaml
+  mapped-via: truth-map.html
+  contributor-notes: >
+    Each step corresponds to a lived encounter. Feel free to extend this ladder, remix its steps, or adapt for new domains.

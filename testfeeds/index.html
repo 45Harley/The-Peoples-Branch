@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dual-Feed Watchtower</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: sans-serif;
+      padding: 1em;
+    }
+    a {
+      color: #f90;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .controls {
+      display: flex;
+      gap: 1em;
+      margin-bottom: 1em;
+    }
+    .column {
+      flex: 1;
+    }
+    select, button {
+      margin-top: 0.2em;
+      padding: 0.5em;
+      background: #333;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    .feeds {
+      display: flex;
+      gap: 1em;
+    }
+    .feed-box {
+      background: #222;
+      padding: 1em;
+      border: 1px solid #444;
+      height: 420px;
+      overflow-y: auto;
+    }
+    .entry {
+      margin-bottom: 1em;
+      border-left: 4px solid #4c4;
+      padding-left: 0.6em;
+      position: relative;
+    }
+    .source-tag {
+      font-size: 0.7em;
+      color: #999;
+      margin-left: 0.4em;
+      padding: 0.1em 0.4em;
+      border: 1px solid #555;
+      border-radius: 4px;
+    }
+    .echo-btn {
+      font-size: 0.7em;
+      padding: 0.3em 0.6em;
+      margin-left: 0.5em;
+      background: #333;
+      color: #ccc;
+      border: 1px solid #555;
+      cursor: pointer;
+    }
+    .timestamp {
+      font-size: 0.8em;
+      color: #aaa;
+      margin-bottom: 0.5em;
+    }
+    .echo-output {
+      font-size: 0.8em;
+      color: #8ef;
+      margin-top: 0.4em;
+      padding-left: 0.5em;
+      border-left: 2px dashed #4cf;
+    }
+  </style>
+</head>
+<body>
+  <h2>🛰️ Watchtower – Dual Pulse Mode</h2>
+
+  <div class="controls">
+    <div class="column">
+      <label>Feed A:</label><br>
+      <select id="feedA">
+        <option value="">-- Select --</option>
+        <option value="npr">NPR World</option>
+        <option value="aljazeera">Al Jazeera English</option>
+        <option value="guardian">The Guardian World</option>
+        <option value="ap">AP World</option>
+        <option value="dw">DW News</option>
+      </select>
+      <button onclick="loadFeed('A')">Pulse A</button>
+    </div>
+    <div class="column">
+      <label>Feed B:</label><br>
+      <select id="feedB">
+        <option value="">-- Select --</option>
+        <option value="npr">NPR World</option>
+        <option value="aljazeera">Al Jazeera English</option>
+        <option value="guardian">The Guardian World</option>
+        <option value="ap">AP World</option>
+        <option value="dw">DW News</option>
+      </select>
+      <button onclick="loadFeed('B')">Pulse B</button>
+    </div>
+  </div>
+
+  <div class="feeds">
+    <div class="column">
+      <div class="feed-box" id="boxA"><div class="timestamp">🕒 Awaiting Feed A...</div></div>
+    </div>
+    <div class="column">
+      <div class="feed-box" id="boxB"><div class="timestamp">🕒 Awaiting Feed B...</div></div>
+    </div>
+  </div>
+
+  <script>
+    const urls = {
+      npr: "https://feeds.npr.org/1004/rss.xml",
+      aljazeera: "https://www.aljazeera.com/xml/rss/all.xml",
+      guardian: "https://www.theguardian.com/world/rss",
+      ap: "https://corsproxy.io/?https://apnews.com/rss/apf-intlnews",
+      dw: "https://rss.dw.com/rdf/rss-en-world"
+    };
+
+    function proxy(url) {
+      return url.startsWith("https://corsproxy.io/") ? url : "https://corsproxy.io/?" + encodeURIComponent(url);
+    }
+
+    function sourceTag(key) {
+      const map = {
+        npr: "NPR",
+        aljazeera: "Al Jazeera",
+        guardian: "Guardian",
+        ap: "AP",
+        dw: "DW"
+      };
+      return map[key] || "Feed";
+    }
+
+    const echoMemory = [];
+
+    async function loadFeed(which) {
+      const key = document.getElementById("feed" + which).value;
+      const box = document.getElementById("box" + which);
+      if (!key) return;
+      box.innerHTML = `<div class="timestamp">🔄 Fetching ${sourceTag(key)}...</div>`;
+
+      try {
+        const res = await fetch(proxy(urls[key]));
+        const xml = new window.DOMParser().parseFromString(await res.text(), "text/xml");
+        const items = [...xml.querySelectorAll("item, entry")];
+
+        if (!items.length) {
+          box.innerHTML = `<div class="timestamp">⚠️ No entries found in ${key} feed.</div>`;
+          return;
+        }
+
+        box.innerHTML = `<div class="timestamp">Last updated: ${new Date().toLocaleTimeString()}</div>`;
+        items.slice(0, 6).forEach((item, idx) => {
+          const title = item.querySelector("title")?.textContent || "Untitled";
+          const linkEl = item.querySelector("link");
+          const link = linkEl?.textContent || linkEl?.getAttribute("href") || "#";
+          const pub = item.querySelector("pubDate, updated, published")?.textContent || "";
+          const div = document.createElement("div");
+          const uid = `${which}-${idx}`;
+          div.className = "entry";
+          div.innerHTML = `
+            <a href="${link}" target="_blank"><strong>${title}</strong></a>
+            <span class="source-tag">${sourceTag(key)}</span>
+            <button class="echo-btn" onclick="echoEntry('${uid}', '${encodeURIComponent(title)}')">🪞 Echo</button><br>
+            <em>${pub}</em>
+            <div class="echo-output" id="echo-${uid}"></div>
+          `;
+          box.appendChild(div);
+        });
+      } catch (err) {
+        console.error("Feed error:", err);
+        box.innerHTML = `<div class="timestamp">❌ Failed to load ${key}.</div>`;
+      }
+    }
+
+    function echoEntry(uid, encodedTitle) {
+      const title = decodeURIComponent(encodedTitle);
+      const echoDiv = document.getElementById(`echo-${uid}`);
+      const reflection = generateInsight(title);
+      echoDiv.innerText = reflection;
+
+      echoMemory.push({ title, time: new Date().toISOString(), reflection });
+    }
+
+    function generateInsight(title) {
+      const lower = title.toLowerCase();
+      if (lower.includes("strike") || lower.includes("attack") || lower.includes("collapse"))
+        return "⚠️ Escalation tone detected. Crosscheck for continuity.";
+      if (lower.includes("summit") || lower.includes("talks") || lower.includes("diplomacy"))
+        return "🧭 Diplomatic vector detected. Watch for tone shift.";
+      if (lower.includes("food") || lower.includes("aid") || lower.includes("crisis"))
+        return "💧 Humanitarian theme. Consider resonance with Grotto.";
+      return "🪞 Reflection noted. Tone unclear—observe for narrative recurrence.";
+    }
+  </script>
+</body>
+</html>

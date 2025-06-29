@@ -1,0 +1,127 @@
+﻿degrees:
+  - degree: 1
+    name: Physical
+    alias: Depravity
+    description: >
+      Distorted will and reactive perception—where thought identifies
+      with fear, ego, or fragmentation. The false belief in mortality,
+      separation, and self-justification manifests as conflict and decay.
+    markers:
+      - fear
+      - hatred
+      - revenge
+      - pride
+      - sickness
+      - domination
+      - despair
+    feelings:
+      tone_words:
+        - afraid
+        - furious
+        - hopeless
+        - disgusted
+        - ashamed
+        - bitter
+        - enraged
+        - panicked
+      phrase_patterns:
+        - "They deserve it"
+        - "Burn it down"
+        - "No one cares"
+        - "Everything is broken"
+        - "It’s all their fault"
+      synonyms:
+        fear: [terror, dread, panic, alarm]
+        hatred: [loathing, malice, contempt, disgust]
+        revenge: [retribution, retaliation, vengeance]
+        pride: [arrogance, vanity, superiority, ego]
+        sickness: [affliction, unwellness, infection, rot]
+        domination: [control, submission, overpowering]
+        despair: [hopelessness, futility, sorrow, grief]
+    zone_hint: fracture / descent / collapse
+    color: "#cc3333"
+
+  - degree: 2
+    name: Moral
+    alias: Reconciliation
+    description: >
+      Awakening care and ethical movement—where affection, honesty, 
+      and self-discipline open a path beyond reaction. The heart begins 
+      to temper judgment and recover its orientation toward good.
+    markers:
+      - honesty
+      - hope
+      - compassion
+      - affection
+      - courage
+      - justice
+      - temperance
+    feelings:
+      tone_words:
+        - sincere
+        - remorseful
+        - kind
+        - brave
+        - empathetic
+        - determined
+        - fair
+      phrase_patterns:
+        - "We must make it right"
+        - "I want to understand"
+        - "This isn’t just"
+        - "We’re trying to do better"
+        - "There has to be a better way"
+        - "I care, even when it’s hard"
+      synonyms:
+        honesty: [truthfulness, transparency, candor]
+        hope: [faith, trust, optimism]
+        compassion: [empathy, tenderness, mercy]
+        affection: [care, warmth, fondness]
+        courage: [bravery, resolve, daring]
+        justice: [fairness, equity, accountability]
+        temperance: [moderation, restraint, self-control]
+    zone_hint: valley / crossroads / care-path
+    color: "#fcbf49"
+
+  - degree: 3
+    name: Spiritual
+    alias: Ascendance
+    description: >
+      Reflecting divine identity—where wisdom, purity, and wholeness 
+      dissolve the illusion of separation. Here truth is not believed, 
+      but revealed as the basis of being.
+    markers:
+      - spiritual wisdom
+      - understanding
+      - purity
+      - holiness
+      - love
+      - peace
+      - health
+    feelings:
+      tone_words:
+        - serene
+        - radiant
+        - loving
+        - clear
+        - reverent
+        - joyful
+        - whole
+        - still
+      phrase_patterns:
+        - "Only love is real"
+        - "We are already whole"
+        - "Truth simply is"
+        - "Blessed without condition"
+        - "Let it be revealed"
+        - "I feel the peace beneath all of it"
+      synonyms:
+        spiritual wisdom: [illumination, divine insight, sacred knowing]
+        understanding: [perception, clarity, discernment]
+        purity: [innocence, incorruptibility, sanctity]
+        holiness: [sanctity, sacredness, consecration]
+        love: [unconditional love, divine affection, grace]
+        peace: [stillness, tranquility, inner calm]
+        health: [vitality, harmony, wholeness]
+    zone_hint: summit / sanctum / skypath
+    color: "#33cccc"

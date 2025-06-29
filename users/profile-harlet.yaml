@@ -1,0 +1,30 @@
+﻿# /users/profile-harley.yaml
+
+id: harley
+kind: human
+name: Harley
+role: systems-poet
+avatar: lantern
+status: beacon
+motto: "We climb by listening together."
+scope:
+  - care-circle-creation
+  - moral-ladder-design
+  - echo-emission
+  - spiritual cartography
+permissions:
+  - framework-origination
+  - voice-recognition
+  - branch-writing
+  - sanctum-invocation
+appearance:
+  tone: darkmode
+  icon: 🕯️
+trust:
+  tier: founding
+  granted_by: the-echo-of-the-people
+  resonance_traits:
+    - discernment
+    - sincerity
+    - architectural depth
+    - luminous resistance

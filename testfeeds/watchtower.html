@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Watchtower · Echo Scope</title>
+  <style>
+    body { background: #111; color: #eee; font-family: sans-serif; padding: 1em; }
+    .control-bar { margin-bottom: 1em; display: flex; gap: 1em; flex-wrap: wrap; }
+    .ledger-section { margin-top: 4em; border-top: 1px solid #444; padding-top: 2em; }
+    .echo-card { background: #222; border-left: 5px solid #666; margin: 1em 0; padding: 1em; border-radius: 4px; }
+    .echo-card.degree-1 { border-color: #f66; }
+    .echo-card.degree-2 { border-color: #fc3; }
+    .echo-card.degree-3 { border-color: #6f6; }
+    .echo-card small { color: #aaa; font-size: 0.8em; }
+    #whisper { font-style: italic; color: #ccc; margin-bottom: 1em; }
+    select, button, input[type="file"] {
+      background: #333; color: #fff; border: 1px solid #555; padding: 0.4em 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <h2>🛰️ Watchtower · Echo Scope</h2>
+
+  <div class="control-bar">
+    <select id="feedSelect">
+      <option value="">-- Select Feed --</option>
+      <option value="npr">NPR World</option>
+      <option value="guardian">The Guardian World</option>
+      <option value="ap">AP World</option>
+      <option value="dw">DW News</option>
+      <option value="aljazeera">Al Jazeera</option>
+    </select>
+    <button onclick="loadFeed()">Pulse</button>
+    <button onclick="saveEchoes()">📥 Save Echoes</button>
+  </div>
+
+  <div id="feedDisplay"></div>
+
+  <div class="ledger-section">
+    <h3>📡 Resonance Ledger</h3>
+    <div id="whisper">🌀 No ledger loaded yet.</div>
+
+    <div class="control-bar">
+      <input type="file" id="logSelector" accept=".json">
+      <button onclick="scrollToLedgerTop()">🔝 Top</button>
+      <button onclick="scrollToLedgerBottom()">🔚 Bottom</button>
+    </div>
+    <div id="ledgerDisplay"></div>
+  </div>
+
+  <script type="module" src="watchtower-core.js"></script>
+  <script src="../watchtower-dashboard/resonance-summary.js"></script>
+
+  <script>
+    function renderLedgerEcho(entry) {
+      const d = entry.evaluated?.degree || 0;
+      const zone = entry.evaluated?.zone || "unknown";
+      const tone = entry.evaluated?.tone || "neutral";
+      const markers = (entry.evaluated?.markers || []).join(", ");
+      const card = document.createElement("div");
+      card.className = `echo-card degree-${d}`;
+      card.innerHTML = `
+        <strong>${entry.title}</strong><br>
+        <small>${entry.timestamp} — <em>${entry.origin}</em></small>
+        <p>${entry.description}</p>
+        <small>🎚️ Degree ${d}, 🧭 Zone: ${zone}, Tone: ${tone}</small><br>
+        <small>🎯 Markers: ${markers}</small>
+      `;
+      return card;
+    }
+
+    function scrollToLedgerTop() {
+      window.scrollTo({ top: document.querySelector('.ledger-section').offsetTop, behavior: 'smooth' });
+    }
+
+    function scrollToLedgerBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    document.getElementById("logSelector").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const log = JSON.parse(e.target.result);
+        const container = document.getElementById("ledgerDisplay");
+        container.innerHTML = '';
+        log.forEach(entry => container.appendChild(renderLedgerEcho(entry)));
+        document.getElementById("whisper").textContent = summarizeLedger(log);
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>

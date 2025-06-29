@@ -8,6 +8,10 @@ FILE: leaf-directory-files_2025-06-24_14-18-35.txt
 FILE: leaf-directory-files_2025-06-24_16-11-23.txt
 FILE: leaf-directory-files_2025-06-24_16-58-59.txt
 FILE: leaf-directory-files_2025-06-26_18-31-57.txt
+FILE: leaf-directory-files_2025-06-27_09-25-38.txt
+FILE: leaf-directory-files_2025-06-27_13-06-03.txt
+FILE: leaf-directory-files_2025-06-28_14-15-44.txt
+FILE: leaf-directory-files_2025-06-28_16-41-39.txt
 FILE: main.css
 FILE: README.md
 FILE: sanctuary.yaml
@@ -30,6 +34,9 @@ FILE: framework\framework-topography.yaml
 FILE: framework\ladder-manifest.yaml
 FILE: framework\ladder-voices.yaml
 FILE: framework\language-guide.yaml
+FILE: framework\moral-analyzer.js
+FILE: framework\moral-ladder.yaml
+FILE: framework\oral-analyzer-browser.js
 FILE: framework\profile-schema.yaml
 FILE: framework\profiles.yaml
 FILE: framework\roles.yaml
@@ -40,10 +47,28 @@ FILE: ladders\README.md
 FILE: paths\putnamcivichub.html
 FILE: paths\truth-path.yaml
 FILE: scenes\README.md
+FILE: testfeeds\echo-test-runner.html
+FILE: testfeeds\echo-test-runner.js
+FILE: testfeeds\index.html
+FILE: testfeeds\moral-ladder.yaml
+FILE: testfeeds\oral-analyzer-browser.js
+FILE: testfeeds\watchtower-core.js
+FILE: testfeeds\watchtower.html
 FILE: users\profile-fern.yaml
 FILE: users\profile-jax.yaml
 FILE: users\profile-sky.yaml
 FILE: users\profile-template.yaml
+FILE: watchtower-dashboard\auto-feeds-subsystem.md
+FILE: watchtower-dashboard\heatwave-2025.yaml
+FILE: watchtower-dashboard\index-static.html
 FILE: watchtower-dashboard\index.html
+FILE: watchtower-dashboard\insights.json
 FILE: watchtower-dashboard\insights.yaml
-FILE: watchtower-dashboard\styles.css
+FILE: watchtower-dashboard\main.css
+FILE: watchtower-dashboard\README.md
+FILE: watchtower-dashboard\watchtower-manifest.md
+FILE: watchtower-dashboard\watchtower-theme-loader.js
+FILE: watchtower-dashboard\watchtower.js
+FILE: watchtower-dashboard\docs\New Microsoft Word Document (2).docx
+FILE: watchtower-dashboard\docs\New Microsoft Word Document.docx
+FILE: watchtower-dashboard\themes\heatwave-2025.yaml

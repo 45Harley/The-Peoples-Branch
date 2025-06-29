@@ -1,0 +1,70 @@
+﻿<!-- watchtower-dashboard/resonance-dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resonance Ledger Viewer</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body { font-family: sans-serif; background: #121212; color: #eee; padding: 2rem; }
+    .controls { margin-bottom: 1rem; }
+    .echo-card { border-left: 4px solid #888; padding: 1rem; margin: 1rem 0; background: #1e1e1e; border-radius: 4px; }
+    .echo-card.degree-1 { border-color: #f66; }
+    .echo-card.degree-2 { border-color: #ffcc00; }
+    .echo-card.degree-3 { border-color: #66f88f; }
+    button, select { margin-right: 1rem; }
+  </style>
+</head>
+<body>
+
+  <h1>📡 Resonance Ledger</h1>
+
+  <div class="controls">
+    <label for="logSelector">🗂️ Log file:</label>
+    <input type="file" id="logSelector" accept=".json">
+    <button onclick="scrollToTop()">🔝 Top</button>
+    <button onclick="scrollToBottom()">🔚 Bottom</button>
+  </div>
+
+  <div id="echoList"></div>
+
+  <script>
+    function renderEcho(entry) {
+      const d = entry.evaluated.degree || 0;
+      const card = document.createElement("div");
+      card.className = `echo-card degree-${d}`;
+      card.innerHTML = `
+        <strong>${entry.title}</strong><br>
+        <small>${entry.timestamp} — <em>${entry.origin}</em></small><br>
+        <p>${entry.description}</p>
+        <p><em>Degree:</em> ${d}, <em>Zone:</em> ${entry.evaluated.zone}, <em>Tone:</em> ${entry.evaluated.tone}</p>
+        <p><em>Markers:</em> ${entry.evaluated.markers.join(", ")}</p>
+      `;
+      return card;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    document.getElementById("logSelector").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const log = JSON.parse(e.target.result);
+        const container = document.getElementById("echoList");
+        container.innerHTML = '';
+        log.forEach(entry => container.appendChild(renderEcho(entry)));
+      };
+      reader.readAsText(file);
+    });
+  </script>
+
+</body>
+</html>
