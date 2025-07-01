@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Feed Moral Compass Analyzer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-header {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .article-source {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .article-description {
+            color: #34495e;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .moral-evaluation {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        
+        .moral-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .moral-tag {
+            background: #3498db;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        
+        .moral-tag.negative {
+            background: #e74c3c;
+        }
+        
+        .moral-tag.positive {
+            background: #27ae60;
+        }
+        
+        .moral-tag.neutral {
+            background: #95a5a6;
+        }
+        
+        .summary-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .summary-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧭 RSS Feed Moral Compass Analyzer</h1>
+        
+        <div class="controls">
+            <button onclick="fetchAndAnalyzeFeeds()" id="analyzeBtn">Analyze RSS Feeds</button>
+            <button onclick="downloadResults()" id="downloadBtn" disabled>Download feeds.json</button>
+            <button onclick="clearResults()" id="clearBtn">Clear Results</button>
+        </div>
+        
+        <div id="status"></div>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let analysisResults = [];
+        let successfulProxies = [];
+        let feedAccessPaths = [];
+        
+        // Multiple CORS proxy servers with better URLs and fallbacks
+        const corsProxies = [
+            { name: "AllOrigins", url: "https://api.allorigins.win/get?url=", format: "json" },
+            { name: "AllOrigins Raw", url: "https://api.allorigins.win/raw?url=", format: "raw" },
+            { name: "Proxy API", url: "https://proxy.cors.sh/", format: "raw" },
+            { name: "CORS Proxy", url: "https://corsproxy.io/?", format: "raw" },
+            { name: "Proxy6", url: "https://api.codetabs.com/v1/proxy/?quest=", format: "raw" },
+            { name: "RSS2JSON", url: "https://api.rss2json.com/v1/api.json?rss_url=", format: "rss2json" },
+            { name: "YQL Alternative", url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%3D'", format: "yql" },
+            { name: "Direct Fetch", url: "", format: "direct" }
+        ];
+        
+        // Alternative RSS feeds that are more CORS-friendly
+        const rssFeeds = [
+            { name: "BBC News", url: "https://feeds.bbci.co.uk/news/rss.xml", backup: "http://feeds.bbci.co.uk/news/rss.xml" },
+            { name: "Reuters", url: "https://feeds.reuters.com/reuters/topNews", backup: "http://feeds.reuters.com/reuters/topNews" },
+            { name: "NASA News", url: "https://www.nasa.gov/rss/dyn/breaking_news.rss", backup: "http://www.nasa.gov/rss/dyn/breaking_news.rss" },
+            { name: "TechCrunch", url: "https://techcrunch.com/feed/", backup: "http://feeds.feedburner.com/TechCrunch" },
+            { name: "Hacker News", url: "https://hnrss.org/frontpage", backup: "https://hnrss.org/newest" },
+            { name: "Reddit WorldNews", url: "https://www.reddit.com/r/worldnews/.rss", backup: "https://www.reddit.com/r/news/.rss" },
+            { name: "Ars Technica", url: "https://feeds.arstechnica.com/arstechnica/index", backup: "http://feeds.arstechnica.com/arstechnica/index" },
+            { name: "The Verge", url: "https://www.theverge.com/rss/index.xml", backup: "http://www.theverge.com/rss/index.xml" },
+            { name: "Wired", url: "https://www.wired.com/feed/rss", backup: "http://www.wired.com/feed" },
+            { name: "Engadget", url: "https://www.engadget.com/rss.xml", backup: "http://www.engadget.com/rss.xml" }
+        ];
+        
+        // Moral compass evaluation framework
+        function evaluateWithMoralCompass(headline, description) {
+            const text = (headline + " " + description).toLowerCase();
+            const evaluation = {
+                harmfulness: 0,
+                fairness: 0,
+                transparency: 0,
+                dignity: 0,
+                constructiveness: 0,
+                tags: []
+            };
+            
+            // Harm assessment
+            const harmWords = ['violence', 'attack', 'kill', 'death', 'war', 'bomb', 'terror', 'abuse', 'harm', 'threat'];
+            const harmScore = harmWords.filter(word => text.includes(word)).length;
+            evaluation.harmfulness = Math.min(harmScore * 2, 10);
+            
+            // Fairness assessment
+            const unfairWords = ['discriminat', 'bias', 'prejudice', 'inequality', 'injustice', 'unfair'];
+            const fairWords = ['justice', 'equal', 'fair', 'rights', 'balanced'];
+            const unfairScore = unfairWords.filter(word => text.includes(word)).length;
+            const fairScore = fairWords.filter(word => text.includes(word)).length;
+            evaluation.fairness = Math.max(0, fairScore * 2 - unfairScore);
+            
+            // Transparency assessment
+            const transparentWords = ['reveal', 'expose', 'report', 'investigate', 'document', 'evidence'];
+            const opaqueWords = ['secret', 'hidden', 'cover-up', 'conceal'];
+            const transparentScore = transparentWords.filter(word => text.includes(word)).length;
+            const opaqueScore = opaqueWords.filter(word => text.includes(word)).length;
+            evaluation.transparency = Math.max(0, transparentScore * 2 - opaqueScore);
+            
+            // Human dignity assessment
+            const dignityWords = ['respect', 'human rights', 'dignity', 'compassion', 'empathy'];
+            const undignifiedWords = ['dehumaniz', 'degrad', 'humiliat', 'exploit'];
+            const dignityScore = dignityWords.filter(word => text.includes(word)).length;
+            const undignifiedScore = undignifiedWords.filter(word => text.includes(word)).length;
+            evaluation.dignity = Math.max(0, dignityScore * 2 - undignifiedScore);
+            
+            // Constructiveness assessment
+            const constructiveWords = ['solution', 'help', 'improve', 'build', 'cooperat', 'progress', 'innovat'];
+            const destructiveWords = ['destroy', 'ruin', 'collapse', 'fail', 'crisis', 'conflict'];
+            const constructiveScore = constructiveWords.filter(word => text.includes(word)).length;
+            const destructiveScore = destructiveWords.filter(word => text.includes(word)).length;
+            evaluation.constructiveness = Math.max(0, constructiveScore * 2 - destructiveScore);
+            
+            // Generate descriptive tags
+            if (evaluation.harmfulness > 3) evaluation.tags.push('concerning');
+            if (evaluation.harmfulness > 6) evaluation.tags.push('alarming');
+            if (evaluation.fairness > 3) evaluation.tags.push('equitable');
+            if (evaluation.transparency > 3) evaluation.tags.push('transparent');
+            if (evaluation.dignity > 3) evaluation.tags.push('respectful');
+            if (evaluation.constructiveness > 3) evaluation.tags.push('constructive');
+            if (evaluation.constructiveness < 2 && evaluation.harmfulness > 2) evaluation.tags.push('divisive');
+            
+            // Overall moral assessment
+            const totalPositive = evaluation.fairness + evaluation.transparency + evaluation.dignity + evaluation.constructiveness;
+            const totalNegative = evaluation.harmfulness;
+            
+            if (totalPositive > totalNegative + 5) evaluation.tags.push('morally-positive');
+            else if (totalNegative > totalPositive + 3) evaluation.tags.push('morally-concerning');
+            else evaluation.tags.push('morally-neutral');
+            
+            return evaluation;
+        }
+        
+        async function fetchRSSFeed(feedUrl, feedName, backupUrl = null) {
+            // Try each proxy until one works
+            for (let proxyIndex = 0; proxyIndex < corsProxies.length; proxyIndex++) {
+                const proxy = corsProxies[proxyIndex];
+                
+                // Try both main URL and backup URL if available
+                const urlsToTry = [feedUrl];
+                if (backupUrl) urlsToTry.push(backupUrl);
+                
+                for (const currentUrl of urlsToTry) {
+                    try {
+                        let response;
+                        let xmlContent;
+                        let proxyUrl;
+                        
+                        // Different proxy formats and methods
+                        if (proxy.format === "json") {
+                            proxyUrl = `${proxy.url}${encodeURIComponent(currentUrl)}`;
+                            response = await fetch(proxyUrl, {
+                                method: 'GET',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'User-Agent': 'Mozilla/5.0 (compatible; RSS Reader)'
+                                }
+                            });
+                            
+                            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                            
+                            const data = await response.json();
+                            xmlContent = data.contents;
+                            
+                        } else if (proxy.format === "rss2json") {
+                            proxyUrl = `${proxy.url}${encodeURIComponent(currentUrl)}`;
+                            response = await fetch(proxyUrl);
+                            
+                            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                            
+                            const data = await response.json();
+                            if (data.status !== 'ok') throw new Error('RSS2JSON failed');
+                            
+                            // Convert RSS2JSON format to articles directly
+                            const articles = [];
+                            for (let i = 0; i < Math.min(data.items.length, 10); i++) {
+                                const item = data.items[i];
+                                const moralEvaluation = evaluateWithMoralCompass(item.title, item.description || item.content || "");
+                                
+                                articles.push({
+                                    headline: item.title,
+                                    description: (item.description || item.content || "").replace(/<[^>]*>/g, '').substring(0, 300),
+                                    feedSource: feedName,
+                                    feedUrl: currentUrl,
+                                    accessProxy: proxy.name,
+                                    accessPath: proxyUrl,
+                                    dateCreated: new Date(item.pubDate || Date.now()).toISOString(),
+                                    timeCreated: new Date(item.pubDate || Date.now()).toLocaleTimeString(),
+                                    moralCompassResults: moralEvaluation.tags,
+                                    moralScores: {
+                                        harmfulness: moralEvaluation.harmfulness,
+                                        fairness: moralEvaluation.fairness,
+                                        transparency: moralEvaluation.transparency,
+                                        dignity: moralEvaluation.dignity,
+                                        constructiveness: moralEvaluation.constructiveness
+                                    }
+                                });
+                            }
+                            
+                            // Record success and return
+                            recordProxySuccess(proxy, feedName, proxyUrl, data.items.length);
+                            console.log(`✅ Successfully fetched ${feedName} using ${proxy.name} (RSS2JSON)`);
+                            return articles;
+                            
+                        } else if (proxy.format === "yql") {
+                            proxyUrl = `${proxy.url}${encodeURIComponent(currentUrl)}'&format=xml&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
+                            response = await fetch(proxyUrl);
+                            xmlContent = await response.text();
+                            
+                        } else if (proxy.format === "direct") {
+                            // Try direct fetch (might work in some environments)
+                            proxyUrl = currentUrl;
+                            response = await fetch(currentUrl, {
+                                mode: 'cors',
+                                headers: {
+                                    'Accept': 'application/rss+xml, application/xml, text/xml',
+                                    'User-Agent': 'Mozilla/5.0 (compatible; RSS Reader)'
+                                }
+                            });
+                            xmlContent = await response.text();
+                            
+                        } else {
+                            // Raw proxy format
+                            proxyUrl = `${proxy.url}${currentUrl}`;
+                            response = await fetch(proxyUrl, {
+                                headers: {
+                                    'Accept': 'application/rss+xml, application/xml, text/xml',
+                                    'User-Agent': 'Mozilla/5.0 (compatible; RSS Reader)'
+                                }
+                            });
+                            xmlContent = await response.text();
+                        }
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                        }
+                        
+                        if (!xmlContent || xmlContent.trim().length === 0) {
+                            throw new Error("Empty response");
+                        }
+                        
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xmlContent, "text/xml");
+                        
+                        // Check if parsing was successful
+                        if (xmlDoc.querySelector("parsererror")) {
+                            throw new Error("XML parsing failed");
+                        }
+                        
+                        const items = xmlDoc.querySelectorAll("item, entry");
+                        if (items.length === 0) {
+                            throw new Error("No items found in RSS feed");
+                        }
+                        
+                        // Record success
+                        recordProxySuccess(proxy, feedName, proxyUrl, items.length);
+                        
+                        const articles = [];
+                        
+                        for (let i = 0; i < Math.min(items.length, 10); i++) {
+                            const item = items[i];
+                            const title = item.querySelector("title")?.textContent || "No title";
+                            const description = item.querySelector("description, summary, content")?.textContent || "No description";
+                            const pubDate = item.querySelector("pubDate, published, updated")?.textContent || new Date().toISOString();
+                            
+                            const cleanDescription = description.replace(/<[^>]*>/g, '').substring(0, 300);
+                            const moralEvaluation = evaluateWithMoralCompass(title, cleanDescription);
+                            
+                            articles.push({
+                                headline: title,
+                                description: cleanDescription,
+                                feedSource: feedName,
+                                feedUrl: currentUrl,
+                                accessProxy: proxy.name,
+                                accessPath: proxyUrl,
+                                dateCreated: new Date(pubDate).toISOString(),
+                                timeCreated: new Date(pubDate).toLocaleTimeString(),
+                                moralCompassResults: moralEvaluation.tags,
+                                moralScores: {
+                                    harmfulness: moralEvaluation.harmfulness,
+                                    fairness: moralEvaluation.fairness,
+                                    transparency: moralEvaluation.transparency,
+                                    dignity: moralEvaluation.dignity,
+                                    constructiveness: moralEvaluation.constructiveness
+                                }
+                            });
+                        }
+                        
+                        console.log(`✅ Successfully fetched ${feedName} using ${proxy.name}`);
+                        return articles;
+                        
+                    } catch (error) {
+                        console.log(`❌ Failed to fetch ${feedName} using ${proxy.name} (${currentUrl === feedUrl ? 'main' : 'backup'}): ${error.message}`);
+                        continue; // Try next URL or proxy
+                    }
+                }
+            }
+            
+            // If all proxies failed
+            console.error(`❌ All proxies failed for ${feedName}`);
+            return [];
+        }
+        
+        function recordProxySuccess(proxy, feedName, proxyUrl, itemCount) {
+            const accessPath = {
+                feedName: feedName,
+                proxyName: proxy.name,
+                proxyUrl: proxy.url,
+                fullAccessUrl: proxyUrl,
+                timestamp: new Date().toISOString(),
+                itemCount: itemCount
+            };
+            
+            if (!successfulProxies.find(p => p.name === proxy.name)) {
+                successfulProxies.push({
+                    name: proxy.name,
+                    url: proxy.url,
+                    format: proxy.format,
+                    firstSuccess: feedName,
+                    successCount: 1
+                });
+            } else {
+                const existingProxy = successfulProxies.find(p => p.name === proxy.name);
+                existingProxy.successCount++;
+            }
+            
+            feedAccessPaths.push(accessPath);
+        }
+        
+        async function fetchAndAnalyzeFeeds() {
+            const statusDiv = document.getElementById('status');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            analyzeBtn.disabled = true;
+            statusDiv.innerHTML = '<div class="status loading">🔄 Trying multiple CORS proxies and fetching RSS feeds...</div>';
+            
+            analysisResults = [];
+            successfulProxies = [];
+            feedAccessPaths = [];
+            
+            try {
+                let successCount = 0;
+                let totalAttempts = 0;
+                
+                for (const feed of rssFeeds) {
+                    totalAttempts++;
+                    statusDiv.innerHTML = `<div class="status loading">🔄 Fetching ${feed.name} (${totalAttempts}/${rssFeeds.length})...</div>`;
+                    
+                    const articles = await fetchRSSFeed(feed.url, feed.name, feed.backup);
+                    if (articles.length > 0) {
+                        analysisResults.push(...articles);
+                        successCount++;
+                    }
+                    
+                    // Add small delay to avoid overwhelming servers
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+                
+                if (analysisResults.length === 0) {
+                    throw new Error(`No articles were successfully fetched from any of the ${rssFeeds.length} sources. All CORS proxies failed.`);
+                }
+                
+                displayResults();
+                displayProxyAndAccessInfo();
+                
+                statusDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ Successfully analyzed ${analysisResults.length} articles from ${successCount}/${rssFeeds.length} sources<br>
+                        📡 Working proxies: ${successfulProxies.map(p => p.name).join(', ')}<br>
+                        📋 Access paths saved in results
+                    </div>
+                `;
+                downloadBtn.disabled = false;
+                
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="status error">
+                        ❌ Error: ${error.message}<br>
+                        💡 Try: 1) Refresh and try again 2) Use local server 3) Check console for detailed errors
+                    </div>
+                `;
+                
+                // Still show proxy info even if failed
+                if (successfulProxies.length > 0) {
+                    displayProxyAndAccessInfo();
+                }
+            } finally {
+                analyzeBtn.disabled = false;
+            }
+        }
+        
+        function displayResults() {
+            const resultsDiv = document.getElementById('results');
+            
+            let html = '<div class="results-grid">';
+            
+            analysisResults.forEach((article, index) => {
+                const tagHtml = article.moralCompassResults.map(tag => {
+                    let tagClass = 'moral-tag';
+                    if (tag.includes('concerning') || tag.includes('alarming') || tag.includes('divisive')) {
+                        tagClass += ' negative';
+                    } else if (tag.includes('positive') || tag.includes('constructive') || tag.includes('equitable')) {
+                        tagClass += ' positive';
+                    } else {
+                        tagClass += ' neutral';
+                    }
+                    return `<span class="${tagClass}">${tag}</span>`;
+                }).join('');
+                
+                html += `
+                    <div class="article-card">
+                        <div class="article-header">${article.headline}</div>
+                        <div class="article-source">
+                            ${article.feedSource} • ${article.timeCreated}<br>
+                            <span style="font-size: 0.8em; color: #95a5a6;">via ${article.accessProxy}</span>
+                        </div>
+                        <div class="article-description">${article.description}</div>
+                        <div class="moral-evaluation">
+                            <strong>Moral Compass Evaluation:</strong>
+                            <div class="moral-tags">${tagHtml}</div>
+                            <div style="margin-top: 10px; font-size: 0.9em;">
+                                Harm: ${article.moralScores.harmfulness}/10 | 
+                                Fairness: ${article.moralScores.fairness}/10 | 
+                                Transparency: ${article.moralScores.transparency}/10
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            
+            // Add summary and statistics
+            html += generateSummaryAndStats();
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        function generateSummaryAndStats() {
+            const totalArticles = analysisResults.length;
+            const sources = [...new Set(analysisResults.map(a => a.feedSource))];
+            
+            // Calculate moral statistics
+            const morallyPositive = analysisResults.filter(a => a.moralCompassResults.includes('morally-positive')).length;
+            const morallyConcerning = analysisResults.filter(a => a.moralCompassResults.includes('morally-concerning')).length;
+            const morallyNeutral = analysisResults.filter(a => a.moralCompassResults.includes('morally-neutral')).length;
+            
+            const avgHarm = (analysisResults.reduce((sum, a) => sum + a.moralScores.harmfulness, 0) / totalArticles).toFixed(1);
+            const avgFairness = (analysisResults.reduce((sum, a) => sum + a.moralScores.fairness, 0) / totalArticles).toFixed(1);
+            const avgTransparency = (analysisResults.reduce((sum, a) => sum + a.moralScores.transparency, 0) / totalArticles).toFixed(1);
+            
+            // Most common tags
+            const allTags = analysisResults.flatMap(a => a.moralCompassResults);
+            const tagCounts = {};
+            allTags.forEach(tag => tagCounts[tag] = (tagCounts[tag] || 0) + 1);
+            const topTags = Object.entries(tagCounts)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 5)
+                .map(([tag, count]) => `${tag} (${count})`)
+                .join(', ');
+            
+            return `
+                <div class="summary-section">
+                    <h2>📊 Analysis Summary</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">${totalArticles}</div>
+                            <div class="stat-label">Total Articles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${sources.length}</div>
+                            <div class="stat-label">News Sources</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${morallyPositive}</div>
+                            <div class="stat-label">Morally Positive</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${morallyConcerning}</div>
+                            <div class="stat-label">Concerning Content</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${avgHarm}</div>
+                            <div class="stat-label">Avg Harm Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${avgFairness}</div>
+                            <div class="stat-label">Avg Fairness Score</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h3>Key Findings:</h3>
+                        <p><strong>Moral Distribution:</strong> ${morallyPositive} positive, ${morallyNeutral} neutral, ${morallyConcerning} concerning articles</p>
+                        <p><strong>Content Quality:</strong> Average transparency score of ${avgTransparency}/10 suggests moderate information clarity</p>
+                        <p><strong>Common Themes:</strong> ${topTags}</p>
+                        <p><strong>Source Diversity:</strong> Analysis covers ${sources.length} different news sources: ${sources.join(', ')}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function displayProxyAndAccessInfo() {
+            const resultsDiv = document.getElementById('results');
+            let proxyInfo = '<div class="summary-section"><h2>🌐 CORS Proxy & Access Information</h2>';
+            
+            if (successfulProxies.length > 0) {
+                proxyInfo += '<h3>✅ Working Proxies (Remember these!):</h3>';
+                proxyInfo += '<div class="stats-grid">';
+                
+                successfulProxies.forEach(proxy => {
+                    proxyInfo += `
+                        <div class="stat-card">
+                            <div style="font-weight: bold; color: #27ae60;">${proxy.name}</div>
+                            <div style="font-size: 0.8em; margin: 5px 0;">${proxy.url}</div>
+                            <div class="stat-label">${proxy.successCount} successful feeds</div>
+                        </div>
+                    `;
+                });
+                
+                proxyInfo += '</div>';
+                
+                proxyInfo += '<h3>📋 Feed Access Paths:</h3>';
+                proxyInfo += '<div style="background: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.9em;">';
+                
+                feedAccessPaths.forEach(path => {
+                    proxyInfo += `
+                        <div style="margin-bottom: 10px; padding: 8px; background: white; border-radius: 4px;">
+                            <strong>${path.feedName}</strong><br>
+                            📡 Proxy: ${path.proxyName}<br>
+                            🔗 Full URL: <span style="color: #3498db; word-break: break-all;">${path.fullAccessUrl}</span><br>
+                            📊 Items: ${path.itemCount}
+                        </div>
+                    `;
+                });
+                
+                proxyInfo += '</div>';
+            } else {
+                proxyInfo += '<p style="color: #e74c3c;">❌ No proxies worked successfully. Try running on a local server or different network.</p>';
+            }
+            
+            proxyInfo += '</div>';
+            
+            // Prepend proxy info to results
+            const currentResults = resultsDiv.innerHTML;
+            resultsDiv.innerHTML = proxyInfo + currentResults;
+        }
+        
+        function downloadResults() {
+            const fullResults = {
+                metadata: {
+                    totalArticles: analysisResults.length,
+                    analysisDate: new Date().toISOString(),
+                    successfulProxies: successfulProxies,
+                    feedAccessPaths: feedAccessPaths,
+                    corsProxiesTried: corsProxies.map(p => p.name)
+                },
+                articles: analysisResults
+            };
+            
+            const dataStr = JSON.stringify(fullResults, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'feeds.json';
+            link.click();
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('status').innerHTML = '';
+            document.getElementById('downloadBtn').disabled = true;
+            analysisResults = [];
+            successfulProxies = [];
+            feedAccessPaths = [];
+        }
+        
+        // Initialize with a helpful message
+        document.getElementById('status').innerHTML = '<div class="status">Click "Analyze RSS Feeds" to fetch and evaluate news articles with moral compass analysis</div>';
+    </script>
+</body>
+</html>
