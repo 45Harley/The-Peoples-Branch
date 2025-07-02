@@ -1,6 +1,8 @@
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('entryForm');
+    if (!form) return; // safety check
+
     const proceedBtn = document.getElementById('proceedBtn');
     const otherText = document.getElementById('otherText');
     const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
