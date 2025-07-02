@@ -5,75 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Watchtower</title>
   <link rel="stylesheet" href="main.css" />
-  <style>
-    body {
-      background-color: #111;
-      color: #eee;
-      font-family: 'Inter', system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 4vh 2em;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .prompt {
-      background: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 2rem;
-      max-width: 600px;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-
-    .choice-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .choice-group label {
-      margin-bottom: 0.5rem;
-      font-weight: normal;
-      cursor: pointer;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.5em;
-      border-radius: 4px;
-      border: 1px solid #444;
-      background: #222;
-      color: #ddd;
-      margin-top: 0.5rem;
-    }
-
-    button {
-      margin-top: 1.5rem;
-      background-color: #222;
-      border: 1px solid #555;
-      color: #eee;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-  </style>
 </head>
 <body>
   <h1>🧭 Welcome to Watchtower</h1>
-  <p style="max-width: 500px; margin-bottom: 2rem;">
+  <p class="intro">
     This space listens, distills, and reflects. To begin, tell us briefly what brings you here today.
   </p>
 
@@ -131,7 +66,6 @@
         if (reason === 'other') {
           reason = otherText.value.trim();
         }
-
         localStorage.setItem('entryReason', reason);
         window.location.href = '../testfeeds/watchtower.html';
       });
