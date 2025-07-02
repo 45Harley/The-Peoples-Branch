@@ -1,40 +1,42 @@
 <script>
-  const form = document.getElementById('entryForm');
-  const proceedBtn = document.getElementById('proceedBtn');
-  const otherText = document.getElementById('otherText');
-  const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
+  window.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('entryForm');
+    const proceedBtn = document.getElementById('proceedBtn');
+    const otherText = document.getElementById('otherText');
+    const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
 
-  function updateButtonState() {
-    const selected = form.reason.value;
-    const isOther = selected === 'other';
-    const hasTypedOther = otherText.value.trim() !== '';
-    proceedBtn.disabled = isOther ? !hasTypedOther : selected === '';
-  }
-
-  allRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
+    function updateButtonState() {
       const selected = form.reason.value;
-      if (selected === 'other') {
-        otherText.disabled = false;
-        otherText.focus();
-      } else {
-        otherText.disabled = true;
-        otherText.value = '';
-      }
-      updateButtonState();
-    });
-  });
-
-  otherText.addEventListener('input', updateButtonState);
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let reason = form.reason.value;
-    if (reason === 'other') {
-      reason = otherText.value.trim();
+      const isOther = selected === 'other';
+      const hasTypedOther = otherText.value.trim() !== '';
+      proceedBtn.disabled = isOther ? !hasTypedOther : selected === '';
     }
 
-    localStorage.setItem('entryReason', reason);
-    window.location.href = '../testfeeds/watchtower.html';
+    allRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const selected = form.reason.value;
+        if (selected === 'other') {
+          otherText.disabled = false;
+          otherText.focus();
+        } else {
+          otherText.disabled = true;
+          otherText.value = '';
+        }
+        updateButtonState();
+      });
+    });
+
+    otherText.addEventListener('input', updateButtonState);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let reason = form.reason.value;
+      if (reason === 'other') {
+        reason = otherText.value.trim();
+      }
+
+      localStorage.setItem('entryReason', reason);
+      window.location.href = '../testfeeds/watchtower.html';
+    });
   });
 </script>
