@@ -24,18 +24,43 @@
       color: #eee;
       border: 1px solid #555;
       border-radius: 4px;
+      cursor: pointer;
     }
     .echo-entry {
       border-bottom: 1px solid #444;
       padding: 1em 0;
     }
+    #exitButton {
+      float: right;
+      background-color: #111;
+      border: 1px solid #444;
+      color: #ccc;
+    }
+    #exitButton:hover {
+      background-color: #222;
+      color: #fff;
+    }
   </style>
 
+  <!-- 🌐 Core Watchtower logic -->
   <script type="module" src="./watchtower-core.js"></script>
+
+  <!-- ✨ Exit logic modules -->
+  <script type="module">
+    import { exitProgram } from './exit-program.js';
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('exitButton');
+      if (btn) btn.addEventListener('click', exitProgram);
+    });
+  </script>
 </head>
 
 <body>
-  <h1>Watchtower 📡</h1>
+  <h1>
+    Watchtower 📡
+    <!-- 🌒 Exit Button injected at top-right -->
+    <button id="exitButton" title="Close session">Exit</button>
+  </h1>
 
   <div id="controls">
     <label for="feedDropdown">Choose a feed:</label>

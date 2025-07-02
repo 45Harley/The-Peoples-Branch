@@ -1,0 +1,58 @@
+<!-- exit-modal.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Watchtower Farewell</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .glyph {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.85;
+    }
+
+    .summary {
+      max-width: 600px;
+      padding: 1rem 2rem;
+      background: #1e1e1e;
+      border-radius: 10px;
+      border: 1px solid #333;
+      margin-top: 1rem;
+    }
+
+    .exit-poem {
+      font-style: italic;
+      color: #999;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="glyph">🌓</div>
+  <h1>Watchtower Has Entered Rest</h1>
+  <div class="summary" id="summary-block">
+    Preparing your resonance echoes...
+  </div>
+  <div class="exit-poem">“The lantern dimmed, not vanished—echoes remain.”</div>
+
+  <script type="module">
+    import { summarizeResonance } from './summarize-resonance.js';
+
+    const summary = summarizeResonance();
+    document.getElementById('summary-block').innerText = summary;
+  </script>
+</body>
+</html>
