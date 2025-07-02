@@ -1,63 +1,29 @@
-feeds:
-  - key: theatlantic
-    label: The Atlantic
-    url: https://www.theatlantic.com/feed/all/
-    allowPulse: true
-    moralLens: ["governance", "grief", "justice"]
-    rating: 4
+- label: Reuters – Top News
+  url: https://feeds.reuters.com/reuters/topNews
 
-  - key: csmonitor
-    label: The Christian Science Monitor
-    url: https://rss.csmonitor.com/feeds/all
-    allowPulse: true
-    moralLens: ["ethics", "internationalism", "resilience"]
-    rating: 4
+- label: NPR – All Stories
+  url: https://feeds.npr.org/1001/rss.xml
 
-  - key: reuters
-    label: Reuters World News
-    url: https://www.reutersagency.com/feed/?best-topics=world&post_type=best
-    allowPulse: true
-    moralLens: ["signal", "geopolitics", "truth"]
-    rating: 5
+- label: The Guardian – World
+  url: https://www.theguardian.com/world/rss
 
-  - key: aljazeera
-    label: Al Jazeera English
-    url: https://www.aljazeera.com/xml/rss/all.xml
-    allowPulse: true
-    moralLens: ["justice", "conflict", "human rights"]
-    rating: 5
+- label: Al Jazeera – All News
+  url: https://www.aljazeera.com/xml/rss/all.xml
 
-  - key: guardian
-    label: The Guardian (World)
-    url: https://www.theguardian.com/world/rss
-    allowPulse: true
-    moralLens: ["climate", "inequality", "truth"]
-    rating: 5
+- label: Deutsche Welle – Top Stories
+  url: https://rss.dw.com/rdf/rss-en-top
 
-  - key: nasa
-    label: NASA Earth Observatory
-    url: https://earthobservatory.nasa.gov/feeds/rss/all
-    allowPulse: true
-    moralLens: ["ecology", "awe", "signal"]
-    rating: 4
+- label: UN News – Global
+  url: https://news.un.org/feed/subscribe/en/news/all/rss.xml
 
-  - key: bbc
-    label: BBC World News
-    url: https://feeds.bbci.co.uk/news/world/rss.xml
-    allowPulse: true
-    moralLens: ["signal", "governance", "urgency"]
-    rating: 4
+- label: Weather Alerts (US)
+  url: https://alerts.weather.gov/cap/us.php?x=0
 
-  - key: mozilla
-    label: Mozilla Blog
-    url: https://blog.mozilla.org/feed/
-    allowPulse: true
-    moralLens: ["privacy", "open web", "ethics"]
-    rating: 3
+- label: Science Daily – Top Science
+  url: https://www.sciencedaily.com/rss/top.xml
 
-  - key: github
-    label: GitHub Blog
-    url: https://github.blog/feed/
-    allowPulse: true
-    moralLens: ["technology", "collaboration", "signal"]
-    rating: 3
+- label: MIT Technology Review
+  url: https://www.technologyreview.com/feed/
+
+- label: Wired – Full Feed
+  url: https://www.wired.com/feed/rss

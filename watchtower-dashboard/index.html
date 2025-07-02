@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Watchtower</title>
   <link rel="stylesheet" href="main.css" />
-
   <style>
     body {
       background-color: #111;
@@ -31,13 +30,6 @@
       max-width: 600px;
       width: 100%;
       margin-bottom: 2rem;
-    }
-
-    label {
-      display: block;
-      margin: 0.7rem 0 0.4rem;
-      text-align: left;
-      font-weight: 500;
     }
 
     .choice-group {
@@ -97,7 +89,7 @@
         <label><input type="radio" name="reason" value="just passing through"> I’m just passing through</label>
         <label>
           <input type="radio" name="reason" value="other" id="otherRadio"> Other:
-          <input type="text" id="otherText" placeholder="Share your reason…" disabled>
+          <input type="text" id="otherText" placeholder="Share your reason…" disabled />
         </label>
       </div>
       <button type="submit" id="proceedBtn" disabled>Begin Session</button>
@@ -108,22 +100,28 @@
     const form = document.getElementById('entryForm');
     const proceedBtn = document.getElementById('proceedBtn');
     const otherText = document.getElementById('otherText');
-    const otherRadio = document.getElementById('otherRadio');
+    const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
+
+    function updateButtonState() {
+      const selected = form.reason.value;
+      const isOther = selected === 'other';
+      const hasTypedOther = otherText.value.trim() !== '';
+      proceedBtn.disabled = isOther ? !hasTypedOther : selected === '';
+    }
 
     form.addEventListener('change', () => {
       const selected = form.reason.value;
       if (selected === 'other') {
         otherText.disabled = false;
-        proceedBtn.disabled = otherText.value.trim() === '';
+        otherText.focus();
       } else {
         otherText.disabled = true;
-        proceedBtn.disabled = false;
+        otherText.value = '';
       }
+      updateButtonState();
     });
 
-    otherText.addEventListener('input', () => {
-      proceedBtn.disabled = otherText.value.trim() === '';
-    });
+    otherText.addEventListener('input', updateButtonState);
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -132,10 +130,7 @@
         reason = otherText.value.trim();
       }
 
-      // 🌱 Store entry reason (can be used in Watchtower session)
       localStorage.setItem('entryReason', reason);
-
-      // 🌐 Redirect to Watchtower session
       window.location.href = '../testfeeds/watchtower.html';
     });
   </script>
