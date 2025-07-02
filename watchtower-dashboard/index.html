@@ -1,44 +1,141 @@
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('entryForm');
-    if (!form) return; // safety check
-
-    const proceedBtn = document.getElementById('proceedBtn');
-    const otherText = document.getElementById('otherText');
-    const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
-
-    function updateButtonState() {
-      const selected = form.reason.value;
-      const isOther = selected === 'other';
-      const hasTypedOther = otherText.value.trim() !== '';
-      proceedBtn.disabled = isOther ? !hasTypedOther : selected === '';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Watchtower</title>
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Inter', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4vh 2em;
+      text-align: center;
     }
 
-    allRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .prompt {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .choice-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .choice-group label {
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5em;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #222;
+      color: #ddd;
+      margin-top: 0.5rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background-color: #222;
+      border: 1px solid #555;
+      color: #eee;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧭 Welcome to Watchtower</h1>
+  <p style="max-width: 500px; margin-bottom: 2rem;">
+    This space listens, distills, and reflects. To begin, tell us briefly what brings you here today.
+  </p>
+
+  <div class="prompt">
+    <form id="entryForm">
+      <div class="choice-group">
+        <label><input type="radio" name="reason" value="seeking clarity"> I’m seeking clarity</label>
+        <label><input type="radio" name="reason" value="exploring possibilities"> I want to explore possibilities</label>
+        <label><input type="radio" name="reason" value="here to reflect"> I’m here to reflect</label>
+        <label><input type="radio" name="reason" value="curious"> I’m curious about the system</label>
+        <label><input type="radio" name="reason" value="solving a problem"> I’m here to solve a problem</label>
+        <label><input type="radio" name="reason" value="just passing through"> I’m just passing through</label>
+        <label>
+          <input type="radio" name="reason" value="other" id="otherRadio"> Other:
+          <input type="text" id="otherText" placeholder="Share your reason…" disabled />
+        </label>
+      </div>
+      <button type="submit" id="proceedBtn" disabled>Begin Session</button>
+    </form>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('entryForm');
+      const proceedBtn = document.getElementById('proceedBtn');
+      const otherText = document.getElementById('otherText');
+      const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
+
+      function updateButtonState() {
         const selected = form.reason.value;
-        if (selected === 'other') {
-          otherText.disabled = false;
-          otherText.focus();
-        } else {
-          otherText.disabled = true;
-          otherText.value = '';
-        }
-        updateButtonState();
-      });
-    });
-
-    otherText.addEventListener('input', updateButtonState);
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      let reason = form.reason.value;
-      if (reason === 'other') {
-        reason = otherText.value.trim();
+        const isOther = selected === 'other';
+        const hasTypedOther = otherText.value.trim() !== '';
+        proceedBtn.disabled = isOther ? !hasTypedOther : selected === '';
       }
 
-      localStorage.setItem('entryReason', reason);
-      window.location.href = '../testfeeds/watchtower.html';
+      allRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          const selected = form.reason.value;
+          if (selected === 'other') {
+            otherText.disabled = false;
+            otherText.focus();
+          } else {
+            otherText.disabled = true;
+            otherText.value = '';
+          }
+          updateButtonState();
+        });
+      });
+
+      otherText.addEventListener('input', updateButtonState);
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let reason = form.reason.value;
+        if (reason === 'other') {
+          reason = otherText.value.trim();
+        }
+
+        localStorage.setItem('entryReason', reason);
+        window.location.href = '../testfeeds/watchtower.html';
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
