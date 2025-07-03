@@ -6,15 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Watchtower Dashboard</title>
 
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <!-- Styles -->
   <link rel="stylesheet" href="main.css" />
 
-  <!-- Core Scripts -->
-  <script src="watchtower.js" defer></script>
-  <script src="resonance-log.js" defer></script>
-  <script src="resonance-summary.js" defer></script>
-  <script src="summarize-resonance.js" defer></script>
-  <script src="watchtower-theme-loader.js" defer></script>
+  <!-- Module Scripts -->
+  <script type="module" src="watchtower.js"></script>
+  <script type="module" src="resonance-log.js"></script>
+  <script type="module" src="resonance-summary.js"></script>
+  <script type="module" src="summarize-resonance.js"></script>
+  <script type="module" src="watchtower-theme-loader.js"></script>
 </head>
 <body>
   <header>
@@ -23,7 +26,6 @@
   </header>
 
   <main id="dashboard">
-    <!-- Placeholder for dynamic content -->
     <section id="resonance-feed"></section>
     <section id="summary-strip"></section>
   </main>
