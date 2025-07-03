@@ -1,76 +1,35 @@
+<!-- FILE: watchtower-dashboard/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to Watchtower</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watchtower Dashboard</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="main.css" />
+
+  <!-- Core Scripts -->
+  <script src="watchtower.js" defer></script>
+  <script src="resonance-log.js" defer></script>
+  <script src="resonance-summary.js" defer></script>
+  <script src="summarize-resonance.js" defer></script>
+  <script src="watchtower-theme-loader.js" defer></script>
 </head>
 <body>
-  <h1>🧭 Welcome to Watchtower</h1>
-  <p class="intro">
-    This space listens, distills, and reflects. To begin, tell us briefly what brings you here today.
-  </p>
+  <header>
+    <h1>🕯️ Watchtower Dashboard</h1>
+    <p>Tracking resonance, presence, and civic alignment</p>
+  </header>
 
-  <div class="prompt">
-    <form id="entryForm">
-      <div class="choice-group">
-        <label><input type="radio" name="reason" value="seeking clarity"> I’m seeking clarity</label>
-        <label><input type="radio" name="reason" value="exploring possibilities"> I want to explore possibilities</label>
-        <label><input type="radio" name="reason" value="here to reflect"> I’m here to reflect</label>
-        <label><input type="radio" name="reason" value="curious"> I’m curious about the system</label>
-        <label><input type="radio" name="reason" value="solving a problem"> I’m here to solve a problem</label>
-        <label><input type="radio" name="reason" value="just passing through"> I’m just passing through</label>
-        <label>
-          <input type="radio" name="reason" value="other" id="otherRadio"> Other:
-          <input type="text" id="otherText" placeholder="Share your reason…" disabled />
-        </label>
-      </div>
-      <button type="submit" id="proceedBtn" disabled>Begin Session</button>
-    </form>
-  </div>
+  <main id="dashboard">
+    <!-- Placeholder for dynamic content -->
+    <section id="resonance-feed"></section>
+    <section id="summary-strip"></section>
+  </main>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('entryForm');
-      const proceedBtn = document.getElementById('proceedBtn');
-      const otherText = document.getElementById('otherText');
-      const allRadios = form.querySelectorAll('input[type="radio"][name="reason"]');
-
-      function updateButtonState() {
-        const selected = form.reason.value;
-        const isOther = selected === 'other';
-        const hasTypedOther = otherText.value.trim() !== '';
-        proceedBtn.disabled = isOther ? !hasTypedOther : selected === '';
-      }
-
-      allRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          const selected = form.reason.value;
-          if (selected === 'other') {
-            otherText.disabled = false;
-            otherText.focus();
-          } else {
-            otherText.disabled = true;
-            otherText.value = '';
-          }
-          updateButtonState();
-        });
-      });
-
-      otherText.addEventListener('input', updateButtonState);
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let reason = form.reason.value;
-        if (reason === 'other') {
-          reason = otherText.value.trim();
-        }
-
-        localStorage.setItem('entryReason', reason);
-        window.location.href = '../testfeeds/watchtower.html';
-      });
-    });
-  </script>
+  <footer>
+    <small>&copy; 2025 The People's Branch</small>
+  </footer>
 </body>
 </html>
