@@ -1,78 +1,49 @@
-theme: "Heat & Care"
-threads:
+# heatwave-2025.yaml
+theme_manifest:
+  name: Heatwave 2025
+  version: 1.0
+  description: Emotional amplitude theme for civic resonance
+  author: The People's Branch
+  created: 2025-07-03
 
-  - id: "heatwave-2025-ctok-01"
-    title: "Cooling Centers Reach Capacity Amid Record Heat"
-    summary: "Municipal centers struggle to meet demand during ongoing heatwave. Advocates call for deeper infrastructural support, not just short-term emergency sites."
-    resonance: 9.1
-    moral_lens: "care"
-    moral_polarity: "grieve"
-    location:
-      label: "Quiet Corner & Tulsa"
-      coordinates: [[41.9, -71.9], [36.1, -95.9]]
-    source:
-      name: "Local observations + civic feeds"
-      url: "https://ctmirror.org/climate"
-    actions:
-      - "propose_ladder"
-      - "map regional infrastructure gaps"
-      - "amplify testimony from elders"
-    notes: |
-      Curated June 2025 by Harley & Copilot based on public reports and firsthand narratives. Anchors the *Heat & Care* moral quadrant.
+amplitude_tiers:
+  - name: Calm
+    range: [0.0, 0.2]
+    color: "#d0f0f7"
+    glow: false
+    symbol: "🕊️"
+    civic_tone: "Reflective"
+    urgency: "Low"
 
-  - id: "mutual-aid-2025-tulsa-01"
-    title: "Tulsa Teens Form 'Shade Brigades' to Guard Elders"
-    summary: "Youth-led care networks emerge as grassroots defense against heat inequality—offering water, umbrellas, and friendship where systems fail."
-    resonance: 9.4
-    moral_lens: "interdependence"
-    moral_polarity: "awe"
-    location:
-      label: "Tulsa North Side"
-      coordinates: [36.193, -95.994]
-    source:
-      name: "Local oral reports + youth media"
-      url: "https://example.org/shade-brigade"
-    actions:
-      - "propose_ladder"
-      - "interview youth for Watchtower oral history"
-      - "amplify cross-generational practices of care"
-    notes: |
-      Curated from grassroots testimonies, June 2025. Bears witness to emergent compassion and place-based youth response. Part of the *Heat & Care* theme.
+  - name: Stirred
+    range: [0.2, 0.5]
+    color: "#fef3c7"
+    glow: true
+    symbol: "🌤️"
+    civic_tone: "Attentive"
+    urgency: "Moderate"
 
-  - id: "heat-zoning-warn-2025"
-    title: "Zoning Laws Intensify Heat Risk in Vulnerable Neighborhoods"
-    summary: "Decades-old ordinances block shade structures, green cover, and cooling adaptation in low-income areas. Advocacy groups call for urgent reform."
-    resonance: 9.2
-    moral_lens: "justice"
-    moral_polarity: "warn"
-    location:
-      label: "Putnam, CT & Tulsa outskirts"
-      coordinates: [[41.92, -71.90], [36.11, -96.01]]
-    source:
-      name: "Equity in Planning Coalition"
-      url: "https://example.org/heat-zoning-barriers"
-    actions:
-      - "propose_ladder"
-      - "tag outdated zoning codes"
-      - "add to policy advocacy thread"
-    notes: |
-      Curated June 2025 by Harley & Copilot using zoning archives, planning codes, and equity coalition materials. Illuminates upstream root causes in the *Heat & Care* moral field.
+  - name: Surging
+    range: [0.5, 0.8]
+    color: "#fca5a5"
+    glow: true
+    symbol: "🔥"
+    civic_tone: "Mobilizing"
+    urgency: "High"
 
-  - id: "shade-policy-celebrate-2025"
-    title: "Living Shade Ordinance Passed in Putnam & Tulsa"
-    summary: "Municipalities codify equitable cooling infrastructure—partnering with local groups to co-design shaded public space. A model for participatory adaptation."
-    resonance: 9.5
-    moral_lens: "governance"
-    moral_polarity: "celebrate"
-    location:
-      label: "Putnam Main Street & Tulsa Greenwood"
-      coordinates: [[41.92, -71.91], [36.1627, -95.9929]]
-    source:
-      name: "Joint Civic Lab + Planning Commission"
-      url: "https://example.org/living-shade-zones"
-    actions:
-      - "amplify ordinance model"
-      - "document design circle process"
-      - "add to cooling justice ladder"
-    notes: |
-      Curated June 2025 by Harley & Copilot from municipal planning records and participatory design materials. Offers precedent rooted in trust and infrastructure dignity within the *Heat & Care* theme.
+  - name: Flashpoint
+    range: [0.8, 1.0]
+    color: "#991b1b"
+    glow: true
+    pulse: true
+    symbol: "🚨"
+    civic_tone: "Critical"
+    urgency: "Immediate"
+
+governance_overlay:
+  show_branch_glyphs: true
+  branch_colors:
+    Legislative: "#3b82f6"
+    Executive: "#10b981"
+    Judicial: "#8b5cf6"
+  overlay_opacity: 0.15
